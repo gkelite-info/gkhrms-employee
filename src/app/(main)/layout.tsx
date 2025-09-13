@@ -1,5 +1,5 @@
-import Header from "../../Layouts/Header"
-import Sidebar from "../../Layouts/Sidebar"
+import Header from "../../../Layouts/Header"
+import Sidebar from "../../../Layouts/Sidebar"
 
 export default function MainLayout({
   children,
@@ -11,7 +11,7 @@ export default function MainLayout({
       <Header />
       <div className="w-full h-[calc(100%-70px)] flex items-start">
         <Sidebar />
-        <main className="h-full w-[calc(100%-100px)] flex flex-col overflow-y-scroll">
+        <main className="h-full w-[calc(100%-100px)] flex flex-col overflow-y-auto scrollbar-hide p-3">
           {children}
         </main>
       </div>
