@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@heroui/date-picker": "^2.3.27",
     "next": "15.5.3",
     "phosphor-react": "^1.4.1",
     "react": "19.1.0",
