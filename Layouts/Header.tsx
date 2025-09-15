@@ -25,8 +25,8 @@ export default function Header() {
 
           {/* //icons */}
           <div className="h-[100%] w-[12%] bg- flex items-center justify-center gap-4">
-            <Bell size={26} className="text-white cursor-pointer" />
-            <Tray size={26} className="text-white cursor-pointer" />
+            <Bell className="text-white cursor-pointer h-6 w-6 hover:h-7 hover:w-7 transition-all duration-200" />
+            <Tray className="text-white cursor-pointer h-6 w-6 hover:h-7 hover:w-7 transition-all duration-200" />
             <div className="h-8 w-8 flex items-center justify-center bg-blue-400 rounded-full cusor-pointer">
               <p className="cursor-pointer">X</p>
             </div>
