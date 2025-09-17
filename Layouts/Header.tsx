@@ -18,7 +18,7 @@ export default function Header() {
               <MagnifyingGlass size={19} weight="bold" className="text-[#323232] cursor-pointer" />
               <input
                 placeholder="Search employees or action (Ex: Leave Request)"
-                className="text-[#323232] focus:text-[#323232] text-xs focus:outline-none w-full"
+                className="text-[#323232] font-medium focus:text-[#323232] text-xs focus:outline-none w-full"
               />
             </div>
           </div>
