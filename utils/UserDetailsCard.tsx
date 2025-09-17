@@ -1,6 +1,7 @@
 "use client"
 import { MapPin, Megaphone, Moon, Sun } from "phosphor-react"
 import React, { useEffect, useState } from "react"
+import { motion } from "framer-motion"
 
 const UserDetailsCard = () => {
   const [today, setToday] = useState("")
@@ -41,7 +42,12 @@ const UserDetailsCard = () => {
   }, [])
 
   return (
-    <div className="w-[100%] bg-red-00 h-auto flex items-between overflow-y-auto">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="w-[100%] bg-red-00 h-auto flex items-between overflow-y-auto"
+    >
       <div className="bg-red-00 flex h-31 w-[65%]">
         <div className="w-[15%] flex justify-center pl-2">
           <div className="bg-white text-xs text-black h-15 w-15 rounded-full mt-4 flex items-center justify-center">
@@ -78,18 +84,26 @@ const UserDetailsCard = () => {
           </div>
         </div>
       </div>
-      <div className="w-[35%] flex items-start justify-end px-5 py-4">
-        <div className="bg-[#F9FAFB] h-13 w-13 rounded-full flex items-center justify-center">
+      <motion.div
+        className="w-[35%] flex items-start justify-end px-5 py-4"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.9, duration: 0.6 }}
+      >
+        <motion.div
+          className="bg-[#F9FAFB] h-13 w-13 rounded-full flex items-center justify-center shadow"
+          animate={{ y: [0, -8, 0] }}
+          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+        >
           <Megaphone
             size={28}
             color="#874DE6"
             weight="fill"
             className="cursor-pointer"
           />
-        </div>
-        {/* <NotificationCount count={3} style="top-21 right-4" /> */}
-      </div>
-    </div>
+        </motion.div>
+      </motion.div>
+    </motion.div>
   )
 }
 
