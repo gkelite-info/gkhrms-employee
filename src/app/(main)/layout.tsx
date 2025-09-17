@@ -1,6 +1,5 @@
 import Header from "../../../Layouts/Header"
 import Sidebar from "../../../Layouts/Sidebar"
-import TopNavbar from "../../../Layouts/topnav"
 
 export default function MainLayout({
   children,
@@ -8,12 +7,11 @@ export default function MainLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="w-full h-[100vh] bg-red-300 flex flex-col">
+    <div className="w-full h-[100vh] bg-gradient-to-b from-[#DEDCFA] to-[#F1F1FD] flex flex-col">
       <Header />
       <div className="w-full h-[calc(100%-70px)] flex items-start">
         <Sidebar />
         <main className="h-full w-[calc(100%-100px)] flex flex-col overflow-y-auto scrollbar-hide">
-          <TopNavbar />
           {children}
         </main>
       </div>
