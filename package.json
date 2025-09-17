@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@heroui/date-picker": "^2.3.27",
+    "keen-slider": "^6.8.6",
     "next": "15.5.3",
     "openai": "^5.20.3",
     "phosphor-react": "^1.4.1",

@@ -6,7 +6,7 @@ import { House, User, Buildings, Wallet, ChatCircle, UsersThree, TrendUp, } from
 
 const navItems = [
   { label: "Home", href: "/dashboard", icon: House },
-  { label: "Me", href: "/d", icon: User },
+  { label: "Me", href: "/manager_dash", icon: User },
   { label: "My Team", href: "/e", icon: UsersThree },
   { label: "Org", href: "/f", icon: Buildings },
   { label: "Performance", href: "/g", icon: TrendUp },
