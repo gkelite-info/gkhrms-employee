@@ -2,10 +2,10 @@ import axios, { AxiosRequestConfig, AxiosResponse, AxiosError } from "axios"
 import { errorMsgApi } from "./toast"
 
 export const API = axios.create({
-  baseURL: "https://dummybackend.womenrider.com",
+  baseURL: "http://localhost:8080",
 })
 
-export const imageUrl = "https://dummybackend.womenrider.com"
+export const imageUrl = "http://localhost:8080"
 
 // Explicit type for token getter
 const useGetUserToken = (): string | null => {

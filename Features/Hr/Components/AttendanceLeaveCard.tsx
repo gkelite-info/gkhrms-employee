@@ -3,6 +3,7 @@ import React from "react"
 import { useAttendanceLeavsUserTableData } from "../Data/AttendanceLeaveUser.data"
 import { useAttendaceLeavsHook } from "../Hooks/AttendanceLeaves.hook"
 import Table from "../../../Utils/Table/Table"
+import DashboardAttendanceTracker from "../../../Utils/DashboardAttendanceTracker"
 
 const AttendanceLeaveCard = () => {
   const { column } = useAttendanceLeavsUserTableData()
@@ -13,7 +14,8 @@ const AttendanceLeaveCard = () => {
       <h3 className="text-[#323232] font-semibold text-center">
         Attendance & leave
       </h3>
-      <div className="w-full bg-[#F4F3FF] shadow rounded overflow-hidden flex flex-col">
+      <DashboardAttendanceTracker />
+      <div className="w-full bg-[#F4F3FF] shadow rounded-md overflow-hidden flex flex-col">
         <span className="text-end px-3 pt-3 text-xs cursor-pointer">
           See All
         </span>
