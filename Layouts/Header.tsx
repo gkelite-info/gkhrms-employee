@@ -1,6 +1,7 @@
 'use client';
 
-import { Bell, MagnifyingGlass, Tray } from "phosphor-react";
+import { Bell, MagnifyingGlass, Megaphone, Tray } from "phosphor-react";
+import NotificationCount from "../utils/notificationCount";
 
 export default function Header() {
   return (
@@ -24,9 +25,12 @@ export default function Header() {
           </div>
 
           {/* //icons */}
-          <div className="h-[100%] w-[12%] bg- flex items-center justify-center gap-4">
-            <Bell className="text-[#1E1D32] cursor-pointer h-6 w-6 hover:h-7 hover:w-7 transition-all duration-200" />
-            <Tray className="text-[#1E1D32] cursor-pointer h-6 w-6 hover:h-7 hover:w-7 transition-all duration-200" />
+          <div className="h-[100%] w-[12%] bg-green-00 flex items-center justify-center gap-5">
+            <div className="relative bg-yellow-00 h-[24px]">
+              <Bell className="text-[#1E1D32] bg-pink-00 cursor-pointer h-6 w-6 hover:shadow-xl transition-all duration-200" />
+              <NotificationCount count={100} />
+            </div>
+            <Tray className="text-[#1E1D32] bg-blue-00 cursor-pointer h-6 w-6 hover:shadow-xl transition-all duration-200" />
             <div className="h-8 w-8 flex items-center justify-center bg-blue-400 rounded-full cusor-pointer">
               <p className="cursor-pointer">X</p>
             </div>
