@@ -10,11 +10,13 @@
   },
   "dependencies": {
     "@heroui/date-picker": "^2.3.27",
+    "axios": "^1.12.2",
     "next": "15.5.3",
     "openai": "^5.20.3",
     "phosphor-react": "^1.4.1",
     "react": "19.1.0",
     "react-dom": "19.1.0",
+    "react-toastify": "^11.0.5",
     "recharts": "^3.2.1"
   },
   "devDependencies": {
