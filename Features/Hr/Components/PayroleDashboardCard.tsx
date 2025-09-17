@@ -1,5 +1,6 @@
 "use client"
 import React from "react"
+import { motion } from "framer-motion"
 import { Bank, ClockAfternoon, FileText } from "phosphor-react"
 
 // Dashboard item type
@@ -44,9 +45,13 @@ const PayroleDashboardCard: React.FC = () => {
         Payroll Cycle Status
       </h3>
 
-      <div className="w-full flex flex-col gap-6">
+      <div className="w-full flex flex-col gap-10">
         {dashboardItems.map((item, idx) => (
-          <DashboardItem key={idx} {...item} />
+          <DashboardItem
+            key={idx}
+            {...item}
+            isLast={idx === dashboardItems.length - 1}
+          />
         ))}
       </div>
 
@@ -73,19 +78,36 @@ const PayroleDashboardCard: React.FC = () => {
 
 export default PayroleDashboardCard
 
-const DashboardItem: React.FC<DashboardItemProps> = ({
+const DashboardItem: React.FC<DashboardItemProps & { isLast?: boolean }> = ({
   icon,
   title,
   subtitle,
   circleBgColor = "#51B677",
+  isLast,
 }) => (
-  <div className="flex items-start gap-4">
-    <span
-      className="w-[40px] h-[40px] flex justify-center items-center rounded-full"
+  <div className="flex items-start gap-4 relative">
+    <motion.span
+      className="w-[40px] h-[40px] flex justify-center items-center rounded-full relative"
       style={{ backgroundColor: circleBgColor }}
+      initial={{ opacity: 0, scale: 0.5 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true, amount: 0.5 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
     >
       {icon}
-    </span>
+
+      {!isLast && (
+        <motion.span
+          className="absolute top-full left-1/2 -translate-x-1/2 w-px border-l-2 border-dotted border-gray-600"
+          initial={{ height: 0 }}
+          whileInView={{ height: 40 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 1, ease: "easeInOut" }}
+        />
+      )}
+    </motion.span>
+
+    {/* Text */}
     <div className="flex flex-col gap-0.5">
       <span className="text-[#323232] text-base font-semibold">{title}</span>
       <span className="text-xs text-[#585858]">{subtitle}</span>
