@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from "react"
 import { AppDispatch } from "../../../Redux/Store"
 import { useDispatch } from "react-redux"
-import { userLogin } from "../Slice/loginSlice"
+import { userLogin } from "../slice/loginSlice"
 import { useRouter } from "next/navigation"
 export type loginData = {
   email: string

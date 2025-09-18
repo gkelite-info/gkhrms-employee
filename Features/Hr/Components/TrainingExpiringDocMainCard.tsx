@@ -18,7 +18,7 @@ const ProgramSection: React.FC<ProgramSectionProps> = ({
       <span className="w-[25px] h-[25px] flex rounded-full justify-center items-center bg-[#272372] text-white font-semibold">
         {number}
       </span>
-      <span className="text-[#272372] text-base">{title}</span>
+      <span className="text-[#272372] text-sm">{title}</span>
     </div>
     <div className="w-full lg:w-1/2 flex flex-col gap-2">
       {programs.map((program, idx) => (

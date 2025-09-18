@@ -23,7 +23,7 @@ const Approvals: React.FC<InfoItemProps> = ({
         {icon}
       </span>
       <span className="font-semibold text-xl text-[#323232]">{count}</span>
-      <span className="text-[#323232] font-medium text-sm">{label}</span>
+      <span className="text-[#323232] font-medium text-xs">{label}</span>
     </div>
   )
 }

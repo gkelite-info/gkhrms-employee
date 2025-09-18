@@ -1,5 +1,5 @@
 import { API } from "../../../Core/url"
-import { loginData } from "../Hooks/login.hook"
+import { loginData } from "../hooks/login.hook"
 
 // import  loginData  from "../Service/login-service"
 export const loginApi = async (user: loginData) => {

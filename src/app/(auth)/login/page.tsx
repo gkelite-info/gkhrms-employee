@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react"
-import { useLogin } from "../../../../features/Auth/Hooks/login.hook"
+import { useLogin } from "../../../../features/auth/hooks/login.hook"
 
 const Login = () => {
   const { user, handleChangeInput, handleSubmit } = useLogin()

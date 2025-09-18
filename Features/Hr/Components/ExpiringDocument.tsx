@@ -1,7 +1,7 @@
 import React from "react"
-import { useExpiryDocumentHook } from "../Hooks/ExpiryDocument.hook"
+import { useExpiryDocumentHook } from "../hooks/ExpiryDocument.hook"
 import Table from "../../../utils/Table/Table"
-import { useExpiryDocsTableData } from "../Data/ExpiryDocument.data"
+import { useExpiryDocsTableData } from "../data/ExpiryDocument.data"
 
 const ExpiringDocument = () => {
   const { expiryDocs } = useExpiryDocumentHook()
