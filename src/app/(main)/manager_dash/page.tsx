@@ -1,4 +1,19 @@
-"use client"
+// <<<<<<< 21-notification-modal
+// 'use client';
+
+// import { CheckCircle, MapPin, Megaphone, Moon, SignIn, SignOut, Sun, WarningCircle, XCircle } from "phosphor-react";
+// import { useEffect, useState } from "react";
+// import NotificationCount from "../../../../utils/notificationCount";
+// import TeamSnapshot from "../../../../features/manager/components/teamSnapshot";
+// import TeamLeads from "../../../../features/manager/components/teamLeads";
+// import TaskCard from "../../../../utils/taskCard";
+// import PendingTaskCard from "../../../../utils/pendingTaskcard";
+// import LeaveTable from "../../../../utils/leaveTable";
+// import PercentPie from "../../../../utils/pieChart";
+// import Table from "../../../../utils/Table/Table";
+// import KeenSlider from "../../../../utils/keen-slider";
+// =======
+'use client'
 
 import {
   CheckCircle,
