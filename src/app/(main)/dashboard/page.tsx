@@ -21,6 +21,10 @@ import { useEffect, useState } from "react"
 import TaskCard from "../../../../utils/taskCard"
 import MyTeam from "../../../../utils/myTeam"
 import PercentPie from "../../../../utils/pieChart"
+import PostUploadCard from "../../../../utils/PostUploadCard"
+import BirthdatNewJoinCount from "../../../../utils/BirthdatNewJoinCount"
+import QuickUpdatedPostCard from "../../../../utils/QuickUpdatedPostCard"
+import PostItem from "../../../../utils/PostItem"
 
 export default function Dashboard() {
   const [today, setToday] = useState("")
@@ -373,210 +377,14 @@ export default function Dashboard() {
         </div>
       </div>
       <div className="bg-yellow-00 w-[40%] flex flex-col">
-        <div className="w-[95%] bg-white h-34 rounded-lg shadow-md mt-3">
-          <div className="bg-red-00 h-[35%] flex items-center justify-between py-2 px-3 rounded-t-lg border-0 border-b-[#C2C2C2] border-b-1">
-            <div className="bg-green-00 w-[30%] flex items-center justify-center">
-              <NotePencil
-                size={23}
-                color="#00AF9B"
-                className="cursor-pointer"
-              />
-              <p className="text-[#111827] ml-1 font-medium text-sm cursor-pointer">
-                Post
-              </p>
-            </div>
-            <div className="bg-green-00 w-[30%] flex items-center justify-center">
-              <ChartBar size={23} color="#AD5A5A" className="cursor-pointer" />
-              <p className="text-[#111827] ml-1 font-medium text-sm cursor-pointer">
-                Poll
-              </p>
-            </div>
-          </div>
-          <div className="bg-blue-00 rounded-b-lg h-full p-2">
-            <p className="text-xs text-[#545454]">
-              Share the post here and tag your colleagues
-            </p>
-          </div>
-        </div>
-        <div className="shadow-md h-15 w-[95%] bg-[#C5C1FF] mt-2 p-3 rounded-lg flex justify-between">
-          <div className="h-full w-[32%] bg-white flex items-center justify-center gap-1 px-3 rounded-lg">
-            <Cake size={16} color="#1F2937" />
-            <p style={{ fontWeight: "500", fontSize: 10, color: "#323232" }}>
-              Birthdays
-            </p>
-          </div>
-          <div className="h-full w-[32%] bg-white flex items-center justify-center rounded-lg">
-            <p style={{ fontSize: 10, fontWeight: "500", color: "#323232" }}>
-              0 Work Anniversaries
-            </p>
-          </div>
-          <div className="h-full w-[32%] bg-white flex items-center justify-between px-3 rounded-lg">
-            <UsersThree size={16} color="#1F2937" />
-            <p style={{ fontWeight: "500", fontSize: 10, color: "#323232" }}>
-              0 New Joiners
-            </p>
-          </div>
-        </div>
-        <div className="shadow-md h-76 w-[95%] bg-white mt-2 rounded-lg">
-          <div className="bg-red-00 h-[15%] flex items-center justify-between px-3 py-2 rounded-t-lg">
-            <div className="bg-red-00 w-[30%] h-[100%] flex items-center justify-start gap-2">
-              <Megaphone
-                size={18}
-                color="#111827"
-                className="transform -scale-x-100 cursor-pointer"
-              />
-              <p className="text-xs cursor-pointer text-[#111827]">
-                Quick Update
-              </p>
-            </div>
-            <div className="bg-red-00 w-[30%] h-[100%] flex items-center justify-center gap-2">
-              <Eye
-                size={18}
-                color="#111827"
-                className="transform -scale-x-100 cursor-pointer"
-              />
-              <p className="text-xs cursor-pointer text-[#111827]">View More</p>
-            </div>
-            <div className="bg-red-00 w-[30%] h-[100%] flex items-center justify-end gap-2">
-              <div className="bg-[#C5C1FF] h-5 w-5 flex items-center justify-center cursor-pointer">
-                <Plus
-                  size={17}
-                  color="#111827"
-                  weight="fill"
-                  className="cursor-pointer"
-                />
-              </div>
-            </div>
-          </div>
-          <div className="h-65 bg-green-00 rounded-b-lg flex flex-col items-start p-2 pt-0">
-            <p className="text-[#1C2334] font-medium text-xs">
-              Employee of the Month
-            </p>
-            <div className="bg-blue-00 w-[100%] flex items-center justify-center mt-1">
-              <img
-                src="/images/eom.png"
-                alt="eom.png"
-                className="rounded-lg h-45 w-[80%]"
-              />
-            </div>
-            <div className="bg-red-00 mt-3 flex items-center justify-center gap-7 w-[100%]">
-              <div className="flex flex-col items-center justify-center">
-                <Heart size={20} color="#1C2334" className="cursor-pointer" />
-                <p className="text-xs text-[#1C2334] cursor-pointer">Like</p>
-              </div>
-              <div className="flex flex-col items-center justify-center">
-                <ChatCircleDots
-                  size={20}
-                  color="#1C2334"
-                  className="cursor-pointer"
-                />
-                <p className="text-xs text-[#1C2334] cursor-pointer">Comment</p>
-              </div>
-              <div className="flex flex-col items-center justify-center">
-                <Repeat size={20} color="#1C2334" className="cursor-pointer" />
-                <p className="text-xs text-[#1C2334] cursor-pointer">Repost</p>
-              </div>
-              <div className="flex flex-col items-center justify-center">
-                <ShareNetwork
-                  size={20}
-                  color="#1C2334"
-                  className="cursor-pointer"
-                />
-                <p className="text-xs text-[#1C2334] cursor-pointer">Share</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="shadow-md h-68 w-[95%] bg-white mt-2 rounded-lg">
-          <div className="h-68 bg-green-00 rounded-b-lg flex flex-col items-start p-2">
-            <p className="text-[#1C2334] font-medium text-sm">
-              Occation of the Day.
-            </p>
-            <div className="bg-blue-00 w-[100%] flex items-center justify-center mt-2">
-              <img
-                src="/images/occation.png"
-                alt="occation.png"
-                className="rounded-lg h-45 w-[80%]"
-              />
-            </div>
-            <div className="bg-red-00 mt-3 flex items-center justify-center gap-7 w-[100%]">
-              <div className="flex flex-col items-center justify-center">
-                <Heart
-                  size={20}
-                  weight="regular"
-                  color="#1C2334"
-                  className="cursor-pointer"
-                />
-                <p className="text-xs text-[#1C2334] cursor-pointer">Like</p>
-              </div>
-              <div className="flex flex-col items-center justify-center">
-                <ChatCircleDots
-                  size={20}
-                  color="#1C2334"
-                  className="cursor-pointer"
-                />
-                <p className="text-xs text-[#1C2334] cursor-pointer">Comment</p>
-              </div>
-              <div className="flex flex-col items-center justify-center">
-                <Repeat size={20} color="#1C2334" className="cursor-pointer" />
-                <p className="text-xs text-[#1C2334] cursor-pointer">Repost</p>
-              </div>
-              <div className="flex flex-col items-center justify-center">
-                <ShareNetwork
-                  size={20}
-                  color="#1C2334"
-                  className="cursor-pointer"
-                />
-                <p className="text-xs text-[#1C2334] cursor-pointer">Share</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="shadow-md h-68 w-[95%] bg-white mt-2 rounded-lg">
-          <div className="h-68 bg-green-00 rounded-b-lg flex flex-col items-start p-2">
-            <p className="text-[#1C2334] font-medium text-sm">
-              Spotlight Events.
-            </p>
-            <div className="bg-blue-00 w-[100%] flex items-center justify-center mt-2">
-              <img
-                src="/images/event.jpg"
-                alt="event.jpg"
-                className="rounded-lg h-45 w-[80%]"
-              />
-            </div>
-            <div className="bg-red-00 mt-3 flex items-center justify-center gap-7 w-[100%]">
-              <div className="flex flex-col items-center justify-center">
-                <Heart
-                  size={20}
-                  weight="regular"
-                  color="#1C2334"
-                  className="cursor-pointer"
-                />
-                <p className="text-xs text-[#1C2334] cursor-pointer">Like</p>
-              </div>
-              <div className="flex flex-col items-center justify-center">
-                <ChatCircleDots
-                  size={20}
-                  color="#1C2334"
-                  className="cursor-pointer"
-                />
-                <p className="text-xs text-[#1C2334] cursor-pointer">Comment</p>
-              </div>
-              <div className="flex flex-col items-center justify-center">
-                <Repeat size={20} color="#1C2334" className="cursor-pointer" />
-                <p className="text-xs text-[#1C2334] cursor-pointer">Repost</p>
-              </div>
-              <div className="flex flex-col items-center justify-center">
-                <ShareNetwork
-                  size={20}
-                  color="#1C2334"
-                  className="cursor-pointer"
-                />
-                <p className="text-xs text-[#1C2334] cursor-pointer">Share</p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <PostUploadCard />
+        <BirthdatNewJoinCount />
+        <QuickUpdatedPostCard />
+        <PostItem
+          imageUrl="/images/occation.png"
+          title="Occation of the Day."
+        />
+        <PostItem imageUrl="/images/event.jpg" title="Spotlight Events." />
       </div>
     </div>
   )
