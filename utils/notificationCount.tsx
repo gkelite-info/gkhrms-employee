@@ -14,7 +14,7 @@ export default function NotificationCount({
     <div
       className={`absolute bg-red-500 h-4 w-4 rounded-full flex items-center justify-center cursor-pointer  ${style}`}
     >
-      <p className={`${textSize}`}>{count}</p>
+      <p className={`${textSize} text-white`}>{count}</p>
     </div>
   )
 }

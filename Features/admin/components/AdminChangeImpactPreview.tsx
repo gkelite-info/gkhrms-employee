@@ -31,7 +31,7 @@ const AdminChangeImpactPreview: React.FC = () => {
 
   return (
     <div className="w-full lg:w-1/2 bg-white rounded-lg p-4 flex flex-col gap-2">
-      <h2 className="text-[#111827] font-semibold text-base">
+      <h2 className="text-[#111827] font-semibold text-sm">
         Change Impact Preview
       </h2>
 
@@ -42,7 +42,7 @@ const AdminChangeImpactPreview: React.FC = () => {
             <button
               key={idx}
               onClick={() => setSelected(idx)}
-              className={`text-sm text-left px-2 py-2 rounded-md cursor-pointer ${
+              className={`text-sm text-[#464646] text-left px-2 py-2 rounded-md cursor-pointer ${
                 selected === idx
                   ? "bg-indigo-100 font-medium"
                   : "hover:bg-gray-100"

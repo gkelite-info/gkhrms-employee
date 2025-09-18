@@ -25,7 +25,7 @@ const AutomationHub: React.FC = () => {
 
   return (
     <div className="w-full lg:w-1/2 bg-white rounded-lg p-4 flex flex-col gap-4 shadow">
-      <h2 className="text-[#111827] font-semibold text-base">Automation Hub</h2>
+      <h2 className="text-[#111827] font-semibold text-sm">Automation Hub</h2>
 
       {automationItems.map((item) => (
         <div

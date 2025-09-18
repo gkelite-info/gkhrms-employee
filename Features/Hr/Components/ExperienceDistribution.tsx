@@ -17,7 +17,9 @@ const ExperienceDistribution = () => {
 
   return (
     <div className="w-full lg:w-[40%] h-[330px] bg-white rounded-lg p-4 shadow flex flex-col  gap-4 items-center">
-      <h3 className="text-[#323232] font-semibold">Experience Distribution</h3>
+      <h3 className="text-[#323232] font-semibold text-sm">
+        Experience Distribution
+      </h3>
       <div className="w-full h-[86%] flex justify-center items-center relative">
         <DonutChart chartData={chartData} />
         {/* top left */}

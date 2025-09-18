@@ -13,9 +13,7 @@ const AdminWorkflowBuilder: React.FC = () => {
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
-      <h2 className="text-[#111827] font-semibold text-base">
-        Workflow Builder
-      </h2>
+      <h2 className="text-[#111827] font-semibold text-sm">Workflow Builder</h2>
 
       <div className="w-full flex justify-between items-center">
         {steps.map((step, idx) => (
@@ -58,9 +56,9 @@ const AdminWorkflowBuilder: React.FC = () => {
         viewport={{ once: true, amount: 0.3 }}
         transition={{ delay: 0.6, duration: 0.6, ease: "easeOut" }}
       >
-        <li className="text-xs">Failed Logins</li>
-        <li className="text-xs">Unusual access attempts</li>
-        <li className="text-xs">Geo-Based login flags</li>
+        <li className="text-xs text-[#464646]">Failed Logins</li>
+        <li className="text-xs text-[#464646]">Unusual access attempts</li>
+        <li className="text-xs text-[#464646]">Geo-Based login flags</li>
       </motion.ul>
     </motion.div>
   )
