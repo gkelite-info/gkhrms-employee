@@ -1,6 +1,8 @@
 import React from "react"
 import PercentPie from "./pieChart"
 import ProgressBar from "./ProgressBar"
+// import PercentPie from "./pieChart"
+// import ProgressBar from "./ProgressBar"
 
 const DashboardAttendanceTracker = () => {
   return (

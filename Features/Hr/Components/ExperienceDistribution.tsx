@@ -1,5 +1,5 @@
 import React from "react"
-import DonutChart from "../../../Utils/donotChat"
+import DonutChart from "../../../utils/donotChat"
 
 export interface DonotChatData {
   name: string

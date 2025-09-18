@@ -1,6 +1,6 @@
 "use client"
 import React from "react"
-import StandLineGraph from "../../../Utils/StandLineGraph"
+import StandLineGraph from "../../../utils/StandLineGraph"
 import Approvals from "./Approvals"
 import { CheckCircle, Clock, UsersThree } from "phosphor-react"
 import ExperienceDistribution from "./ExperienceDistribution"

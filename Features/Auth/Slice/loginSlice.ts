@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { AuthState, LoginResponse, LoginUserData, Roles } from "./loginType"
+// import { AuthState, LoginResponse, LoginUserData, Roles } from "./loginType"
 import { API } from "../../../Core/url"
+import { AuthState, LoginResponse, LoginUserData, Roles } from "./loginType"
 
 export const userLogin = createAsyncThunk<
   LoginResponse,
