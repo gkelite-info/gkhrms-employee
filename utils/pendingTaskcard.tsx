@@ -5,7 +5,7 @@ export default function PendingTaskCard({ style, rounded = 'rounded-lg' }: { sty
 
     return (
         <>
-            <div className={`bg-gray-00 h-[60%] w-[49%] p-2 py-0 flex flex-col justify-start shadow-md ${style} ${rounded}`}>
+            <div className={`bg-[#F9FAFB] h-[60%] w-[49%] p-2 py-0 flex flex-col justify-start ${style} ${rounded}`}>
                 <div className="w-[100%] h-[20%] bg-pink-00 flex justify-between items-center">
                     <div className="flex bg-red-00 flex items-center">
                         <div className="rounded-full h-5 w-5 bg-[#272372] flex items-center justify-center">
