@@ -2,6 +2,7 @@
 import { MapPin, Megaphone, Moon, Sun } from "phosphor-react"
 import React, { useEffect, useState } from "react"
 import { motion } from "framer-motion"
+import NotificationCount from "./notificationCount"
 
 const UserDetailsCard = () => {
   const [today, setToday] = useState("")
@@ -101,6 +102,7 @@ const UserDetailsCard = () => {
             weight="fill"
             className="cursor-pointer"
           />
+          <NotificationCount count={2} />
         </motion.div>
       </motion.div>
     </motion.div>

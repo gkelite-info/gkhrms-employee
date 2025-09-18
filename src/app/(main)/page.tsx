@@ -1,7 +1,7 @@
-import AttendancePayrolMainCard from "../../../features/Hr/Components/AttendancePayrolMainCard"
-import DashboardGraphsContainer from "../../../features/Hr/Components/DashboardGraphsContainer"
-import EmployeeCountCard from "../../../features/Hr/Components/EmployeeCountCard"
-import TrainingExpiringDocMainCard from "../../../features/Hr/Components/TrainingExpiringDocMainCard"
+import AttendancePayrolMainCard from "../../../features/hr/components/AttendancePayrolMainCard"
+import DashboardGraphsContainer from "../../../features/hr/components/DashboardGraphsContainer"
+import EmployeeCountCard from "../../../features/hr/components/EmployeeCountCard"
+import TrainingExpiringDocMainCard from "../../../features/hr/components/TrainingExpiringDocMainCard"
 import UserDetailsCard from "../../../utils/UserDetailsCard"
 
 const page = () => {

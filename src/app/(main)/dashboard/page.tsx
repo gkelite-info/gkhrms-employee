@@ -103,7 +103,7 @@ export default function Dashboard() {
           <div className="w-[60%] h-[100%] bg-green-00 flex flex-col gap-1 items-start justify-between p-3 rounded-l-lg">
             <div className="bg-red-00 h-[35%] w-[100%] flex justify-between">
               <p className="text-xs text-[#323232] font-medium">
-                Today's Login Time
+                Today&apos;s Login Time
               </p>
               <div className="h-[100%] w-[45%] bg-white flex flex-col justify-between">
                 <div className="bg-blue-00 h-[49%] w-[100%] flex items-center gap-1">

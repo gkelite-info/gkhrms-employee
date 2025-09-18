@@ -109,7 +109,7 @@ const DashboardItem: React.FC<DashboardItemProps & { isLast?: boolean }> = ({
 
     {/* Text */}
     <div className="flex flex-col gap-0.5">
-      <span className="text-[#323232] text-base font-semibold">{title}</span>
+      <span className="text-[#323232] text-sm font-semibold">{title}</span>
       <span className="text-xs text-[#585858]">{subtitle}</span>
     </div>
   </div>

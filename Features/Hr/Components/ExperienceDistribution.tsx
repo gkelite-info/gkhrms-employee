@@ -24,39 +24,47 @@ const ExperienceDistribution = () => {
         <div className="w-[170px] h-[100px]  absolute top-1 left-0 flex items-start gap-1">
           <span className="w-[3px] h-[3px] mt-1 rounded-full bg-black"></span>
           <div className="flex flex-col gap-0.5">
-            <span className="text-[11px]">Total Experience : &lt; 1 year</span>
-            <span className="text-[10px]">Males</span>
-            <span className="text-[10px]">Females</span>
-            <span className="text-[10px]">Total</span>
+            <span className="text-[11px] text-[#323232]">
+              Total Experience : &lt; 1 year
+            </span>
+            <span className="text-[10px] text-[#323232]">Males</span>
+            <span className="text-[10px] text-[#323232]">Females</span>
+            <span className="text-[10px] text-[#323232]">Total</span>
           </div>
         </div>
         {/* top right */}
         <div className="w-[170px] h-[100px]  absolute top-1 -right-5 flex items-start gap-1">
           <span className="w-[3px] h-[3px] mt-1 rounded-full bg-black"></span>
           <div className="flex flex-col gap-0.5">
-            <span className="text-[11px]">Total Experience : &gt; 1 year</span>
-            <span className="text-[10px]">Males</span>
-            <span className="text-[10px]">Females</span>
-            <span className="text-[10px]">Total</span>
+            <span className="text-[11px] text-[#323232]">
+              Total Experience : &gt; 1 year
+            </span>
+            <span className="text-[10px] text-[#323232]">Males</span>
+            <span className="text-[10px] text-[#323232]">Females</span>
+            <span className="text-[10px] text-[#323232]">Total</span>
           </div>
         </div>
         {/* bottom left */}
         <div className="w-[170px] h-[100px]  absolute -bottom-8 left-0 flex items-start gap-1">
           <span className="w-[3px] h-[3px] mt-1 rounded-full bg-black"></span>
           <div className="flex flex-col gap-0.5">
-            <span className="text-[11px]">Total Experience : &gt; 4 year</span>
-            <span className="text-[10px]">Males</span>
-            <span className="text-[10px]">Females</span>
-            <span className="text-[10px]">Total</span>
+            <span className="text-[11px] text-[#323232]">
+              Total Experience : &gt; 4 year
+            </span>
+            <span className="text-[10px] text-[#323232]">Males</span>
+            <span className="text-[10px] text-[#323232]">Females</span>
+            <span className="text-[10px] text-[#323232]">Total</span>
           </div>
         </div>
         {/* bottom right */}
         <div className="w-[170px] h-[100px]  absolute -bottom-8 -right-5 flex items-start gap-1">
           <span className="w-[3px] h-[3px] mt-1 rounded-full bg-black"></span>
           <div className="flex flex-col gap-0.5">
-            <span className="text-[11px]">Total Experience : &gt; 6 year</span>
-            <span className="text-[10px]">Males</span>
-            <span className="text-[10px]">Females</span>
+            <span className="text-[11px] text-[#323232]">
+              Total Experience : &gt; 6 year
+            </span>
+            <span className="text-[10px] text-[#323232]">Males</span>
+            <span className="text-[10px] text-[#323232]">Females</span>
             <span className="text-[10px]">Total</span>
           </div>
         </div>

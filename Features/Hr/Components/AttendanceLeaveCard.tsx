@@ -1,7 +1,7 @@
 "use client"
 import React from "react"
-import { useAttendanceLeavsUserTableData } from "../Data/AttendanceLeaveUser.data"
-import { useAttendaceLeavsHook } from "../Hooks/AttendanceLeaves.hook"
+import { useAttendanceLeavsUserTableData } from "../data/AttendanceLeaveUser.data"
+import { useAttendaceLeavsHook } from "../hooks/AttendanceLeaves.hook"
 import Table from "../../../utils/Table/Table"
 import DashboardAttendanceTracker from "../../../utils/DashboardAttendanceTracker"
 

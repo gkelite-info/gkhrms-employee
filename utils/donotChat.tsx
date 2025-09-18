@@ -1,7 +1,7 @@
 "use client"
 import React from "react"
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts"
-import { DonotChatData } from "../features/Hr/Components/ExperienceDistribution"
+import { DonotChatData } from "../features/hr/components/ExperienceDistribution"
 
 interface DonutChartProps {
   chartData: DonotChatData[]

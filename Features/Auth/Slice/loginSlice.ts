@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
 // import { AuthState, LoginResponse, LoginUserData, Roles } from "./loginType"
 import { API } from "../../../Core/url"
 import { AuthState, LoginResponse, LoginUserData, Roles } from "./loginType"
+// import { AuthState, LoginResponse, LoginUserData, Roles } from "./loginType"
 
 export const userLogin = createAsyncThunk<
   LoginResponse,
@@ -12,6 +13,7 @@ export const userLogin = createAsyncThunk<
     const response = await API.post("/auth/login", userData)
     console.log("LoginSlice response:", response)
     return response.data
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     console.log("LoginSlice error:", error?.response?.data)
     if (error?.response?.data?.message) {
