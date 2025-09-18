@@ -3,6 +3,7 @@ import { MapPin, Megaphone, Moon, Sun } from "phosphor-react"
 import React, { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import NotificationCount from "./notificationCount"
+import MicrCircle from "./MicrCircle"
 
 const UserDetailsCard = () => {
   const [today, setToday] = useState("")
@@ -85,26 +86,7 @@ const UserDetailsCard = () => {
           </div>
         </div>
       </div>
-      <motion.div
-        className="w-[35%] flex items-start justify-end px-5 py-4"
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.9, duration: 0.6 }}
-      >
-        <motion.div
-          className="bg-[#F9FAFB] h-13 w-13 rounded-full flex items-center justify-center shadow"
-          animate={{ y: [0, -8, 0] }}
-          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-        >
-          <Megaphone
-            size={28}
-            color="#874DE6"
-            weight="fill"
-            className="cursor-pointer"
-          />
-          <NotificationCount count={2} />
-        </motion.div>
-      </motion.div>
+      <MicrCircle />
     </motion.div>
   )
 }

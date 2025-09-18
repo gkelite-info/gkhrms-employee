@@ -7,6 +7,7 @@ const dummyAttendaceData = [
     email: "stanly@",
     department: "UI Designer",
     attendancePer: "98%",
+    moodImage: "/images/happy.png",
   },
   {
     id: 2,
@@ -14,6 +15,7 @@ const dummyAttendaceData = [
     email: "john@",
     department: "UX Designer",
     attendancePer: "80%",
+    moodImage: "/images/sad.png",
   },
   {
     id: 3,
@@ -21,6 +23,7 @@ const dummyAttendaceData = [
     email: "emma@",
     department: "Full Stack",
     attendancePer: "75%",
+    moodImage: "/images/cool.png",
   },
   // {
   //   id: 4,
