@@ -21,7 +21,7 @@ const RolePermission: React.FC = () => {
 
   return (
     <div className="w-full lg:w-1/2 bg-white rounded-lg p-4 flex flex-col gap-2 shadow">
-      <h2 className="text-[#111827] font-semibold text-base mb-3">
+      <h2 className="text-[#111827] font-semibold text-sm">
         Role & Permission Matrix
       </h2>
 
@@ -34,7 +34,11 @@ const RolePermission: React.FC = () => {
             onChange={(e) => handleChange(role, e.target.value as Action)}
           >
             {actions.map((action) => (
-              <option className="text-xs" key={action} value={action}>
+              <option
+                className="text-xs text-[#111827]"
+                key={action}
+                value={action}
+              >
                 {action}
               </option>
             ))}

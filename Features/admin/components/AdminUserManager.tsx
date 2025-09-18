@@ -59,9 +59,7 @@ const AdminUserManager = () => {
 
   return (
     <div className="w-full p-4 h-40 bg-white rounded-lg flex flex-col gap-1">
-      <h2 className="text-[#111827] font-semibold text-base">
-        User Management
-      </h2>
+      <h2 className="text-[#111827] font-semibold text-sm">User Management</h2>
       <div className="w-full flex flex-wrap gap-2">
         {userStats.map((stat, idx) => (
           <IconWithCount

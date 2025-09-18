@@ -20,7 +20,7 @@ const SystemUsageAlert = () => {
 
   return (
     <div className="w-full h-[460px] lg:w-1/2 bg-white rounded-lg p-4">
-      <h2 className="text-[#111827] font-semibold text-base">
+      <h2 className="text-[#111827] font-semibold text-sm">
         System Usage Alert
       </h2>
       <div className="w-full flex flex-wrap gap-2 justify-center items-center">

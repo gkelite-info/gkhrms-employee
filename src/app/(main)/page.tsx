@@ -6,7 +6,7 @@ import UserDetailsCard from "../../../utils/UserDetailsCard"
 
 const page = () => {
   return (
-    <div className="w-full flex flex-col gap-6 p-6">
+    <div className="w-full flex flex-col gap-2.5 p-6">
       <UserDetailsCard />
       <EmployeeCountCard />
       <DashboardGraphsContainer />

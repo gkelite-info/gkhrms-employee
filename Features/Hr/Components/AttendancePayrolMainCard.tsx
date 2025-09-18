@@ -4,7 +4,7 @@ import PayroleDashboardCard from "./PayroleDashboardCard"
 
 const AttendancePayrolMainCard = () => {
   return (
-    <div className="flex flex-col lg:flex-row gap-4">
+    <div className="flex flex-col lg:flex-row gap-2.5">
       <AttendanceLeaveCard />
       <PayroleDashboardCard />
     </div>

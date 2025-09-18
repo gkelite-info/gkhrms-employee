@@ -5,7 +5,7 @@ import React from "react"
 const AdminPolicySetup = () => {
   return (
     <div className="w-full p-4 py-5 flex flex-col gap-4 bg-white shadow rounded-lg">
-      <h2 className="text-[#111827] font-semibold text-base">Policy Setup</h2>
+      <h2 className="text-[#111827] font-semibold text-sm">Policy Setup</h2>
       <span className="text-xs text-[#464646]">
         Leave types, attendance rules, payroll workflows
       </span>
