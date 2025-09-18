@@ -28,7 +28,7 @@ export default function PercentPie() {
             outerRadius={70}
             startAngle={90}
             endAngle={-270}
-            animationDuration={500}
+            animationDuration={400}
             animationEasing="ease-in-out"
             stroke="none"
           >
