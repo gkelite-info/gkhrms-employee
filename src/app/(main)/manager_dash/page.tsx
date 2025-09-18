@@ -8,7 +8,7 @@ import TeamLeads from "../../../../features/manager/components/teamLeads";
 import TaskCard from "../../../../utils/taskCard";
 import PendingTaskCard from "../../../../utils/pendingTaskcard";
 import LeaveTable from "../../../../utils/leaveTable";
-import PercentPie from "../../../../Utils/pieChart";
+import PercentPie from "../../../../utils/pieChart";
 import Table from "../../../../utils/Table/Table";
 import KeenSlider from "../../../../utils/keen-slider";
 
