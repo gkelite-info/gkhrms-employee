@@ -14,7 +14,6 @@ const MicrCircle = () => {
   return (
     <>
       <motion.div
-        onClick={() => setDrawerOpen(true)}
         className="w-[35%] flex items-start justify-end px-5 py-4"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -22,6 +21,7 @@ const MicrCircle = () => {
       >
         <motion.div
           className="bg-[#F9FAFB] h-13 w-13 rounded-full flex items-center justify-center shadow"
+          onClick={() => setDrawerOpen(true)}
           animate={{ y: [0, -8, 0] }}
           transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
         >
