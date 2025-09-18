@@ -24,7 +24,7 @@ const AdminWorkflowBuilder: React.FC = () => {
               className="min-w-[120px] h-[40px] rounded-lg bg-[#D7D5FF] flex justify-center items-center text-xs cursor-pointer"
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: false, amount: 0.3 }}
               transition={{ delay: idx * 0.2, duration: 0.5, ease: "easeOut" }}
             >
               {step}
@@ -35,7 +35,7 @@ const AdminWorkflowBuilder: React.FC = () => {
                 className="flex-1 flex items-center mx-2"
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
-                viewport={{ once: true, amount: 0.3 }}
+                viewport={{ once: false, amount: 0.3 }}
                 transition={{
                   delay: idx * 0.2 + 0.1,
                   duration: 0.5,

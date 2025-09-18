@@ -45,7 +45,8 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
         <motion.div
           className={`h-full ${color} rounded-md absolute top-0 left-0`}
           initial={{ width: 0 }}
-          animate={{ width: `${value}%` }}
+          whileInView={{ width: `${value}%` }}
+          viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 1, ease: "easeInOut" }}
         />
       </div>

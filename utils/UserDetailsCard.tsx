@@ -1,8 +1,7 @@
 "use client"
-import { MapPin, Megaphone, Moon, Sun } from "phosphor-react"
+import { MapPin, Moon, Sun } from "phosphor-react"
 import React, { useEffect, useState } from "react"
 import { motion } from "framer-motion"
-import NotificationCount from "./notificationCount"
 import MicrCircle from "./MicrCircle"
 
 const UserDetailsCard = () => {

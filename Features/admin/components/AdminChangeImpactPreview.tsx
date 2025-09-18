@@ -65,7 +65,7 @@ const AdminChangeImpactPreview: React.FC = () => {
                     className={`w-full bg-gradient-to-t ${selectedItem.colors[idx]} rounded-md`}
                     initial={{ height: 0 }}
                     whileInView={{ height: `${heightPercent}%` }}
-                    viewport={{ once: true, amount: 0.5 }}
+                    viewport={{ once: false, amount: 0.5 }}
                     transition={{ duration: 1, ease: "easeInOut" }}
                   />
                 </div>
