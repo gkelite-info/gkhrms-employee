@@ -7,8 +7,8 @@ import TeamSnapshot from "../../../../features/manager/components/teamSnapshot";
 import TeamLeads from "../../../../features/manager/components/teamLeads";
 import TaskCard from "../../../../utils/taskCard";
 import PendingTaskCard from "../../../../utils/pendingTaskcard";
-import PercentPie from "../../../../utils/pieChart";
 import LeaveTable from "../../../../utils/leaveTable";
+import PercentPie from "../../../../utils/pieChart";
 
 
 export default function ManagerDashboard() {
