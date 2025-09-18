@@ -2,8 +2,8 @@
 import React from "react"
 import { useAttendanceLeavsUserTableData } from "../Data/AttendanceLeaveUser.data"
 import { useAttendaceLeavsHook } from "../Hooks/AttendanceLeaves.hook"
-import Table from "../../../Utils/Table/Table"
-import DashboardAttendanceTracker from "../../../Utils/DashboardAttendanceTracker"
+import Table from "../../../utils/Table/Table"
+import DashboardAttendanceTracker from "../../../utils/DashboardAttendanceTracker"
 
 const AttendanceLeaveCard = () => {
   const { column } = useAttendanceLeavsUserTableData()

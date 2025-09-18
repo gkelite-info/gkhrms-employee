@@ -1,14 +1,18 @@
-'use client';
+"use client"
 
-import { Bell, MagnifyingGlass, Megaphone, Tray } from "phosphor-react";
-import NotificationCount from "../utils/notificationCount";
+import { Bell, MagnifyingGlass, Megaphone, Tray } from "phosphor-react"
+import NotificationCount from "../utils/notificationCount"
 
 export default function Header() {
   return (
     <>
       <div className="w-full h-[70px] flex items-center">
         <div className="bg-white w-[108.5px] h-[100%] flex items-center justify-center border border-0 border-r-1">
-          <img src="/images/gkLogoblack.png" alt="gkLogoblack.png" className="w-[60%]" />
+          <img
+            src="/images/gkLogoblack.png"
+            alt="gkLogoblack.png"
+            className="w-[60%]"
+          />
         </div>
         <div className="bg-white h-[100%] w-[100%] flex items-center justify-between pr-4">
           <div className="flex items-center h-[100%] w-[60%] gap-5">
@@ -16,7 +20,11 @@ export default function Header() {
               Logo
             </div>
             <div className="flex items-center bg-[#C5C1FF] gap-3 h-[60%] w-[70%] rounded-full px-3">
-              <MagnifyingGlass size={19} weight="bold" className="text-[#323232] cursor-pointer" />
+              <MagnifyingGlass
+                size={19}
+                weight="bold"
+                className="text-[#323232] cursor-pointer"
+              />
               <input
                 placeholder="Search employees or action (Ex: Leave Request)"
                 className="text-[#323232] font-medium focus:text-[#323232] text-xs focus:outline-none w-full"

@@ -10,13 +10,11 @@ import {
   Moon,
   NotePencil,
   Plus,
-  PlusCircle,
   Repeat,
   ShareNetwork,
   SignIn,
   SignOut,
   Sun,
-  Trash,
   UsersThree,
 } from "phosphor-react"
 import { useEffect, useState } from "react"
