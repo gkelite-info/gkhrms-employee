@@ -42,7 +42,7 @@ const PostItem: React.FC<PostItemProps> = ({
   const finalActions = actions.length > 0 ? actions : defaultActions
 
   return (
-    <div className="shadow-md w-[95%] bg-white mt-2 rounded-lg">
+    <div className="shadow-md w-[95%] bg-[#F9FAFB] mt-2 rounded-lg">
       <div className="rounded-b-lg flex flex-col items-start p-2">
         <p className="text-[#1C2334] font-medium text-sm">{title}</p>
 

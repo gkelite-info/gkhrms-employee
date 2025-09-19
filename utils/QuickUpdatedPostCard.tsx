@@ -11,7 +11,7 @@ import React from "react"
 
 const QuickUpdatedPostCard = () => {
   return (
-    <div className="shadow-md h-76 w-[95%] bg-white mt-2 rounded-lg">
+    <div className="shadow-md h-76 w-[95%] bg-[#F9FAFB] mt-2 rounded-lg">
       <div className="bg-red-00 h-[15%] flex items-center justify-between px-3 py-2 rounded-t-lg">
         <div className="bg-red-00 w-[30%] h-[100%] flex items-center justify-start gap-2">
           <Megaphone
