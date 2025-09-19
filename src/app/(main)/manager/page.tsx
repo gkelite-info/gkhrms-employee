@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import {
   CheckCircle,
@@ -28,6 +28,7 @@ import LoginLogoutMoodtracker from "../../../../utils/LoginLogoutMoodtracker"
 import DashboardAttendanceTracker from "../../../../utils/DashboardAttendanceTracker"
 import MeetingCalendar from "../../../../utils/calendar"
 import MeetingCalendarComp from "../../../../utils/meetingCalendar"
+import AttendanceLeaveCard from "../../../../features/hr/components/AttendanceLeaveCard"
 
 export default function ManagerDashboard() {
   const [today, setToday] = useState("")
@@ -89,18 +90,24 @@ export default function ManagerDashboard() {
                 boxShadow="shadow-none"
                 customHeight="h-[60%]"
               />
-              <PendingTaskCard style="w-[100%]" rounded="rounded-b-lg" shadow="shadow-none" />
+              <PendingTaskCard
+                style="w-[100%]"
+                rounded="rounded-b-lg"
+                shadow="shadow-none"
+              />
             </div>
-            <div className="bg-[#F9FAFB] h-143 mt-2 shadow-md rounded-lg p-3 flex flex-col items-center justify-center">
+            {/* <div className="bg-[#F9FAFB] h-143 mt-2 shadow-md rounded-lg p-3 pt-0 flex flex-col items-center justify-center">
               <div className="bg-red-00 w-[98%] flex flex-col items-center gap-4 justify-between">
-                <h3 className="text-[#111827] font-semibold">
+                <h3 className="text-[#111827] font-semibold ">
                   Attendance & Leave
                 </h3>
                 <DashboardAttendanceTracker />
-                <div className="h-40 bg-[#F4F3FF] py-1.5 w-[100%] mt-2 rounded-lg">
-                  <span className="text-end px-3 pt-3 text-xs cursor-pointer">
-                    See All
-                  </span>
+                <div className="h-40 bg-[#F4F3FF] py-1.5 w-[100%] rounded-lg">
+                  <div className="px-3 pt-3 w-full flex justify-end items-end">
+                    <span className="text-end  text-xs cursor-pointer">
+                      See All
+                    </span>
+                  </div>
                   <Table
                     columns={column}
                     data={attendanceUser}
@@ -109,6 +116,9 @@ export default function ManagerDashboard() {
                   />
                 </div>
               </div>
+            </div> */}
+            <div className="w-[100%] mt-2 shadow-md">
+              <AttendanceLeaveCard styles="lg:w-full" />
             </div>
           </div>
           <div className="w-[50%] bg-gray-00 p-4 pt-4 pl-0">

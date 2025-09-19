@@ -30,12 +30,12 @@ import PendingTaskCard from "../../../../utils/pendingTaskcard"
 import MeetingCalendarComp from "../../../../utils/meetingCalendar"
 import DashboardAttendanceTracker from "../../../../utils/DashboardAttendanceTracker"
 
-type ValuePiece = Date | null;
+type ValuePiece = Date | null
 
-type Value = ValuePiece | [ValuePiece, ValuePiece];
+type Value = ValuePiece | [ValuePiece, ValuePiece]
 
 export default function Dashboard() {
-  const [value, onChange] = useState<Value>(new Date());
+  const [value, onChange] = useState<Value>(new Date())
   const [today, setToday] = useState("")
   const [timeString, setTimeString] = useState("")
   const [isDaytime, setIsDaytime] = useState(true)
@@ -235,7 +235,8 @@ export default function Dashboard() {
           <PendingTaskCard style="w-[100%]" rounded="rounded-b-lg" />
         </div>
         <MeetingCalendarComp />
-        <div className="h-68 w-[95%] rounded-lg">
+        <div className="bg-[#F9FAFB] rounded-lg flex flex-col items-center h-85 w-[95%] mt-2 shadow-md pt-3 p-3">
+          <h3 className="text-[#111827] font-semibold">Attendance Tracker</h3>
           <DashboardAttendanceTracker />
         </div>
         <MyTeam />
