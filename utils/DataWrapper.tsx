@@ -22,10 +22,6 @@ const DataWrapper: FC<DataWrapperProps> = ({
     )
   }
 
-  // if(loading) {
-  //   return <div></div>
-  // }
-
   if (error) {
     return (
       <div className="w-full h-full flex items-center justify-center">
@@ -42,7 +38,7 @@ const DataWrapper: FC<DataWrapperProps> = ({
     )
   }
 
-  return <div className="w-full h-full">{children}</div>
+  return <div className="w-full h-full overflow-y-scroll">{children}</div>
 }
 
 export default DataWrapper
