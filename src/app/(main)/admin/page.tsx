@@ -5,7 +5,6 @@ import AdminUserManager from "../../../../features/admin/components/AdminUserMan
 import SystemAlrertAndHealth from "../../../../features/admin/components/SystemAlrertAndHealth"
 import ChangeImpactWorkflowBuilder from "../../../../features/admin/components/ChangeImpactWorkflowBuilder"
 import RolePermissionDirectList from "../../../../features/admin/components/RolePermissionDirectList"
-import AutomationBackupStore from "../../../../features/admin/components/AutomationBackupStore"
 
 const Admin = () => {
   return (
@@ -20,9 +19,8 @@ const Admin = () => {
         </div>
       </div>
       <SystemAlrertAndHealth />
-      <ChangeImpactWorkflowBuilder />
       <RolePermissionDirectList />
-      <AutomationBackupStore />
+      <ChangeImpactWorkflowBuilder />
     </div>
   )
 }

@@ -21,8 +21,11 @@ export default function Header() {
           />
         </div>
         <div className="bg-white h-[100%] w-[100%] flex items-center justify-between pr-4">
-          <div className="bg-blue-00 flex items-center justify-end h-[100%] w-[67%] gap-5">
-            <div className="flex items-center bg-[#C5C1FF] gap-3 h-[60%] w-[60%] rounded-full px-3">
+          <div className="flex items-center h-[100%] w-[60%] gap-5">
+            <div className="bg-red-400 h-[100%] w-[17%] flex items-center justify-center">
+              Logo
+            </div>
+            <div className="flex items-center bg-[#C5C1FF] gap-3 h-[40px] w-[70%] rounded-full px-3">
               <MagnifyingGlass
                 size={19}
                 weight="bold"
@@ -44,7 +47,10 @@ export default function Header() {
               />
               <NotificationCount count={100} />
             </div>
-            <Tray onClick={() => setShowIndex(true)} className="text-[#1E1D32] bg-blue-00 cursor-pointer h-6 w-6 hover:shadow-xl transition-all duration-200" />
+            <Tray
+              onClick={() => setShowIndex(true)}
+              className="text-[#1E1D32] bg-blue-00 cursor-pointer h-6 w-6 hover:shadow-xl transition-all duration-200"
+            />
             <NotificationCount count={100} style="right-18 top-5" />
             <div className="h-8 w-8 flex items-center justify-center bg-blue-400 rounded-full cusor-pointer">
               <p className="cursor-pointer">X</p>

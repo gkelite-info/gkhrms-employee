@@ -19,7 +19,7 @@ const AdminWorkflowBuilder: React.FC = () => {
         {steps.map((step, idx) => (
           <React.Fragment key={idx}>
             <motion.span
-              className="min-w-[120px] h-[40px] rounded-lg bg-[#D7D5FF] flex justify-center items-center text-xs cursor-pointer"
+              className="min-w-[120px] h-[40px] rounded-lg bg-[#D7D5FF] flex justify-center items-center text-xs cursor-pointer text-[#464646]"
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false, amount: 0.3 }}

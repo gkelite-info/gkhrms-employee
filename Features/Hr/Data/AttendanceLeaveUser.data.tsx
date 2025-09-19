@@ -27,7 +27,6 @@ export const useAttendanceLeavsUserTableData = ({
       width: isDisplayMood ? "15%" : "20%",
       render: (row) => <span>{row.attendancePer}</span>,
     },
-    // Include Mood column only if isDisplayMood is true
     ...(isDisplayMood
       ? [
           {

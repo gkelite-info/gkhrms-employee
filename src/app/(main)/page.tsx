@@ -2,9 +2,10 @@ import AttendancePayrolMainCard from "../../../features/hr/components/Attendance
 import DashboardGraphsContainer from "../../../features/hr/components/DashboardGraphsContainer"
 import EmployeeCountCard from "../../../features/hr/components/EmployeeCountCard"
 import TrainingExpiringDocMainCard from "../../../features/hr/components/TrainingExpiringDocMainCard"
+
 import UserDetailsCard from "../../../utils/UserDetailsCard"
 
-const page = () => {
+const HrDashboard = () => {
   return (
     <div className="w-full flex flex-col gap-2.5 p-6">
       <UserDetailsCard />
@@ -16,4 +17,4 @@ const page = () => {
   )
 }
 
-export default page
+export default HrDashboard

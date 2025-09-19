@@ -20,7 +20,7 @@ const RolePermission: React.FC = () => {
   }
 
   return (
-    <div className="w-full lg:w-1/2 bg-white rounded-lg p-4 flex flex-col gap-2 shadow">
+    <div className="w-full bg-white rounded-lg p-4 flex flex-col gap-2 shadow">
       <h2 className="text-[#111827] font-semibold text-sm">
         Role & Permission Matrix
       </h2>
@@ -29,7 +29,7 @@ const RolePermission: React.FC = () => {
         <div key={role} className="w-full flex justify-between items-center">
           <span className="text-xs text-[#464646]">{role}</span>
           <select
-            className="border border-gray-300 rounded-md p-1 text-sm outline-none"
+            className="border border-gray-300 rounded-md p-1 text-sm outline-none text-[#111827]"
             value={selectedActions[role]}
             onChange={(e) => handleChange(role, e.target.value as Action)}
           >
