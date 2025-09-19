@@ -5,19 +5,23 @@ type Props<T> = {
   columns: TableColumn<T>[]
   bgColor?: string
   headerTextColor?: string
+  showBorder?: boolean
 }
 
 function TableHeader<T>({
   columns,
   bgColor = "bg-[#a7acb7]",
   headerTextColor = "#FFFEFE",
+  showBorder = false,
 }: Props<T>) {
   return (
     <div
       style={{
         backgroundColor: bgColor,
       }}
-      className="w-full h-[45px] overflow-hidden flex items-center "
+      className={`w-full h-[45px] overflow-hidden flex items-center ${
+        showBorder ? "border-y border-y-[#B7B7B7]" : ""
+      }`}
     >
       {columns.map((column, index) => (
         <span
