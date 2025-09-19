@@ -2,9 +2,31 @@
 import React from "react"
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts"
 
-const FullPieGrapgh = ({ data, title, variant = "full", style = 'flex-col', linkStyle = 'flex', shadow = 'shadow-none' }: { data?: any, title?: string, variant?: string, style?: string, linkStyle?: string, shadow: string }) => {
+interface DataProp {
+  value: number
+  color: string
+  legend: string
+}
+
+const FullPieGrapgh = ({
+  data,
+  title,
+  variant = "full",
+  style = "flex-col",
+  linkStyle = "flex",
+  shadow = "shadow-none",
+}: {
+  data: DataProp
+  title?: string
+  variant?: string
+  style?: string
+  linkStyle?: string
+  shadow: string
+}) => {
   return (
-    <div className={`bg-white rounded-lg p-3 flex flex-col items-center justify-center gap-1.5 ${shadow}`}>
+    <div
+      className={`bg-white rounded-lg p-3 flex flex-col items-center justify-center gap-1.5 ${shadow}`}
+    >
       <h3 className="text-sm  text-gray-700 mb-2">{title || "Pie Graph"}</h3>
       <div className={`${style} flex items-center gap-3`}>
         <div className="w-35 h-30 relative flex items-center justify-center">
@@ -15,7 +37,7 @@ const FullPieGrapgh = ({ data, title, variant = "full", style = 'flex-col', link
                 dataKey="value"
                 nameKey="legend"
                 innerRadius={variant === "donut" ? 30 : 0}
-                outerRadius={60}
+                outerRadius={60} // 60
                 startAngle={90}
                 endAngle={-270}
                 paddingAngle={1}
@@ -50,7 +72,6 @@ const FullPieGrapgh = ({ data, title, variant = "full", style = 'flex-col', link
           </ul>
         </div>
       </div>
-
     </div>
   )
 }

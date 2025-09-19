@@ -4,7 +4,7 @@ import RetentionAlertHealth from "./RetentionAlertHealth"
 
 const RetentionTableWithHealth = () => {
   return (
-    <div className="w-full flex gap-2.5 h-[400px]">
+    <div className="w-full flex gap-2.5 h-[300px]">
       <RetentionAlertTable />
       <RetentionAlertHealth />
     </div>

@@ -1,6 +1,7 @@
 "use client"
 import React, { useState } from "react"
 import { motion } from "framer-motion"
+import Link from "next/link"
 
 const data = [
   {
@@ -8,18 +9,21 @@ const data = [
     values: [40, 70],
     colors: ["from-purple-400 to-purple-600", "from-pink-400 to-pink-600"],
     labels: ["Shift A", "Shift B"],
+    navLink: "/admin/image-impact-preview",
   },
   {
     name: "Payroll",
     values: [155, 200],
     colors: ["from-green-400 to-green-600", "from-yellow-400 to-yellow-600"],
     labels: ["HR", "Finance"],
+    navLink: "/admin/image-impact-preview",
   },
   {
     name: "All policy changes",
     values: [80, 50],
     colors: ["from-blue-400 to-blue-600", "from-red-400 to-red-600"],
     labels: ["Policy A", "Policy B"],
+    navLink: "/admin/image-impact-preview",
   },
 ]
 
@@ -59,7 +63,11 @@ const AdminChangeImpactPreview: React.FC = () => {
             const heightPercent = (val / maxValue) * 100
 
             return (
-              <div key={idx} className="flex flex-col items-center">
+              <Link
+                href={selectedItem.navLink}
+                key={idx}
+                className="flex flex-col items-center"
+              >
                 <div className="relative w-10 h-30 bg-gray-200 rounded-md overflow-hidden flex items-end">
                   <motion.div
                     className={`w-full bg-gradient-to-t ${selectedItem.colors[idx]} rounded-md`}
@@ -74,7 +82,7 @@ const AdminChangeImpactPreview: React.FC = () => {
                     ? selectedItem.labels[idx]
                     : `Bar ${idx + 1}`}
                 </span>
-              </div>
+              </Link>
             )
           })}
         </div>
