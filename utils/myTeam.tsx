@@ -4,7 +4,7 @@
 export default function MyTeam() {
     return (
         <>
-            <div className="bg-[#F9FAFB] rounded-lg flex flex-col items-center justify-start h-60 w-[95%] mt-2 shadow-md p-3 mb-7">
+            <div className="bg-[#F9FAFB] rounded-lg flex flex-col items-center justify-start h-60 w-[95%] mt-4 shadow-md p-3 mb-7">
                 <h2 className="text-[#111827] font-semibold mb-2">My Team</h2>
                 <div className="h-[75%] w-[95%] bg-[#E2E0FF] flex flex-wrap justify-center items-center gap-4 rounded-lg">
                     <div className="gap-1 flex flex-col">
