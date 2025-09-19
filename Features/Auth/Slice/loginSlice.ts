@@ -1,8 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
-// import { AuthState, LoginResponse, LoginUserData, Roles } from "./loginType"
 import { API } from "../../../Core/url"
 import { AuthState, LoginResponse, LoginUserData, Roles } from "./loginType"
-// import { AuthState, LoginResponse, LoginUserData, Roles } from "./loginType"
 
 export const userLogin = createAsyncThunk<
   LoginResponse,
@@ -11,7 +9,6 @@ export const userLogin = createAsyncThunk<
 >("auth/login", async ({ userData }, { rejectWithValue }) => {
   try {
     const response = await API.post("/auth/login", userData)
-    console.log("LoginSlice response:", response)
     return response.data
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
@@ -25,12 +22,12 @@ export const userLogin = createAsyncThunk<
 
 const initialState: AuthState = {
   token: null,
+  role: null,
   loading: false,
   error: null,
-  role: null, // Default role
 }
 
-const validRoles: Roles[] = ["Employee", "Hr", "Manager", "CEO"]
+const validRoles: Roles[] = ["Employee", "Hr", "Manager", "CEO", "Admin"]
 
 function isValidRole(role: string): role is Roles {
   return validRoles.includes(role as Roles)
@@ -44,8 +41,6 @@ const tokenSlice = createSlice({
       state.token = null
       state.error = null
       state.role = null
-      localStorage.removeItem("token")
-      localStorage.removeItem("role")
     },
     setRoleFromStorage: (state, action: PayloadAction<Roles>) => {
       state.role = action.payload
@@ -69,12 +64,6 @@ const tokenSlice = createSlice({
             state.role = action.payload.role
           }
 
-          console.log("===", action.payload)
-
-          // Store token and role in localStorage
-          localStorage.setItem("role", action.payload.role)
-          localStorage.setItem("token", action.payload.token)
-
           state.token = action.payload.token
           state.error = null
         }
@@ -89,7 +78,6 @@ const tokenSlice = createSlice({
   },
 })
 
-// Export actions and reducer
 export const { logout, setRoleFromStorage, setTokenFromStorage } =
   tokenSlice.actions
 export default tokenSlice.reducer
