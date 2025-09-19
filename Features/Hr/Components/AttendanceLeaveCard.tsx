@@ -24,7 +24,7 @@ const AttendanceLeaveCard = ({ styles = "lg:w-1/2" }) => {
         <div className="w-full bg-[#F4F3FF] shadow rounded-md overflow-hidden flex flex-col">
           <span
             onClick={() => setOpen(true)}
-            className="text-end px-3 pt-3 text-xs cursor-pointer"
+            className="text-end px-3 pt-3 text-[#404040] text-xs cursor-pointer"
           >
             See All
           </span>

@@ -14,8 +14,13 @@ import {
   Plugs,
   ChatsCircle,
 } from "phosphor-react"
+import { Roles } from "../features/auth/slice/loginType"
 
-export const roleBasedNav = {
+export const roleBasedNav: Record<
+  Roles,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  { label: string; href: string; icon: any }[]
+> = {
   Admin: [
     { label: "Home", href: "/admin", icon: House },
     { label: "System & Users", href: "/admin/system-users", icon: Airplay },

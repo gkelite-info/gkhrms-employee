@@ -23,23 +23,21 @@ export const useLogin = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     const result = await dispatch(userLogin({ userData: user }))
-    console.log("result", result)
+
     if (userLogin.fulfilled.match(result)) {
       const { role } = result.payload
-      console.log("role", role)
-
       switch (role) {
         case "Employee":
-          router.push("/dashboard")
+          router.push("/employee")
           break
         case "Hr":
           router.push("/")
           break
         case "Manager":
-          router.push("/manager/dashboard")
+          router.push("/manager")
           break
-        case "CEO":
-          router.push("/ceo/dashboard")
+        case "Admin":
+          router.push("/admin")
           break
         default:
           router.push("/login")
