@@ -15,7 +15,7 @@ const AttendanceLeaveCard = ({ styles = "lg:w-1/2" }) => {
   return (
     <>
       <div
-        className={`w-full bg-white rounded-lg p-[clamp(1rem,2vw,1.5rem)] items-center flex flex-col gap-4 ${styles}`}
+        className={`w-full bg-[#F9FAFB] rounded-lg p-[clamp(1rem,2vw,1.5rem)] items-center flex flex-col gap-4 ${styles}`}
       >
         <h3 className="text-[#323232] font-semibold text-center text-sm">
           Attendance & leave

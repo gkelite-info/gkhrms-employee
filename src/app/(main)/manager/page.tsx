@@ -117,7 +117,7 @@ export default function ManagerDashboard() {
                 </div>
               </div>
             </div> */}
-            <div className="w-[100%] mt-2 shadow-md">
+            <div className="w-[100%] mt-2 rounded-lg shadow-md">
               <AttendanceLeaveCard styles="lg:w-full" />
             </div>
           </div>
