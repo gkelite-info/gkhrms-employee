@@ -42,7 +42,7 @@ export default function Sidebar() {
           </Link>
         )
       })}
-      <span className="absolute left-1/2 bottom-2 -translate-x-1/2 text-[7px] text-[#404040]">
+      <span className="absolute left-1/2 bottom-2 -translate-x-1/2 font-semibold text-[7px] text-[#404040]">
         Powered by GK Elite
       </span>
     </div>

@@ -21,11 +21,8 @@ export default function Header() {
           />
         </div>
         <div className="bg-white h-[100%] w-[100%] flex items-center justify-between pr-4">
-          <div className="flex items-center h-[100%] w-[60%] gap-5">
-            <div className="bg-red-400 h-[100%] w-[17%] flex items-center justify-center">
-              Logo
-            </div>
-            <div className="flex items-center bg-[#C5C1FF] gap-3 h-[40px] w-[70%] rounded-full px-3">
+          <div className="flex items-center justify-end h-[100%] w-[66%] gap-5">            
+            <div className="flex items-center bg-[#C5C1FF] gap-3 h-[40px] w-[60%] rounded-full px-3">
               <MagnifyingGlass
                 size={19}
                 weight="bold"

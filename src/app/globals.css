@@ -45,11 +45,13 @@ body {
 .react-calendar__tile--now,
 .react-calendar__tile--active {
   border-radius: 25px;
+  border: none !important;
 }
 
 .react-calendar__tile--active {
   background: #272372;
   color: #fff;
+  border: none !important;
 }
 
 .react-calendar__tile--now:enabled:hover,
@@ -57,6 +59,7 @@ body {
   background: #272372;
   border-radius: 9999px;
   color: #fff;
+  border: none !important;
 }
 
 

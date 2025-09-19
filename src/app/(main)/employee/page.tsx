@@ -237,7 +237,6 @@ export default function Dashboard() {
         <MeetingCalendarComp />
         <div className="bg-[#F9FAFB] rounded-lg flex flex-col items-center h-85 w-[95%] mt-2 shadow-md pt-3 p-3">
           <h3 className="text-[#111827] font-semibold">Attendance Tracker</h3>
-
           <DashboardAttendanceTracker />
         </div>
         <MyTeam />
