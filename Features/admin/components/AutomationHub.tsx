@@ -37,13 +37,13 @@ const AutomationHub: React.FC = () => {
           {/* Switch */}
           <button
             onClick={() => toggleItem(item.name)}
-            className={`relative inline-flex h-6 w-12 items-center rounded-full transition-colors duration-300 focus:outline-none ${
+            className={`relative inline-flex h-[22px] w-10 items-center rounded-full transition-colors duration-300 focus:outline-none ${
               enabledItems[item.name] ? "bg-green-500" : "bg-gray-300"
             }`}
           >
             <span
-              className={`inline-block h-5 w-5 transform rounded-full bg-white transition-transform duration-300 ${
-                enabledItems[item.name] ? "translate-x-6" : "translate-x-1"
+              className={`inline-block h-[17px] w-[17px] transform rounded-full bg-white transition-transform duration-300 ${
+                enabledItems[item.name] ? "translate-x-4" : "translate-x-1"
               }`}
             />
           </button>

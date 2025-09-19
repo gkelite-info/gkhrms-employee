@@ -11,19 +11,19 @@ const AdminPolicySetup = () => {
       </span>
       <div className="w-full flex gap-2 items-center">
         <span className="w-[30px] h-[30px] rounded-full bg-[#E9E9E9] flex justify-center items-center">
-          <FileText size={18} />
+          <FileText color="#1F2937" size={18} />
         </span>
         <span className="text-xs text-[#464646]">Set Leave Types</span>
       </div>
       <div className="w-full flex gap-2 items-center">
         <span className="w-[30px] h-[30px] rounded-full bg-[#E9E9E9] flex justify-center items-center">
-          <Files size={18} />
+          <Files color="#1F2937" size={18} />
         </span>
         <span className="text-xs text-[#464646]">Attendance Rules</span>
       </div>{" "}
       <div className="w-full flex gap-2 items-center">
         <span className="w-[30px] h-[30px] rounded-full bg-[#E9E9E9] flex justify-center items-center">
-          <Gear size={18} />
+          <Gear color="#1F2937" size={18} />
         </span>
         <span className="text-xs text-[#464646]">Payroll Workflows</span>
       </div>
