@@ -2,7 +2,7 @@
 import React from "react"
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts"
 
-const FullPieGrapgh = ({ data, title, variant = "full", style = 'flex-col', linkStyle = 'flex', shadow = 'shadow-none' }: { data?: any, title?: string, variant?: string, style?: string, linkStyle?: string, shadow: string }) => {
+const FullPieGrapgh = ({ data, title, variant = "full", style = 'flex-col', linkStyle = 'flex', shadow = 'shadow-none' }: { data?: any, title?: string, variant?: string, style?: string, linkStyle?: string, shadow?: string }) => {
   return (
     <div className={`bg-white rounded-lg p-3 flex flex-col items-center justify-center gap-1.5 ${shadow}`}>
       <h3 className="text-sm  text-gray-700 mb-2">{title || "Pie Graph"}</h3>

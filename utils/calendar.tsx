@@ -6,12 +6,12 @@ type ValuePiece = Date | null;
 
 type Value = ValuePiece | [ValuePiece, ValuePiece];
 
-export default function MeetingCalendar() {
+export default function MeetingCalendar({ style = 'rounded-none' }: { style: string }) {
     const [value, onChange] = useState<Value>(new Date());
 
     return (
         <div>
-            <Calendar onChange={onChange} value={value} className="text-xs text-black" />
+            <Calendar onChange={onChange} value={value} className={`text-xs text-black ${style}`} />
         </div>
     );
 }
