@@ -10,6 +10,7 @@ function Table<T>({
   headerTextColor,
   tableItemBg,
   tableItemTextColor,
+  showBorder = false,
 }: TableProps<T>) {
   return (
     <div className="w-full flex flex-col rounded-md overflow-hidden">
@@ -17,6 +18,7 @@ function Table<T>({
         columns={columns}
         bgColor={bgColor}
         headerTextColor={headerTextColor}
+        showBorder={showBorder}
       />
       {data?.map((row, index) => (
         <TableItem
@@ -25,6 +27,7 @@ function Table<T>({
           columns={columns}
           tableItemBg={tableItemBg}
           tableItemTextColor={tableItemTextColor}
+          showBorder={showBorder}
         />
       ))}
     </div>

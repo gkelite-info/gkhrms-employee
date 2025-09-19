@@ -6,6 +6,7 @@ type Props<T> = {
   columns: TableColumn<T>[]
   tableItemBg?: string
   tableItemTextColor?: string
+  showBorder?: boolean
 }
 
 function TableItem<T>({
@@ -13,11 +14,14 @@ function TableItem<T>({
   columns,
   tableItemBg = "#F4F3FF",
   tableItemTextColor = "#000",
+  showBorder = false,
 }: Props<T>) {
   return (
     <div
       style={{ backgroundColor: tableItemBg }}
-      className="w-full flex items-center"
+      className={`w-full flex items-center ${
+        showBorder ? "border-b border-b-[#B7B7B7]" : ""
+      }`}
     >
       {columns.map((column, index) => (
         <div

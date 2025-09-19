@@ -1,14 +1,16 @@
 "use client"
+import Link from "next/link"
 import React, { useState } from "react"
-
+import ToggleSwitch from "../../../utils/ToggleSwitch"
 type AutomationItem = {
   name: string
+  navLink: string
 }
 
 const automationItems: AutomationItem[] = [
-  { name: "Auto-Approve WFH up to 2 days" },
-  { name: "Auto Send Reminders" },
-  { name: "Auto Close Help Desk" },
+  { name: "Auto-Approve WFH up to 2 days", navLink: "/admin/auto-approve-wfh" },
+  { name: "Auto Send Reminders", navLink: "/admin/auto-send-reminders" },
+  { name: "Auto Close Help Desk", navLink: "/admin/auto-approve-wfh" },
 ]
 
 const AutomationHub: React.FC = () => {
@@ -32,21 +34,13 @@ const AutomationHub: React.FC = () => {
           key={item.name}
           className="w-full flex items-center justify-between"
         >
-          <span className="text-xs text-[#464646]">{item.name}</span>
-
-          {/* Switch */}
-          <button
-            onClick={() => toggleItem(item.name)}
-            className={`relative inline-flex h-[22px] w-10 items-center rounded-full transition-colors duration-300 focus:outline-none ${
-              enabledItems[item.name] ? "bg-green-500" : "bg-gray-300"
-            }`}
-          >
-            <span
-              className={`inline-block h-[17px] w-[17px] transform rounded-full bg-white transition-transform duration-300 ${
-                enabledItems[item.name] ? "translate-x-4" : "translate-x-1"
-              }`}
-            />
-          </button>
+          <Link href={item.navLink}>
+            <span className="text-xs text-[#464646]">{item.name}</span>
+          </Link>
+          <ToggleSwitch
+            checked={enabledItems[item.name]}
+            onChange={() => toggleItem(item.name)}
+          />
         </div>
       ))}
     </div>

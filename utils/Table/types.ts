@@ -13,4 +13,5 @@ export type TableProps<T> = {
   headerTextColor?: string
   tableItemBg?: string
   tableItemTextColor?: string
+  showBorder?: boolean
 }
