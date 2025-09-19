@@ -7,14 +7,16 @@ import DashboardAttendanceTracker from "../../../utils/DashboardAttendanceTracke
 import ModalLayout from "../../../Layouts/ModalLayout"
 import AttendanceModal from "../modals/AttendanceModal"
 
-const AttendanceLeaveCard = () => {
+const AttendanceLeaveCard = ({ styles = "lg:w-1/2" }) => {
   const { column } = useAttendanceLeavsUserTableData()
   const { attendanceUser } = useAttendaceLeavsHook()
   const [open, setOpen] = useState(false)
 
   return (
     <>
-      <div className="w-full lg:w-1/2 bg-white rounded-lg p-[clamp(1rem,2vw,1.5rem)] items-center flex flex-col gap-4">
+      <div
+        className={`w-full bg-white rounded-lg p-[clamp(1rem,2vw,1.5rem)] items-center flex flex-col gap-4 ${styles}`}
+      >
         <h3 className="text-[#323232] font-semibold text-center text-sm">
           Attendance & leave
         </h3>
