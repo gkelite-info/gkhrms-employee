@@ -41,7 +41,7 @@ const PayroleDashboardCard: React.FC = () => {
 
   return (
     <div className="w-full lg:w-1/2 bg-white rounded-lg p-[clamp(1rem,2vw,1.5rem)] flex flex-col items-center gap-6">
-      <h3 className="text-[#323232] font-semibold text-center">
+      <h3 className="text-[#323232] font-semibold text-center text-sm">
         Payroll Cycle Status
       </h3>
 
@@ -55,14 +55,14 @@ const PayroleDashboardCard: React.FC = () => {
         ))}
       </div>
 
-      <h3 className="text-[#323232] font-semibold text-center mt-5">
+      <h3 className="text-[#323232] text-sm font-semibold text-center mt-5">
         Compliance Alerts
       </h3>
 
       <div className="w-full flex flex-col gap-3 pl-4">
         {complianceItems.map((item, idx) => (
           <div key={idx} className="flex items-center gap-3">
-            <span className="text-base font-semibold w-[35px]">
+            <span className=" font-semibold w-[35px] text-sm">
               {item.label}
             </span>
             <span
@@ -109,7 +109,7 @@ const DashboardItem: React.FC<DashboardItemProps & { isLast?: boolean }> = ({
 
     {/* Text */}
     <div className="flex flex-col gap-0.5">
-      <span className="text-[#323232] text-sm font-semibold">{title}</span>
+      <span className="text-[#323232] text-sm font-medium">{title}</span>
       <span className="text-xs text-[#585858]">{subtitle}</span>
     </div>
   </div>

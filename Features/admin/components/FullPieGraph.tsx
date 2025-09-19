@@ -5,9 +5,7 @@ import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts"
 const FullPieGrapgh = ({ data, title, variant = "full" }) => {
   return (
     <div className=" bg-white rounded-lg p-3 flex flex-col items-center justify-center gap-1.5">
-      <h3 className="text-sm font-medium text-gray-700 mb-2">
-        {title || "Pie Graph"}
-      </h3>
+      <h3 className="text-sm  text-gray-700 mb-2">{title || "Pie Graph"}</h3>
 
       <div className="w-35 h-30 relative flex items-center justify-center">
         <ResponsiveContainer width="100%" height="100%">

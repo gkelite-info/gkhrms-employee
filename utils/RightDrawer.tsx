@@ -34,16 +34,6 @@ const RightDrawer: React.FC<RightDrawerProps> = ({
             exit={{ x: "100%" }}
             transition={{ type: "tween", duration: 0.3 }}
           >
-            {/* Close Button */}
-            <div className="p-4 flex justify-end">
-              <button
-                onClick={onClose}
-                className="text-black hover:text-gray-700 cursor-pointer"
-              >
-                ✕
-              </button>
-            </div>
-
             <div className="flex-1 overflow-auto ">{children}</div>
           </motion.div>
         </>

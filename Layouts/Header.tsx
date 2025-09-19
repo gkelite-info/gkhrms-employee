@@ -3,14 +3,12 @@
 import { Bell, MagnifyingGlass, Megaphone, Tray } from "phosphor-react"
 import NotificationCount from "../utils/notificationCount"
 import { useState } from "react"
-import NotificationModal from "../utils/notificationModel";
-import InboxModal from "../utils/inboxModal";
+import NotificationModal from "../utils/notificationModel"
+import InboxModal from "../utils/inboxModal"
 
 export default function Header() {
-
-  const [showModal, setShowModal] = useState(false);
-  const [showIndex, setShowIndex] = useState(false);
-
+  const [showModal, setShowModal] = useState(false)
+  const [showIndex, setShowIndex] = useState(false)
 
   return (
     <>
@@ -40,7 +38,10 @@ export default function Header() {
           {/* //icons */}
           <div className="h-[100%] w-[12%] bg-green-00 flex items-center justify-center gap-5">
             <div className="relative bg-yellow-00 h-[24px]">
-              <Bell onClick={() => setShowModal(true)} className="text-[#1E1D32] bg-pink-00 cursor-pointer h-6 w-6 hover:shadow-xl transition-all duration-200" />
+              <Bell
+                onClick={() => setShowModal(true)}
+                className="text-[#1E1D32] bg-pink-00 cursor-pointer h-6 w-6 hover:shadow-xl transition-all duration-200"
+              />
               <NotificationCount count={100} />
             </div>
             <Tray onClick={() => setShowIndex(true)} className="text-[#1E1D32] bg-blue-00 cursor-pointer h-6 w-6 hover:shadow-xl transition-all duration-200" />
@@ -51,14 +52,8 @@ export default function Header() {
           </div>
         </div>
       </div>
-      <NotificationModal
-        open={showModal}
-        onClose={() => setShowModal(false)}
-      />
-      <InboxModal
-        open={showIndex}
-        onClose={() => setShowIndex(false)}
-      />
+      <NotificationModal open={showModal} onClose={() => setShowModal(false)} />
+      <InboxModal open={showIndex} onClose={() => setShowIndex(false)} />
     </>
   )
 }

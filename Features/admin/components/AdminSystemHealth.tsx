@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 const AdminSystemHealth: React.FC = () => {
   return (
     <div className="w-full p-4 py-5 flex flex-col gap-4 bg-white shadow rounded-lg">
-      <h2 className="text-[#111827] font-semibold text-base">System Health</h2>
+      <h2 className="text-[#111827] font-semibold text-sm">System Health</h2>
       <ProgressBar
         label="Maintanancy"
         value={30}

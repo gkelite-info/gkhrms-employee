@@ -11,7 +11,7 @@ const AttendanceLeaveCard = () => {
 
   return (
     <div className="w-full lg:w-1/2 bg-white rounded-lg p-[clamp(1rem,2vw,1.5rem)] items-center flex flex-col gap-4">
-      <h3 className="text-[#323232] font-semibold text-center">
+      <h3 className="text-[#323232] font-semibold text-center text-sm">
         Attendance & leave
       </h3>
       <DashboardAttendanceTracker />
