@@ -25,8 +25,16 @@ import PostUploadCard from "../../../../utils/PostUploadCard"
 import BirthdatNewJoinCount from "../../../../utils/BirthdatNewJoinCount"
 import QuickUpdatedPostCard from "../../../../utils/QuickUpdatedPostCard"
 import PostItem from "../../../../utils/PostItem"
+import Calendar from "react-calendar"
+import PendingTaskCard from "../../../../utils/pendingTaskcard"
+import MeetingCalendarComp from "../../../../utils/meetingCalendar"
+
+type ValuePiece = Date | null;
+
+type Value = ValuePiece | [ValuePiece, ValuePiece];
 
 export default function Dashboard() {
+  const [value, onChange] = useState<Value>(new Date());
   const [today, setToday] = useState("")
   const [timeString, setTimeString] = useState("")
   const [isDaytime, setIsDaytime] = useState(true)
@@ -103,7 +111,7 @@ export default function Dashboard() {
             </div>
           </div>
         </div>
-        <div className="bg-white rounded-lg flex items-center justify-between h-40 w-[95%] mt-1 shadow-md">
+        <div className="bg-[#F9FAFB] rounded-lg flex items-center justify-between h-40 w-[95%] mt-1 shadow-md">
           <div className="w-[60%] h-[100%] bg-green-00 flex flex-col gap-1 items-start justify-between p-3 rounded-l-lg">
             <div className="bg-red-00 h-[35%] w-[100%] flex justify-between">
               <p className="text-xs text-[#323232] font-medium">
@@ -215,80 +223,18 @@ export default function Dashboard() {
             </div>
           </div>
         </div>
-        <div className="rounded-lg flex items-center justify-between h-50 w-[95%] mt-2">
-          <TaskCard />
-          <div className="bg-white h-[100%] w-[49%] rounded-lg shadow-md">
-            <div className="bg-blue-00 h-[100%] w-[100%] rounded-lg p-2 flex flex-col">
-              <h3 className="font-semibold text-[#111827] text-sm">
-                Direct Links
-              </h3>
-              <div className="w-[100%] h-[15%] flex justify-between items-center mt-1">
-                <div className="flex bg-red-00 flex items-center">
-                  <div className="rounded-full h-5 w-5 bg-[#272372] flex items-center justify-center">
-                    <p className="text-xs font-semibold text-white">5</p>
-                  </div>
-                  <p className="text-[#272372] font-medium ml-2 text-xs">
-                    Links
-                  </p>
-                </div>
-              </div>
-              <div className="h-[85%] w-[100%] bg-green-00 flex flex-col p-3 pl-0 justify-between">
-                <div className="flex w-[100%] bg-red-00 items-center">
-                  <a
-                    href="https://www.gkeliteinfo.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[#272372] text-xs ml-3"
-                  >
-                    GKElite
-                  </a>
-                </div>
-                <div className="flex w-[100%] bg-red-00 items-center">
-                  <a
-                    href="https://www.gkeliteinfo.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[#272372] text-xs ml-3"
-                  >
-                    OutlookLink
-                  </a>
-                </div>
-                <div className="flex w-[100%] bg-red-00 items-center">
-                  <a
-                    href="https://www.gkeliteinfo.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[#272372] text-xs ml-3"
-                  >
-                    GooglemeetLink
-                  </a>
-                </div>
-                <div className="flex w-[100%] bg-red-00 items-center">
-                  <a
-                    href="https://www.gkeliteinfo.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[#272372] text-xs ml-3"
-                  >
-                    ZoommeetLink
-                  </a>
-                </div>
-                <div className="flex w-[100%] bg-red-00 items-center">
-                  <a
-                    href="https://www.gkeliteinfo.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[#272372] text-xs ml-3"
-                  >
-                    OutlookLink
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div className="bg-red-400 rounded-lg flex flex-col justify-center items-between h-95 w-[95%] mt-2">
+          <TaskCard
+            style="w-[100%]"
+            gapStyle="w-[14%]"
+            rounded="rounded-t-lg"
+            boxShadow="shadow-md"
+            customHeight="h-[70%]"
+          />
+          <PendingTaskCard style="w-[100%]" rounded="rounded-b-lg" />
         </div>
-        <MyTeam />
-        <div className="bg-white rounded-lg flex flex-col items-center h-85 w-[95%] mt-2 shadow-md mb-7 pt-3">
+        <MeetingCalendarComp />
+        <div className="bg-[#F9FAFB] rounded-lg flex flex-col items-center h-85 w-[95%] mt-2 shadow-md pt-3">
           <h3 className="text-[#111827] font-semibold">Attendance Tracker</h3>
           <div className="flex justify-between w-[100%] h-[80%] mt-3">
             <div className="bg-blue-00 w-[56%] h-[100%] flex flex-col items-center p-2">
@@ -375,6 +321,7 @@ export default function Dashboard() {
             </div>
           </div>
         </div>
+        <MyTeam />
       </div>
       <div className="bg-yellow-00 w-[40%] flex flex-col">
         <PostUploadCard />

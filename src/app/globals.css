@@ -42,6 +42,24 @@ body {
   scrollbar-width: none;
 }
 
+.react-calendar__tile--now,
+.react-calendar__tile--active {
+  border-radius: 25px;
+}
+
+.react-calendar__tile--active {
+  background: #272372;
+  color: #fff;
+}
+
+.react-calendar__tile--now:enabled:hover,
+.react-calendar__tile--active:enabled:hover {
+  background: #272372;
+  border-radius: 9999px;
+  color: #fff;
+}
+
+
 /* 
 * {
   border: 1px solid red;

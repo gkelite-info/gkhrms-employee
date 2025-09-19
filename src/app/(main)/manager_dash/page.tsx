@@ -26,6 +26,8 @@ import { useAttendaceLeavsHook } from "../../../../features/hr/hooks/AttendanceL
 import UserDetailsCard from "../../../../utils/UserDetailsCard"
 import LoginLogoutMoodtracker from "../../../../utils/LoginLogoutMoodtracker"
 import DashboardAttendanceTracker from "../../../../utils/DashboardAttendanceTracker"
+import MeetingCalendar from "../../../../utils/calendar"
+import MeetingCalendarComp from "../../../../utils/meetingCalendar"
 
 export default function ManagerDashboard() {
   const [today, setToday] = useState("")
@@ -87,7 +89,7 @@ export default function ManagerDashboard() {
                 boxShadow="shadow-none"
                 customHeight="h-[60%]"
               />
-              <PendingTaskCard style="w-[100%]" rounded="rounded-b-lg" />
+              <PendingTaskCard style="w-[100%]" rounded="rounded-b-lg" shadow="shadow-none" />
             </div>
             <div className="bg-[#F9FAFB] h-143 mt-2 shadow-md rounded-lg p-3 flex flex-col items-center justify-center">
               <div className="bg-red-00 w-[98%] flex flex-col items-center gap-4 justify-between">
@@ -109,7 +111,7 @@ export default function ManagerDashboard() {
               </div>
             </div>
           </div>
-          <div className="w-[50%] bg-gray-00 p-4 pt-5 pl-0">
+          <div className="w-[50%] bg-gray-00 p-4 pt-4 pl-0">
             <div className="bg-[#F9FAFB] h-124 w-[100%] rounded-lg p-5 flex flex-col shadow-md">
               <div className="bg-indigo-00">
                 <h3 className="text-md font-semibold text-[#111827]">
@@ -163,34 +165,8 @@ export default function ManagerDashboard() {
                 </div>
               </div>
             </div>
-            <div className="bg-[#F9FAFB] h-92 p-0 pb-3 mt-2 rounded-lg shadow-md flex flex-col items-center">
-              <div className="bg-red-00 w-[90%] h-[15%] rounded-lg mt-2">
-                <h2 className="text-lg font-semibold text-[#111827]">
-                  Meetings Preview
-                </h2>
-                <p className="text-xs text-[#464646] mt-1">
-                  Synced with Outlook/ Google Calendar
-                </p>
-              </div>
-              <div className="bg-indigo-00 h-[85%] w-[90%] flex flex-col justify-between">
-                <div className="bg-gray-300 h-[22%] w-[80%] flex flex-col rounded-md p-2">
-                  <h4 className="text-[#111111]">9:00 AM - 10:00 AM</h4>
-                  <p className="text-[#6B6B6B] text-sm">Project Kick - Off</p>
-                </div>
-                <div className="bg-gray-300 h-[22%] w-[80%] flex flex-col rounded-md p-2">
-                  <h4 className="text-[#111111]">1:00 PM - 2:00 PM</h4>
-                  <p className="text-[#6B6B6B] text-sm">Team Weekly Sync</p>
-                </div>
-                <div className="bg-gray-300 h-[22%] w-[80%] flex flex-col rounded-md p-2">
-                  <h4 className="text-[#111111]">3:00 PM - 4:00 PM</h4>
-                  <p className="text-[#6B6B6B] text-sm">Client Call</p>
-                </div>
-                <div className="bg-gray-300 h-[22%] w-[80%] flex flex-col rounded-md p-2">
-                  <h4 className="text-[#111111]">9:00 AM - 10:00 AM</h4>
-                  <p className="text-[#6B6B6B] text-sm">Project Kick - Off</p>
-                </div>
-              </div>
-            </div>
+            <MeetingCalendarComp />
+
             <div className="bg-[#F9FAFB] h-143 mt-2 rounded-lg shadow-md flex flex-col items-start p-4">
               <h2 className="text-lg text-[#111827] font-semibold">
                 Pending Approvals

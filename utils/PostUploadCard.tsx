@@ -4,7 +4,7 @@ import React from "react"
 
 const PostUploadCard = () => {
   return (
-    <div className="w-[95%] bg-white h-34 rounded-lg shadow-md mt-3">
+    <div className="w-[95%] bg-[#F9FAFB] h-34 rounded-lg shadow-md mt-3">
       <div className="bg-red-00 h-[35%] flex items-center justify-between py-2 px-3 rounded-t-lg border-0 border-b-[#C2C2C2] border-b-1">
         <div className="bg-green-00 w-[30%] flex items-center justify-center">
           <NotePencil size={23} color="#00AF9B" className="cursor-pointer" />
