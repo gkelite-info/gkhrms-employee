@@ -12,14 +12,16 @@ const AttendanceModal = () => {
   return (
     <div className="w-full h-full bg-[#F4F3FF] p-6 flex flex-col gap-4  items-center">
       <SearchInput value={search} onChange={(e) => setSearch(e.target.value)} />
-      <DataWrapper loading={loading} error={null} data={attendanceUser}>
-        <Table
-          columns={column}
-          data={attendanceUser}
-          bgColor="#F4F3FF"
-          headerTextColor="#000"
-        />
-      </DataWrapper>
+      <div className="w-full h-[calc(100%-50px)]">
+        <DataWrapper loading={loading} error={null} data={attendanceUser}>
+          <Table
+            columns={column}
+            data={attendanceUser}
+            bgColor="#F4F3FF"
+            headerTextColor="#000"
+          />
+        </DataWrapper>
+      </div>
     </div>
   )
 }

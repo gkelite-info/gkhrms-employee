@@ -9,7 +9,7 @@ interface SearchInputProps {
 
 const SearchInput: React.FC<SearchInputProps> = ({ value, onChange }) => {
   return (
-    <div className="flex items-center bg-[#E5E5E5] gap-3 h-[40px] w-[70%] rounded-full px-3">
+    <div className="flex items-center bg-[#E5E5E5] gap-3 h-[45px] w-[50%] rounded-full px-3">
       <MagnifyingGlass
         size={19}
         weight="bold"

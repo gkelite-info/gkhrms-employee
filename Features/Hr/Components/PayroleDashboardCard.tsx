@@ -62,7 +62,7 @@ const PayroleDashboardCard: React.FC = () => {
       <div className="w-full flex flex-col gap-3 pl-4">
         {complianceItems.map((item, idx) => (
           <div key={idx} className="flex items-center gap-3">
-            <span className=" font-semibold w-[35px] text-sm">
+            <span className=" font-semibold w-[35px] text-sm text-[#323232]">
               {item.label}
             </span>
             <span
