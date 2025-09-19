@@ -1,6 +1,6 @@
-import authToken from "../features/auth/slice/loginSlice"
+import auth from "../features/auth/slice/loginSlice"
 
 const RootReducer = {
-  authToken,
+  auth,
 }
 export default RootReducer

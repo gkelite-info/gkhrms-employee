@@ -3,13 +3,16 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { roleBasedNav } from "./RoleBasedLink"
+import { RootState } from "../Redux/Store"
+import { useSelector } from "react-redux"
 
 export default function Sidebar() {
   const pathname = usePathname()
+  const { role } = useSelector((state: RootState) => state.auth)
 
-  const role = "Hr"
+  // const role = "Hr"
 
-  const navItems = roleBasedNav[role] || []
+  const navItems = roleBasedNav[role ?? "Hr"] || []
 
   return (
     <div className="w-[100px] bg-white relative h-full flex flex-col items-center text-center gap-1">
