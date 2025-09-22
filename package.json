@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "set NEXT_DISABLE_TYPECHECK=1 && next build --turbopack",
+    "build": "NEXT_DISABLE_TYPECHECK=1 && next build --turbopack",
     "start": "next start",
     "lint": "eslint"
   },
