@@ -2,12 +2,6 @@
 import React from "react"
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts"
 
-interface DataProp {
-  value: number
-  color: string
-  legend: string
-}
-
 const FullPieGrapgh = ({
   data,
   title,
@@ -15,13 +9,15 @@ const FullPieGrapgh = ({
   style = "flex-col",
   linkStyle = "flex",
   shadow = "shadow-none",
+  onClick,
 }: {
-  data: DataProp
+  data?: any
   title?: string
   variant?: string
   style?: string
   linkStyle?: string
-  shadow: string
+  shadow?: string
+  onClick?: () => void
 }) => {
   return (
     <div
