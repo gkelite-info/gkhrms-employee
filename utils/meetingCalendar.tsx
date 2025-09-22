@@ -8,7 +8,7 @@ export default function MeetingCalendarComp({
   return (
     <>
       <div
-        className={`bg-[#F9FAFB] ${style} p-0  rounded-lg shadow-md flex justify-center`}
+        className={`bg-[#F9FAFB] ${style} p-0 rounded-lg shadow-md flex justify-center`}
       >
         <div className="bg-yellow-00 w-[50%] h-[100%] rounded-tl-lg rounded-bl-lg overflow-y-auto p-3">
           <div className="bg-red-00 w-[100%] h-[15%] rounded-lg mt-2">
@@ -125,8 +125,8 @@ export default function MeetingCalendarComp({
           </div>
         </div>
         <div className="bg-red-400 w-[50%] h-[100%] flex flex-col rounded-lg">
-          <div className="bg-green-600 h-[50%] overflow-hidden rounded-tr-lg">
-            <MeetingCalendar />
+          <div className="bg-green-00 h-[50%] overflow-hidden rounded-tr-lg">
+            <MeetingCalendar style="rounded-lg h-49" />
           </div>
           <div className="bg-yellow-200 h-[50%] rounded-br-lg p-2">
             <p className="text-black text-xs font-semibold">

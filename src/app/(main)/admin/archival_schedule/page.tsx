@@ -104,7 +104,7 @@ export default function ArchivalSchedule() {
                             </table>
                         </div>
                         <div className="bg-green-400 w-[29%] rounded-lg shadow-md">
-                            <MeetingCalendar style="rounded-lg" />
+                            <MeetingCalendar style="calendar-wrapper rounded-lg h-62 text-[20px]" />
                         </div>
                     </div>
                     <div className="rounded-lg w-[100%] mt- py-3 flex justify-between">

@@ -1,10 +1,15 @@
+'use client';
 import React from "react"
 import FullPieGraph from "./FullPieGraph"
+import { useRouter } from "next/navigation"
 
 const SystemUsageAlert = () => {
+
+  const router = useRouter();
+
   const dailyActiveUser = [
-    { value: 40, color: "#D295F8", legend: "Daily Active User" },
-    { value: 30, color: "#220733", legend: "Monthly Active User" },
+    { value: 40, color: "#9D82E7", legend: "Daily Active User" },
+    { value: 30, color: "#7855E0", legend: "Monthly Active User" },
   ]
 
   const mostUser = [
@@ -28,6 +33,7 @@ const SystemUsageAlert = () => {
           data={dailyActiveUser}
           title="Daily Active Users"
           variant="full"
+          onClick={() => router.push('/admin/system_usage_alert')}
         />
         <FullPieGraph
           data={mostUser}
