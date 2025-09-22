@@ -1,19 +1,9 @@
 'use client';
 import { Area, Tooltip, XAxis, YAxis, AreaChart } from "recharts";
 
+type Point = { name: string; uv: number; pv: number };
 
-
-export default function AreaCharts() {
-
-    const data = [
-        { name: 'Day 1', uv: 80, pv: 80 },
-        { name: 'Day 2', uv: 80, pv: 78 },
-        { name: 'Day 3', uv: 95, pv: 92 },
-        { name: 'Day 4', uv: 70, pv: 65 },
-        { name: 'Day 5', uv: 88, pv: 84 },
-        { name: 'Day 6', uv: 92, pv: 90 },
-        { name: 'Day 7', uv: 92, pv: 92 },
-    ];
+export default function AreaCharts({ data }: { data: Point[] }) {
 
     return (
         <>
