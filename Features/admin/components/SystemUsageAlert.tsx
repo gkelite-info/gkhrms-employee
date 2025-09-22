@@ -44,6 +44,7 @@ const SystemUsageAlert = () => {
           data={licenseUtilization}
           title="license utilization"
           variant="full"
+          onClick={() => router.push('/admin/license_utilization')}
         />
       </div>
     </div>
