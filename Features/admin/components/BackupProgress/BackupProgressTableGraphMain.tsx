@@ -12,11 +12,11 @@ const BackupProgressTableGraphMain = () => {
             </span>
             <span>00:12:34</span>
           </div>
-          <ProgressBar
+          {/* <ProgressBar
             label="Maintanancy"
             value={30}
             color="bg-gradient-to-r from-[#D0CEF7] to-[#9891F7]"
-          />
+          /> */}
         </div>
       </div>
       <div className="w-[30%] flex flex-col gap-2.5"></div>
