@@ -1,7 +1,8 @@
 'use client';
-import { ArrowClockwise, CheckCircle, DownloadSimple } from "phosphor-react";
+import { ArrowClockwise, CheckCircle, Download, DownloadSimple, Play } from "phosphor-react";
 import AreaCharts from "../../../../../utils/areaChart";
 import FullPieGraph from "../../../../../features/admin/components/FullPieGraph";
+import IconButton from "../../../../../utils/IconButton";
 
 export default function BackupRestoration() {
 
@@ -97,7 +98,7 @@ export default function BackupRestoration() {
                                 </table>
                             </div>
                         </div>
-                        <div className="bg-indigo-400 w-[49%] rounded-lg flex flex-col">
+                        <div className="bg-indigo-00 w-[49%] rounded-lg flex flex-col">
                             <div className="bg-white h-60 rounded-lg shadow-md p-2 flex flex-col justify-between">
                                 <h3 className="text-lg text-[#111827] font-semibold">Backup Success Rate (7 Days)</h3>
                                 <div className="w-[100%] h-[85%] bg-white">
@@ -114,8 +115,12 @@ export default function BackupRestoration() {
                                     shadow="shadow-md"
                                 />
                             </div>
+                            <div className="bg-red-00 mt-7 h-10 rounded-lg flex items-center justify-center gap-5">
+                                <IconButton Icon={Play} label="Start Manual Backup" className="w-[180px] bg-[#874DE6]" />
+                                <IconButton Icon={DownloadSimple} label="Export Backup Logs" className="w-[180px] bg-[#874DE6]" />
+                            </div>
                         </div>
-                       
+
                     </div>
                 </div>
             </div>
