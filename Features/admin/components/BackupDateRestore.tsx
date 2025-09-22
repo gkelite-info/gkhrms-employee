@@ -6,10 +6,12 @@ import { CaretRight } from "phosphor-react"
 import React from "react"
 
 const backupItems = [
-  { label: "Recent Backup Status", path: "/admin/backup&restoration" },
-  { label: "Archival Schedule", path: "/admin/archival_schedule" },
-  { label: "Retention Alert", path: "/admin/retention-alert" },
-  { label: "Data Backup Progress", path: "/admin/backup-progress" },
+
+  { label: 'Recent Backup Status', path: '/admin/backup&restoration' },
+  { label: 'Archival Schedule', path: '/admin/archival_schedule' },
+  { label: 'Retention Alert', path: '/admin/backup&restoration' },
+  { label: 'Data Backup Progress', path: '/admin/backup&restoration' },
+
 ]
 
 const BackupDateRestore: React.FC = () => {
