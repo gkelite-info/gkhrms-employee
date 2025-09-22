@@ -33,7 +33,7 @@ const SystemUsageAlert = () => {
           data={dailyActiveUser}
           title="Daily Active Users"
           variant="full"
-          onClick={() => router.push('/admin/system_usage_alert')}
+          onClick={() => router.push('/admin/daily_active_users')}
         />
         <FullPieGraph
           data={mostUser}

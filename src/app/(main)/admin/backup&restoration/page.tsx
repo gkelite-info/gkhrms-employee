@@ -12,6 +12,16 @@ export default function BackupRestoration() {
         { value: 34, color: "#7855E0", legend: "Differential" },
     ]
 
+    const userActivityData = [
+        { name: 'Day 1', uv: 80, pv: 80 },
+        { name: 'Day 2', uv: 80, pv: 78 },
+        { name: 'Day 3', uv: 95, pv: 92 },
+        { name: 'Day 4', uv: 70, pv: 65 },
+        { name: 'Day 5', uv: 88, pv: 84 },
+        { name: 'Day 6', uv: 92, pv: 90 },
+        { name: 'Day 7', uv: 92, pv: 92 },
+    ];
+
     return (
         <>
             <div className="bg-red-00 w-[100%] flex justify-center">
@@ -102,7 +112,7 @@ export default function BackupRestoration() {
                             <div className="bg-white h-60 rounded-lg shadow-md p-2 flex flex-col justify-between">
                                 <h3 className="text-lg text-[#111827] font-semibold">Backup Success Rate (7 Days)</h3>
                                 <div className="w-[100%] h-[85%] bg-white">
-                                    <AreaCharts />
+                                    <AreaCharts data={userActivityData} />
                                 </div>
                             </div>
                             <div className="h-40 mt-2 rounded-lg shadow-md">
