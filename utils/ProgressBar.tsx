@@ -6,12 +6,14 @@ interface ProgressBarProps {
   percent: number
   fromColor: string
   toColor: string
+  label: string
 }
 
 const ProgressBar: React.FC<ProgressBarProps> = ({
   percent,
   fromColor,
   toColor,
+  label,
 }) => {
   return (
     <div className="bg-[#E6E6E6] h-6 w-full rounded-r-full overflow-hidden">

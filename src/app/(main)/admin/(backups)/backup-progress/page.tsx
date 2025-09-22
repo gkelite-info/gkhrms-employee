@@ -1,6 +1,6 @@
 import React from "react"
-import BackupProgressCardMain from "../../../../../../features/admin/components/BackupProgress/BackupProgressCardMain"
-import BackupProgressTableGraphMain from "../../../../../../features/admin/components/BackupProgress/BackupProgressTableGraphMain"
+import BackupProgressCardMain from "../../../../../../features/admin/components/Backupprogress/BackupProgressCardMain"
+import BackupProgressTableGraphMain from "../../../../../../features/admin/components/Backupprogress/BackupProgressTableGraphMain"
 
 const BackupProgras = () => {
   return (
