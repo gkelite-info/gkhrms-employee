@@ -28,12 +28,12 @@ const AdminSystemHealth: React.FC = () => {
 export default AdminSystemHealth
 
 interface ProgressBarProps {
-  label: string
+  label?: string
   value: number
   color: string
 }
 
-const ProgressBar: React.FC<ProgressBarProps> = ({
+export const ProgressBar: React.FC<ProgressBarProps> = ({
   label,
   value = 0,
   color,
