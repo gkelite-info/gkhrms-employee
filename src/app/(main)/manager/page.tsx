@@ -29,6 +29,7 @@ import DashboardAttendanceTracker from "../../../../utils/DashboardAttendanceTra
 import MeetingCalendar from "../../../../utils/calendar"
 import MeetingCalendarComp from "../../../../utils/meetingCalendar"
 import AttendanceLeaveCard from "../../../../features/hr/components/AttendanceLeaveCard"
+import Link from "next/link"
 
 export default function ManagerDashboard() {
   const [today, setToday] = useState("")
@@ -181,7 +182,10 @@ export default function ManagerDashboard() {
               <h2 className="text-lg text-[#111827] font-semibold">
                 Pending Approvals
               </h2>
-              <div className="bg-indigo-00 h-[94%] w-[100%] mt-2 flex flex-col justify-between">
+              <Link
+                href={"/manager/pending-approvals"}
+                className="bg-indigo-00 h-[94%] w-[100%] mt-2 flex flex-col justify-between"
+              >
                 <div className="bg-[#F9FAFB] h-[23%] rounded-lg border border-1 border-[#C3C3C3] flex">
                   <div className="bg-red-00 h-[100%] w-[55%] rounded-l-lg p-2 flex gap-4">
                     <div className="h-[100%] w-[25%] flex items-center justify-center">
@@ -294,7 +298,7 @@ export default function ManagerDashboard() {
                     </button>
                   </div>
                 </div>
-              </div>
+              </Link>
             </div>
             <div className="bg-[#F9FAFB] h-50 shadow-md mt-2 rounded-lg p-5 pt-4">
               <div className="bg-green-00 h-[60%] flex flex-col">

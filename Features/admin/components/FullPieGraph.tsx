@@ -41,7 +41,7 @@ const FullPieGrapgh = ({
                 endAngle={-270}
                 paddingAngle={1}
               >
-                {data.map((entry, index) => (
+                {data.map((entry: { color: string }, index: number) => (
                   <Cell
                     key={`cell-${index}`}
                     fill={entry.color || `hsl(${(index * 60) % 360} 70% 50%)`}
