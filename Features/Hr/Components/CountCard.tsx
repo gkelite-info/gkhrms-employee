@@ -39,7 +39,7 @@ const CountCard: React.FC<CountCardProps> = ({
 
   return (
     <motion.div
-      className={`w-full md:w-[250px] shadow rounded-lg flex justify-around items-center ${style}`}
+      className={`w-full md:w-[250px] shadow rounded-lg cursor-pointer flex justify-around items-center ${style}`}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
