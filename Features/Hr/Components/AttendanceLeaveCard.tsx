@@ -5,7 +5,7 @@ import { useAttendaceLeavsHook } from "../hooks/AttendanceLeaves.hook"
 import Table from "../../../utils/Table/Table"
 import DashboardAttendanceTracker from "../../../utils/DashboardAttendanceTracker"
 import ModalLayout from "../../../Layouts/ModalLayout"
-import AttendanceModal from "../modals/AttendanceModal"
+import AttendanceModal from "../modals/deactivatedusers"
 
 const AttendanceLeaveCard = ({ styles = "lg:w-1/2" }) => {
   const { column } = useAttendanceLeavsUserTableData()
@@ -15,7 +15,7 @@ const AttendanceLeaveCard = ({ styles = "lg:w-1/2" }) => {
   return (
     <>
       <div
-        className={`w-full bg-[#F9FAFB] rounded-lg p-[clamp(1rem,2vw,1.5rem)] items-center flex flex-col gap-4 ${styles}`}
+        className={`w-full bg-[#F9FAFB] shadow-md rounded-lg p-[clamp(1rem,2vw,1.5rem)] items-center flex flex-col gap-4 ${styles}`}
       >
         <h3 className="text-[#323232] font-semibold text-center text-sm">
           Attendance & leave

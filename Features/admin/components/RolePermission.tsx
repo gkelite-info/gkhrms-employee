@@ -20,7 +20,7 @@ const RolePermission: React.FC = () => {
   }
 
   return (
-    <div className="w-full bg-white rounded-lg p-4 flex flex-col gap-2 shadow">
+    <div className="w-full bg-white rounded-lg p-4 flex flex-col gap-2 shadow-md">
       <h2 className="text-[#111827] font-semibold text-sm">
         Role & Permission Matrix
       </h2>

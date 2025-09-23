@@ -47,7 +47,7 @@ const TrainingExpiringDocMainCard: React.FC = () => {
 
   return (
     <div className="w-full flex flex-col lg:flex-row gap-2.5">
-      <div className="w-full lg:w-1/2 bg-white rounded-lg p-6 flex flex-col gap-6">
+      <div className="w-full lg:w-1/2 bg-[#F9FAFB] rounded-lg p-6 flex flex-col gap-6 shadow-md">
         <h3 className="text-[#323232] font-semibold text-sm">
           Training Programs
         </h3>
