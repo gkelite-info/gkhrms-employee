@@ -1,7 +1,7 @@
 import React from "react"
 
 const EmployeeInbox = () => {
-  return <div>EmployeeInbox</div>
+  return <div>EmployeeTeam</div>
 }
 
 export default EmployeeInbox

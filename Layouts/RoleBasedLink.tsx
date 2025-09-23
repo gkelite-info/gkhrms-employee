@@ -53,7 +53,6 @@ export const roleBasedNav: Record<
   Manager: [
     { label: "Home", href: "/dashboard", icon: House },
     { label: "Me", href: "/manager_dash/details", icon: User },
-    { label: "Inbox", href: "/manager/inbox", icon: Tray },
     { label: "My Team", href: "/manager/my-team", icon: UsersThree },
     { label: "Reports", href: "/manager/reports", icon: Files },
     { label: "Org Engage", href: "/manager/org-engage", icon: Buildings },
@@ -61,14 +60,14 @@ export const roleBasedNav: Record<
   Employee: [
     { label: "Home", href: "/dashboard", icon: House },
     { label: "Me", href: "/employee/me", icon: User },
-    { label: "Inbox", href: "/employee/inbox", icon: Tray },
+    { label: "My Team", href: "/employee/myteam", icon: UsersThree },
     {
       label: "My Finance",
       href: "/employee/finance",
       icon: CurrencyCircleDollar,
     },
     { label: "Org", href: "/employee/org", icon: Buildings },
-    { label: "Engage", href: "/employee/engage", icon: Buildings },
+    { label: "Engage", href: "/employee/engage", icon: ChatsCircle },
   ],
   Hr: [
     { label: "Home", href: "/", icon: House },
