@@ -5,7 +5,7 @@ import { useAttendaceLeavsHook } from "../hooks/AttendanceLeaves.hook"
 import Table from "../../../utils/Table/Table"
 import DataWrapper from "../../../utils/DataWrapper"
 
-const AttendanceModal = () => {
+const DeactivatedUsers = () => {
   const { column } = useTableAttendaceData()
   const { attendanceUser, search, setSearch, loading } = useAttendaceLeavsHook()
 
@@ -26,4 +26,4 @@ const AttendanceModal = () => {
   )
 }
 
-export default AttendanceModal
+export default DeactivatedUsers

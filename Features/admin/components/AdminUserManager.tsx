@@ -7,11 +7,12 @@ import {
   UserCircle,
   HourglassSimpleHigh,
   MinusCircle,
+  HourglassHigh,
 } from "phosphor-react"
 import React, { useState } from "react"
 import ModalLayout from "../../../Layouts/ModalLayout"
 import UserManagementModal from "../modals/UserManagementModal"
-import AttendanceModal from "../../hr/modals/AttendanceModal"
+import AttendanceModal from "../../hr/modals/deactivatedusers"
 
 type IconWithCountProps = {
   icon: React.ReactNode
@@ -45,21 +46,21 @@ const IconWithCount = ({
 const AdminUserManager = () => {
   const userStats = [
     {
-      icon: <UsersThree color="#8B54E9" size={22} />,
+      icon: <UsersThree color="#8B54E9" size={22} weight="fill"/>,
       label: "Active Users",
       count: 200,
       bgColor: "#E1DFFB",
 
     },
     {
-      icon: <HourglassSimpleHigh color="#8B54E9" size={22} />,
+      icon: <HourglassHigh color="#8B54E9" size={22} weight="fill"/>,
       label: "Pending Access Request",
       count: 50,
       bgColor: "#E1DFFB",
 
     },
     {
-      icon: <MinusCircle color="#8B54E9" size={22} />,
+      icon: <MinusCircle color="#8B54E9" size={22} weight="fill"/>,
       label: "Deactivated Users",
       count: 10,
       bgColor: "#E1DFFB",
@@ -72,7 +73,7 @@ const AdminUserManager = () => {
 
   return (
     <>
-      <div className="w-full p-4 h-40 bg-white rounded-lg flex flex-col gap-1">
+      <div className="w-full p-4 h-40 bg-white rounded-lg flex flex-col gap-1 shadow-md">
         <h2 className="text-[#111827] font-semibold text-sm">User Management</h2>
         <div className="w-full flex flex-wrap gap-2">
           {userStats.map((stat, idx) => (

@@ -40,7 +40,7 @@ const PayroleDashboardCard: React.FC = () => {
   ]
 
   return (
-    <div className="w-full lg:w-1/2 bg-white rounded-lg p-[clamp(1rem,2vw,1.5rem)] flex flex-col items-center gap-6">
+    <div className="w-full lg:w-1/2 bg-[#F9FAFB] shadow-md rounded-lg p-[clamp(1rem,2vw,1.5rem)] flex flex-col items-center gap-6">
       <h3 className="text-[#323232] font-semibold text-center text-sm">
         Payroll Cycle Status
       </h3>

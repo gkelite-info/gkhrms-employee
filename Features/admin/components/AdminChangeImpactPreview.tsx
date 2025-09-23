@@ -34,7 +34,7 @@ const AdminChangeImpactPreview: React.FC = () => {
   const maxValue = Math.max(...selectedItem.values)
 
   return (
-    <div className="w-full lg:w-1/2 bg-white rounded-lg p-4 flex flex-col gap-2">
+    <div className="w-full lg:w-1/2 bg-white rounded-lg p-4 flex flex-col gap-2 shadow-md">
       <h2 className="text-[#111827] font-semibold text-sm">
         Change Impact Preview
       </h2>

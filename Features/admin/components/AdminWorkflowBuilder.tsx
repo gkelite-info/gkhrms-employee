@@ -7,7 +7,7 @@ const steps = ["Leave", "Payroll", "IT Tickets"]
 const AdminWorkflowBuilder: React.FC = () => {
   return (
     <motion.div
-      className="w-full lg:w-1/2 bg-white rounded-lg p-4 flex flex-col gap-2"
+      className="w-full lg:w-1/2 bg-white rounded-lg p-4 flex flex-col gap-2 shadow-md"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}

@@ -15,7 +15,7 @@ const CountCard: React.FC<CountCardProps> = ({
   count,
   icon,
   iconBg = "#E0DEFBD6",
-  style = 'h-[100px]'
+  style = 'h-[100px] bg-[#F9FAFB]'
 }) => {
   const [displayCount, setDisplayCount] = useState(0)
 
@@ -39,7 +39,7 @@ const CountCard: React.FC<CountCardProps> = ({
 
   return (
     <motion.div
-      className={`w-full md:w-[250px] bg-white shadow rounded-lg flex justify-around items-center ${style}`}
+      className={`w-full md:w-[250px] shadow rounded-lg flex justify-around items-center ${style}`}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}

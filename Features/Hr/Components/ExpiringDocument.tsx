@@ -8,7 +8,7 @@ const ExpiringDocument = () => {
   const { column } = useExpiryDocsTableData()
 
   return (
-    <div className="w-full lg:w-1/2 bg-white rounded-lg p-4 flex flex-col gap-5">
+    <div className="w-full lg:w-1/2 bg-[#F9FAFB] shadow-md rounded-lg p-4 flex flex-col gap-5">
       <h3 className="text-[#323232] font-semibold text-sm">
         Expiring Documents
       </h3>

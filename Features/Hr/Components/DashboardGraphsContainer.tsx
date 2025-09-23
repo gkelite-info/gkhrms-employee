@@ -14,14 +14,14 @@ const DashboardGraphsContainer = () => {
   ]
   return (
     <div className="w-full flex flex-col lg:flex-row justify-between items-center gap-2.5">
-      <div className="w-full lg:w-[30%] bg-white h-[330px] rounded-lg p-4 shadow flex flex-col justify-center items-center">
+      <div className="w-full lg:w-[30%] bg-[#F9FAFB] shadow-md h-[330px] rounded-lg p-4 shadow flex flex-col justify-center items-center">
         <h3 className="text-[#323232] font-semibold text-sm">
           Headcount by Department
         </h3>
         <StandLineGraph data={chartData} />
       </div>
       <ExperienceDistribution />
-      <div className="w-full lg:w-[30%] bg-white h-[330px] rounded-lg p-4 shadow flex flex-col  items-center gap-5">
+      <div className="w-full lg:w-[30%] bg-[#F9FAFB] h-[330px] rounded-lg p-4 shadow flex flex-col shadow-md items-center gap-5">
         <h3 className="text-[#323232] font-semibold text-sm">Approvals</h3>
         <div className="w-full p-4 flex flex-col justify-center items-center h-[85%] gap-6">
           <Approvals
