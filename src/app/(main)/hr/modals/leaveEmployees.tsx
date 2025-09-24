@@ -54,7 +54,7 @@ export default function LeaveEmployeesModal({
             <div className="flex flex-col mt-6 sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
               <div className="flex items-center gap-2">
                 <h2 className="text-lg text-[#323232] font-semibold">
-                  Active Employees
+                  Leave Employees
                 </h2>
                 <p className="text-[#8E57EB] font-bold"> ({tableData.length})</p>
               </div>
