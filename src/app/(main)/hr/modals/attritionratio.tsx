@@ -135,7 +135,7 @@ export default function AttritionRatioModal({
                 </div>
               </div>
               <div className="bg-white h-60 w-[49%] rounded-lg shadow-md p-2 flex flex-col justify-between">
-                <h3 className="text-lg text-[#111827] font-semibold">Attrition Trend</h3>
+                <h3 className="text-lg text-[#111827] font-semibold">Department-wise Attrition</h3>
                 <div className="w-[100%] h-[85%] bg-red-00">
                   <AttritionTrendCard />
                 </div>

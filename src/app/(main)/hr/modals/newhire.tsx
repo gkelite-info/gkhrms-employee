@@ -50,7 +50,7 @@ export default function TotalEmployeesModal({
             transition={{ duration: 0.25, ease: "easeOut" }}
           >
             <button
-              className="absolute top-2 right-2 text-gray-600 cursor-pointer"
+              className="absolute top-2 mr-1 right-2 text-gray-600 cursor-pointer"
               onClick={onClose}
             >
               ✕
