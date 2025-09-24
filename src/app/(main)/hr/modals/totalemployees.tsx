@@ -94,7 +94,6 @@ export default function TotalEmployeesModal({
                 <p className="text-[#8E57EB] font-bold"> ({tableData.length})</p>
               </div>
 
-
               <div className="flex flex-wrap gap-2">
                 <div className="flex items-center gap-2">
                   <span className="font-medium text-[#585858]">Department:</span>

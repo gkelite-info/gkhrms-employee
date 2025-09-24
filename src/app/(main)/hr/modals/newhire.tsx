@@ -13,7 +13,6 @@ export default function TotalEmployeesModal({
   const designations = ["Manager", "Developer", "Intern"]
   const statuses = ["Joined", "Pending", "Offer Accepted"]
 
-  // ---- 15 rows of sample employee data ----
   const tableData = [
     { username: "John Doe", email: "john@example.com", employeeID: "EMP001", role: "Developer", dateOfJoining: "2025-09-01", status: "Joined" },
     { username: "Jane Smith", email: "jane@example.com", employeeID: "EMP002", role: "Manager", dateOfJoining: "2025-09-03", status: "Pending" },
@@ -57,7 +56,6 @@ export default function TotalEmployeesModal({
               ✕
             </button>
 
-            {/* Header with count */}
             <div className="flex flex-col mt-6 sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
               <div className="flex items-center gap-2">
                 <h2 className="text-lg text-[#323232] font-semibold">
@@ -66,7 +64,6 @@ export default function TotalEmployeesModal({
                 <p className="text-[#8E57EB] font-bold"> ({tableData.length})</p>
               </div>
 
-              {/* Filters */}
               <div className="flex flex-wrap gap-2">
                 <div className="flex items-center gap-2">
                   <span className="font-medium text-[#585858]">Department:</span>
@@ -100,7 +97,6 @@ export default function TotalEmployeesModal({
               </div>
             </div>
 
-            {/* Table */}
             <div className="overflow-x-auto">
               <table className="w-[100%] border-collapse text-center">
                 <thead>

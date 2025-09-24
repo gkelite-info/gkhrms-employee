@@ -11,7 +11,6 @@ export default function ActiveEmployeesModal({
 }) {
   const departments = ["HR", "Engineering"]
   const designations = ["Manager", "Developer", "Intern"]
-  const statuses = ["Active", "Leave", "WFH"]
 
   const tableData = [
     {
@@ -111,7 +110,6 @@ export default function ActiveEmployeesModal({
                 </h2>
                 <p className="text-[#8E57EB] font-bold"> ({tableData.length})</p>
               </div>
-
 
               <div className="flex flex-wrap gap-2">
                 <div className="flex items-center gap-2">

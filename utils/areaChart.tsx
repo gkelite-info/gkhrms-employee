@@ -3,11 +3,11 @@ import { Area, Tooltip, XAxis, YAxis, AreaChart } from "recharts";
 
 type Point = { name: string; uv: number; pv: number };
 
-export default function AreaCharts({ data }: { data: Point[] }) {
+export default function AreaCharts({ data, width = 560 }: { data: Point[], width: number }) {
 
     return (
         <>
-            <AreaChart width={560} height={190} data={data}
+            <AreaChart width={width} height={190} data={data}
                 margin={{ top: 10, right: 60, left: -28, bottom: -8 }}>
                 <defs>
                     <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
