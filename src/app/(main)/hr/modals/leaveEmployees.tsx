@@ -13,7 +13,6 @@ export default function LeaveEmployeesModal({
   const designations = ["Manager", "Developer", "Intern"]
   const statuses = ["Active", "Leave", "WFH"]
 
-  // 15 rows of dummy data
   const tableData = Array.from({ length: 15 }, (_, i) => ({
     username: `User ${i + 1}`,
     email: `user${i + 1}@example.com`,

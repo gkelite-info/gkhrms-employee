@@ -112,7 +112,7 @@ export default function BackupRestoration() {
                             <div className="bg-white h-60 rounded-lg shadow-md p-2 flex flex-col justify-between">
                                 <h3 className="text-lg text-[#111827] font-semibold">Backup Success Rate (7 Days)</h3>
                                 <div className="w-[100%] h-[85%] bg-white">
-                                    <AreaCharts data={userActivityData} />
+                                    <AreaCharts data={userActivityData} width={560} />
                                 </div>
                             </div>
                             <div className="h-40 mt-2 rounded-lg shadow-md">

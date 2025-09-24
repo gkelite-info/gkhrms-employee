@@ -11,7 +11,6 @@ export default function TotalEmployeesModal({
 }) {
   const statuses = ["Open", "Interviews Ongoing", "On Hold"]
 
-  // ---- 15 rows of sample job openings ----
   const jobData = Array.from({ length: 15 }).map((_, idx) => {
     const titles = ["Data Analyst", "UX Designer", "Cloud Engineer", "HR Executive", "Sales Manager"]
     const departments = ["IT", "Design", "IT", "HR", "Sales"]
@@ -54,7 +53,6 @@ export default function TotalEmployeesModal({
               ✕
             </button>
 
-            {/* Header with count */}
             <div className="flex flex-col mt-6 sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
               <div className="flex items-center gap-2">
                 <h2 className="text-lg text-[#323232] font-semibold">
@@ -64,7 +62,6 @@ export default function TotalEmployeesModal({
               </div>
             </div>
 
-            {/* Table */}
             <div className="overflow-x-auto">
               <table className="w-[100%] border-collapse text-center">
                 <thead>
