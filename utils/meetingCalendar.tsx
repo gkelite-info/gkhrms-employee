@@ -124,11 +124,11 @@ export default function MeetingCalendarComp({
             </div>
           </div>
         </div>
-        <div className="bg-red-00 w-[50%] h-[100%] flex flex-col rounded-lg">
-          <div className="bg-green-00 h-[55%] overflow-hidden rounded-tr-lg">
-            <MeetingCalendar style="rounded-lg h-50" />
+        <div className="bg-red-00 w-[50%] h-[100%] flex flex-col justify-between rounded-lg">
+          <div className="bg-green-00 h-[58%] overflow-hidden rounded-tr-lg">
+            <MeetingCalendar style="rounded-lg h-56" />
           </div>
-          <div className="bg-yellow-200 h-[45%] rounded-br-lg p-2">
+          <div className="bg-yellow-200 h-[42%] rounded-br-lg p-2">
             <p className="text-black text-xs font-semibold">
               Upcoming meetings
             </p>
