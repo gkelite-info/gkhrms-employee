@@ -6,6 +6,7 @@ import {
   CurrencyCircleDollar,
   Timer,
   ChartBar,
+  Tray,
   Files,
   Airplay,
   Gear,
@@ -50,7 +51,7 @@ export const roleBasedNav: Record<
     },
   ],
   Manager: [
-    { label: "Home", href: "/manager", icon: House },
+    { label: "Home", href: "/dashboard", icon: House },
     { label: "Me", href: "/manager_dash/details", icon: User },
     { label: "My Team", href: "/manager/my-team", icon: UsersThree },
     { label: "Reports", href: "/manager/reports", icon: Files },
@@ -69,7 +70,7 @@ export const roleBasedNav: Record<
     { label: "Engage", href: "/employee/engage", icon: ChatsCircle },
   ],
   Hr: [
-    { label: "Home", href: "/hr", icon: House },
+    { label: "Home", href: "/", icon: House },
     { label: "Workforce", href: "/hr/workforce", icon: User },
     {
       label: "Payroll & Compliance",

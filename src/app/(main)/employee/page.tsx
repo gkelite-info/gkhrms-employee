@@ -25,10 +25,11 @@ import PostUploadCard from "../../../../utils/PostUploadCard"
 import BirthdatNewJoinCount from "../../../../utils/BirthdatNewJoinCount"
 import QuickUpdatedPostCard from "../../../../utils/QuickUpdatedPostCard"
 import PostItem from "../../../../utils/PostItem"
-import Calendar from "react-calendar"
 import PendingTaskCard from "../../../../utils/pendingTaskcard"
 import MeetingCalendarComp from "../../../../utils/meetingCalendar"
 import DashboardAttendanceTracker from "../../../../utils/DashboardAttendanceTracker"
+import axios from "axios";
+import { origin } from "@/api-requests/config"
 
 type ValuePiece = Date | null
 
@@ -39,6 +40,27 @@ export default function Dashboard() {
   const [today, setToday] = useState("")
   const [timeString, setTimeString] = useState("")
   const [isDaytime, setIsDaytime] = useState(true)
+  const [fullname, setFullname] = useState('');
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        if (!token) return;
+
+        const { data } = await axios.get(`${origin}/api/v1/employee/profile`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+
+        setFullname(data.employee.fullname);
+      } catch (err) {
+        console.error('Failed to fetch profile', err);
+      }
+    };
+
+    fetchProfile();
+  }, []);
+
 
   useEffect(() => {
     const now = new Date()
@@ -84,7 +106,7 @@ export default function Dashboard() {
           </div>
           <div className="w-[85%] flex flex-col pt-2">
             <h2 className="text-[#323232] text-3xl font-semibold">
-              Good Morning !
+              Good Morning {fullname ? `, ${fullname}` : '!'}
             </h2>
             <div className="flex items-end justify-between pr-10">
               <p className="text-[#4B4B4B] text-xs mt-1">

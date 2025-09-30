@@ -2,6 +2,7 @@
 import axios from 'axios';
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
+import { origin } from '@/api-requests/config';
 
 export default function Signin() {
   const router = useRouter();
@@ -12,11 +13,16 @@ export default function Signin() {
   const handleLogin = async () => {
     setLoading(true)
     try {
-      const res = await axios.post('http://localhost:5000/api/v1/employees/login', {
+      const res = await axios.post(`${origin}/api/v1/employee/login`, {
         email,
         password
       })
-      const employee = res.data.employee
+      const employee = res.data.employee;
+
+      localStorage.setItem('employeeId', employee.employeeId.toString());
+      if (res.data.token) {
+        localStorage.setItem('token', res.data.token);
+      }
 
       console.log('Login Success:', employee)
 
@@ -40,6 +46,8 @@ export default function Signin() {
       setLoading(false)
     }
   }
+
+
   return (
     <div className="h-screen flex">
       <div className="w-1/2 flex items-center justify-center bg-white">
@@ -62,8 +70,8 @@ export default function Signin() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              onKeyDown={(e) =>{
-                if(e.key === 'Enter'){
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
                   e.preventDefault();
                   handleLogin();
                 }

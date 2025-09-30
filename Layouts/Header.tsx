@@ -5,10 +5,16 @@ import NotificationCount from "../utils/notificationCount"
 import { useState } from "react"
 import NotificationModal from "../utils/notificationModel"
 import InboxModal from "../utils/inboxModal"
+import { useRouter } from "next/navigation"
 
 export default function Header() {
+  const router = useRouter();
   const [showModal, setShowModal] = useState(false)
   const [showIndex, setShowIndex] = useState(false)
+
+  const handleProfile = () =>{
+    router.push('/admin/profile')
+  }
 
   return (
     <>
@@ -49,7 +55,7 @@ export default function Header() {
               className="text-[#1E1D32] bg-blue-00 cursor-pointer h-6 w-6 hover:shadow-xl transition-all duration-200"
             />
             <NotificationCount count={100} style="right-18 top-5" />
-            <div className="h-8 w-8 flex items-center justify-center bg-blue-400 rounded-full cusor-pointer">
+            <div className="h-8 w-8 flex items-center justify-center bg-blue-400 rounded-full cusor-pointer" onClick={handleProfile}>
               <p className="cursor-pointer">X</p>
             </div>
           </div>
