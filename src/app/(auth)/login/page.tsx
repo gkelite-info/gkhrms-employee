@@ -2,6 +2,8 @@
 import { useState, useRef } from 'react'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
+import { origin } from '@/api-requests/config'
+import { sendOtp, verifyOtp } from '@/api-requests/employeeApi'
 
 export default function Login() {
   const router = useRouter()
@@ -10,15 +12,14 @@ export default function Login() {
   const [otpSent, setOtpSent] = useState(false)
   const [loading, setLoading] = useState(false)
 
-  // Ref array for OTP inputs
   const inputRefs = useRef<Array<HTMLInputElement | null>>([])
 
   const handleSendOtp = async () => {
     if (!email) return alert('Enter your email')
     try {
       setLoading(true)
-      const res = await axios.post('http://localhost:5000/api/v1/employees/send-otp', { email })
-      console.log(res.data)
+      const data = await sendOtp(email)
+      console.log(data)
       setOtpSent(true)
     } catch (err: any) {
       alert(err.response?.data?.message || 'Failed to send OTP')
@@ -33,12 +34,9 @@ export default function Login() {
 
     try {
       setLoading(true)
-      const res = await axios.post('http://localhost:5000/api/v1/employees/verify-otp', {
-        email,
-        otp: otpValue
-      })
-      console.log(res.data)
-      const employeeId = res.data.employeeId
+      const data = await verifyOtp(email, otpValue)
+      console.log(data)
+      const employeeId = data.employeeId
       router.push(`/setpassword?employeeId=${employeeId}`)
     } catch (err: any) {
       alert(err.response?.data?.message || 'Failed to verify OTP')
@@ -105,7 +103,7 @@ export default function Login() {
                             if (e.key === 'Backspace' && !otp[i] && i > 0) {
                               inputRefs.current[i - 1]?.focus()
                             }
-                            if (e.key === 'Enter'){
+                            if (e.key === 'Enter') {
                               e.preventDefault();
                               handleVerifyOtp();
                             }

@@ -2,6 +2,8 @@
 import { useState, useEffect } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import axios from 'axios'
+import { origin } from '@/api-requests/config'
+import { getEmployeeEmail, setPasswordApi } from '@/api-requests/employeeApi'
 
 export default function SetPassword() {
     const searchParams = useSearchParams()
@@ -14,17 +16,18 @@ export default function SetPassword() {
     const [loading, setLoading] = useState(false)
 
     useEffect(() => {
-        if (employeeId) {
-            const fetchEmail = async () => {
-                try {
-                    const res = await axios.get(`http://localhost:5000/api/v1/employees/${employeeId}`)
-                    setEmail(res.data.email)
-                } catch (err) {
-                    console.error(err)
-                }
+        if (!employeeId) return
+
+        const fetchEmail = async () => {
+            try {
+                const data = await getEmployeeEmail(employeeId)
+                setEmail(data.email)
+            } catch (err) {
+                console.error('Failed to fetch email:', err)
             }
-            fetchEmail()
         }
+
+        fetchEmail()
     }, [employeeId])
 
     const handleSubmitPassword = async () => {
@@ -33,7 +36,7 @@ export default function SetPassword() {
 
         setLoading(true)
         try {
-            await axios.patch('http://localhost:5000/api/v1/employees/set-password', { employeeId, password })
+            await setPasswordApi(Number(employeeId), password)
             alert('Password set successfully!')
             router.push('/signin')
         } catch (err) {
@@ -83,7 +86,7 @@ export default function SetPassword() {
                                     onKeyDown={(e) => {
                                         if (e.key === 'Enter') {
                                             e.preventDefault();
-                                            handleSubmitPassword
+                                            handleSubmitPassword();
                                         }
                                     }}
                                     className="border rounded-md px-3 py-2 border-[#AFAFAF] text-[#777777] text-sm focus:outline-none"
