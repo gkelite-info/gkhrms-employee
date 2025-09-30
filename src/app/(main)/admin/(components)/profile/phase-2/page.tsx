@@ -1,11 +1,9 @@
 "use client";
 import { useState } from "react";
-
-// your imports
-import Timeline from "../timeline/page";
-import PhaseLeft from "../phaseLR/phase_left/page";
 import PhaseLR from "../phaseLR/page";
 import ProfileAndTimeline from "../profileAndBasic";
+import Documents from "./documents/page";
+import Assets from "./assets/page";
 
 export default function Profile() {
   const [activeTab, setActiveTab] = useState("Profile");
@@ -15,7 +13,6 @@ export default function Profile() {
   return (
     <div className="bg-red-00 flex mt-3">
       <div className="flex w-[100%] rounded-lg flex-col">
-        {/* Tabs */}
         <div className="w-[100%] h-10 mt-3 rounded-lg flex justify-between">
           {tabs.map((tab) => (
             <div
@@ -29,24 +26,22 @@ export default function Profile() {
           ))}
         </div>
 
-        {/* Content */}
         <div className="mt-5">
           {activeTab === "Profile" && (
             <>
-              {/* <ProfileAndTimeline /> */}
               <PhaseLR />
             </>
           )}
 
           {activeTab === "Documents" && (
             <>
-              <ProfileAndTimeline />
+              <Documents />
             </>
           )}
 
           {activeTab === "Assets" && (
             <>
-            <ProfileAndTimeline />
+              <Assets />
             </>
           )}
         </div>
