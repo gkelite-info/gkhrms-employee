@@ -14,7 +14,7 @@ import {
   Plugs,
   ChatsCircle,
 } from "phosphor-react"
-import { Roles } from "../features/auth/slice/loginType"
+import { Roles } from "../features/Auth/Slice/loginType"
 
 export const roleBasedNav: Record<
   Roles,
