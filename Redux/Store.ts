@@ -1,13 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit"
-import storage from "redux-persist/lib/storage" // defaults to localStorage for web
+import storage from "redux-persist/lib/storage"
 import { persistReducer, persistStore } from "redux-persist"
 import { combineReducers } from "redux"
-import authReducer from "../features/auth/slice/loginSlice"
+import authReducer from "../features/Auth/Slice/loginSlice"
 
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["auth"], // ✅ persist only auth slice
+  whitelist: ["auth"],
 }
 
 const rootReducer = combineReducers({
@@ -20,7 +20,7 @@ export const store = configureStore({
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
-      serializableCheck: false, // redux-persist needs this
+      serializableCheck: false,
     }),
 })
 

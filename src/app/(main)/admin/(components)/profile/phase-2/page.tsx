@@ -1,12 +1,18 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PhaseLR from "../phaseLR/page";
 import ProfileAndTimeline from "../profileAndBasic";
 import Documents from "./documents/page";
 import Assets from "./assets/page";
 
 export default function Profile() {
-  const [activeTab, setActiveTab] = useState("Profile");
+  const [activeTab, setActiveTab] = useState<string>(
+    () => localStorage.getItem("activeProfileTab") || "Profile"
+  );
+
+  useEffect(() => {
+    localStorage.setItem("activeProfileTab", activeTab);
+  }, [activeTab]);
 
   const tabs = ["Profile", "Documents", "Assets"];
 
@@ -26,7 +32,7 @@ export default function Profile() {
           ))}
         </div>
 
-        <div className="mt-5">
+        <div className="mt-3">
           {activeTab === "Profile" && (
             <>
               <PhaseLR />

@@ -1,4 +1,4 @@
-import auth from "../features/auth/slice/loginSlice"
+import auth from '../features/Auth/Slice/loginSlice'
 
 const RootReducer = {
   auth,
