@@ -106,7 +106,7 @@ export default function Dashboard() {
           </div>
           <div className="w-[85%] flex flex-col pt-2">
             <h2 className="text-[#323232] text-3xl font-semibold">
-              Good Morning {fullname ? `, ${fullname}` : '!'}
+              Hii {fullname ? `, ${fullname}` : '!'}
             </h2>
             <div className="flex items-end justify-between pr-10">
               <p className="text-[#4B4B4B] text-xs mt-1">

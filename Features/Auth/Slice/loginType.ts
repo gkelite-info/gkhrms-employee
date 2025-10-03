@@ -15,4 +15,6 @@ export interface AuthState {
   loading: boolean
   error: string | null
   role: Roles | null
+  fullname: string | null
+  photoURL: string | null
 }
