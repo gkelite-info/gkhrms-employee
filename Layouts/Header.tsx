@@ -6,14 +6,23 @@ import { useState } from "react"
 import NotificationModal from "../utils/notificationModel"
 import InboxModal from "../utils/inboxModal"
 import { useRouter } from "next/navigation"
+import { useSelector } from "react-redux"
+import { RootState } from "../Redux/Store"
 
 export default function Header() {
   const router = useRouter();
   const [showModal, setShowModal] = useState(false)
   const [showIndex, setShowIndex] = useState(false)
 
-  const handleProfile = () =>{
-    router.push('/admin/profile')
+  const { fullname, photoURL, role } = useSelector(
+    (state: RootState) => state.auth
+  );
+
+  const userInitial = fullname ? fullname.charAt(0).toUpperCase() : "X";
+
+  const handleProfile = () => {
+    const baseRoute = role ? `/${role.toLowerCase()}` : '';
+    router.push(`${baseRoute}/profile`);
   }
 
   return (
@@ -27,7 +36,7 @@ export default function Header() {
           />
         </div>
         <div className="bg-white h-[100%] w-[100%] flex items-center justify-between pr-4">
-          <div className="flex items-center justify-end h-[100%] w-[66%] gap-5">            
+          <div className="flex items-center justify-end h-[100%] w-[66%] gap-5">
             <div className="flex items-center bg-[#C5C1FF] gap-3 h-[40px] w-[60%] rounded-full px-3">
               <MagnifyingGlass
                 size={19}
@@ -56,7 +65,15 @@ export default function Header() {
             />
             <NotificationCount count={100} style="right-18 top-5" />
             <div className="h-8 w-8 flex items-center justify-center bg-blue-400 rounded-full cusor-pointer" onClick={handleProfile}>
-              <p className="cursor-pointer">X</p>
+              {photoURL ? (
+                <img
+                  src={photoURL}
+                  alt={fullname || "User"}
+                  className="h-full w-full object-cover rounded-full"
+                />
+              ) : (
+                <p className="cursor-pointer text-white font-semibold">{userInitial}</p>
+              )}
             </div>
           </div>
         </div>

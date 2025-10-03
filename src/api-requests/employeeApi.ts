@@ -61,18 +61,137 @@ export const loginEmployee = async (email: string, password: string) => {
     }
 }
 
-export const getEmployeeProfile = async (
-    employeeId: string | number,
-    fields?: string[]
-) => {
+
+export const getEmployeeProfile = async (employeeId: number | string) => {
+    const token = localStorage.getItem("token");
+    if (!token) throw new Error("User not authenticated");
+
     try {
-        const query = fields && fields.length > 0 ? `?fields=${fields.join(",")}` : "";
+        const res = await axios.get(`${origin}/api/v1/employee/profile`, {
+            headers: { Authorization: `Bearer ${token}` },
+        });
+
+        return res.data.employee;
+    } catch (err: any) {
+        throw err;
+    }
+};
+
+
+
+
+export const getEmployeeEducation = async (employeeId: string | number) => {
+    try {
+        const token = localStorage.getItem("token");
+        if (!token) throw new Error("User not authenticated");
+
         const res = await axios.get(
-            `${origin}/api/v1/employee/profile/${employeeId}${query}`
+            `${origin}/api/v1/employeeEducation/education/${employeeId}`,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }
         );
+        return res.data.education;
+    } catch (error) {
+        console.error("Failed to fetch employee education", error);
+        throw error;
+    }
+};
+
+export const getEmployeeExperience = async (employeeId: string | number) => {
+    try {
+        const token = localStorage.getItem("token");
+        if (!token) throw new Error("User not authenticated");
+
+        const res = await axios.get(`${origin}/api/v1/employeeExperience/experience/${employeeId}`, {
+            headers: { Authorization: `Bearer ${token}` },
+        });
+
+        return res.data.experiences;
+    } catch (err) {
+        console.error("Failed to fetch employee experience", err);
+        throw err;
+    }
+};
+
+export const getEmployeeProfil = async (employeeId: string | number) => {
+    try {
+        const token = localStorage.getItem("token");
+        if (!token) throw new Error("User not authenticated");
+
+        const res = await axios.get(
+            `${origin}/api/v1/employeeProfile/${employeeId}`,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        );
+
         return res.data.employee;
     } catch (error) {
         console.error("Failed to fetch employee profile", error);
         throw error;
+    }
+};
+
+export const getEmployeeAddresses = async (employeeId: number | string) => {
+    try {
+        const token = localStorage.getItem("token");
+        if (!token) throw new Error("User not authenticated");
+
+        const res = await axios.get(`${origin}/api/v1/employeeAddress/addresses/${employeeId}`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+
+        return res.data.addresses;
+    } catch (err) {
+        console.error("Failed to fetch employee addresses", err);
+        throw err;
+    }
+};
+
+// export const getEmployeeFamily = async (token: string, employeeId: number | string) => {
+//     try {
+//         const token = localStorage.getItem("token");
+//         if (!token) throw new Error("User not authenticated");
+
+//         const res = await axios.get(`${origin}/api/v1/family${employeeId}`, {
+//             headers: {
+//                 Authorization: `Bearer ${token}`,
+//             }
+//         });
+//         return {
+//             family: res.data.family,
+//             siblings: res.data.siblings
+//         };
+//     } catch (err) {
+//         console.error("Failed to fetch employee family details",);
+//         throw err;
+//     }
+// };
+
+export const getEmployeeFamily = async (employeeId: number | string) => {
+    try {
+        const token = localStorage.getItem("token");
+        if (!token) throw new Error("User not authenticated");
+
+        const res = await axios.get(`${origin}/api/v1/family/${employeeId}`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+
+        return {
+            family: res.data.family,
+            siblings: res.data.siblings,
+        };
+    } catch (err) {
+        console.error("Failed to fetch employee family details", err);
+        throw err;
     }
 };
