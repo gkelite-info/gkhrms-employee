@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import IdentityProof from "./identityproof";
 import AddressProof from "./addressproof";
 import EducationalCertificates from "./educationalCertificates";
@@ -10,7 +10,19 @@ import LegalComplianceDocs from "./legalCompliance";
 import OptionalDocs from "./optionalDocs";
 
 export default function Documents() {
-    const [activeTab, setActiveTab] = useState("Identity Proof");
+    const [activeTab, setActiveTab] = useState<string | null>(null);
+    const [identityFiles, setIdentityFiles] = useState<{ [label: string]: File | null }>({});
+
+    useEffect(() => {
+        const savedTab = localStorage.getItem("activeTab");
+        setActiveTab(savedTab || "Identity Proof");
+    }, []);
+
+    useEffect(() => {
+        if (activeTab) {
+            localStorage.setItem("activeTab", activeTab);
+        }
+    }, [activeTab]);
 
     const tabs = [
         "Identity Proof",
@@ -43,35 +55,35 @@ export default function Documents() {
 
             <div className="w-[80%] p-3">
                 {activeTab === "Identity Proof" && (
-                    <IdentityProof />
+                    <IdentityProof files={identityFiles} setFiles={setIdentityFiles} />
                 )}
 
                 {activeTab === "Address Proof" && (
-                    <AddressProof />
+                    <AddressProof files={identityFiles} setFiles={setIdentityFiles} />
                 )}
 
                 {activeTab === "Educational Certificates" && (
-                    <EducationalCertificates />
+                    <EducationalCertificates files={identityFiles} setFiles={setIdentityFiles} />
                 )}
 
                 {activeTab === "Work Experience Documents" && (
-                    <WorkExperienceDocs />
+                    <WorkExperienceDocs files={identityFiles} setFiles={setIdentityFiles} />
                 )}
 
                 {activeTab === "Identity & Employment Forms" && (
-                    <IdentityEmploymentForm />
+                    <IdentityEmploymentForm files={identityFiles} setFiles={setIdentityFiles} />
                 )}
 
                 {activeTab === "Background Verification Documents" && (
-                    <BackgroundVerification />
+                    <BackgroundVerification files={identityFiles} setFiles={setIdentityFiles} />
                 )}
 
                 {activeTab === "Legal & Compliance Documents" && (
-                    <LegalComplianceDocs />
+                    <LegalComplianceDocs files={identityFiles} setFiles={setIdentityFiles} />
                 )}
 
                 {activeTab === "Other Optional Documents" && (
-                    <OptionalDocs />
+                    <OptionalDocs files={identityFiles} setFiles={setIdentityFiles} />
                 )}
             </div>
         </div>

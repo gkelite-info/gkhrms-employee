@@ -1,6 +1,11 @@
 import UploadCard from "./uploadCards";
 
-export default function IdentityEmploymentForm() {
+interface IdentityEmploymentFormProps {
+  files: { [label: string]: File | null };
+  setFiles: React.Dispatch<React.SetStateAction<{ [label: string]: File | null }>>;
+}
+
+export default function IdentityEmploymentForm({ files, setFiles }: IdentityEmploymentFormProps) {
   const labels = ["Resume / CV", "Passport - Sized photographs", "Bank Account Details"];
 
   return (
@@ -14,7 +19,14 @@ export default function IdentityEmploymentForm() {
 
       <div className="flex flex-wrap mt-5 justify-center gap-4">
         {labels.map((label) => (
-          <UploadCard key={label} label={label} />
+          <UploadCard
+            key={label}
+            label={label}
+            file={files[label] ?? null}
+            setFile={(file: File | null) =>
+              setFiles((prev) => ({ ...prev, [label]: file }))
+            }
+          />
         ))}
       </div>
     </div>

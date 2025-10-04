@@ -1,6 +1,11 @@
 import UploadCard from "./uploadCards";
 
-export default function LegalComplianceDocs() {
+interface LegalComplianceDocsProps {
+  files: { [label: string]: File | null };
+  setFiles: React.Dispatch<React.SetStateAction<{ [label: string]: File | null }>>;
+}
+
+export default function LegalComplianceDocs({ files, setFiles }: LegalComplianceDocsProps) {
   const labels = [
     "Employment Contract / Offer Acceptance",
     "Non-Disclosure Agreement",
@@ -18,7 +23,14 @@ export default function LegalComplianceDocs() {
 
       <div className="flex flex-wrap mt-5 justify-center gap-4">
         {labels.map((label) => (
-          <UploadCard key={label} label={label} />
+          <UploadCard
+            key={label}
+            label={label}
+            file={files[label] ?? null}
+            setFile={(file: File | null) =>
+              setFiles((prev) => ({ ...prev, [label]: file }))
+            }
+          />
         ))}
       </div>
     </div>

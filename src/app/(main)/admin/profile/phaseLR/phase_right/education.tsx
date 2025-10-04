@@ -87,10 +87,10 @@ export default function Education() {
 
                 {experience.length === 1 ? (
                     experience.map((exp, index) => (
-                        <div key={index} className="flex flex-col mt-2 bg-blue-00 w-full">
+                        <div key={index} className="flex flex-col mt-3 bg-blue-00 w-full">
                             <h3 className="text-[#1F2937] font-semibold">Experience</h3>
-                            <div className="flex items-center mt-1">
-                                <h3 className="text-[#1F2937] font-semibold text-xs">Role / Company :</h3>
+                            <div className="flex items-center mt-3">
+                                <h3 className="text-[#1F2937] font-semibold text-xs">Role & Company :</h3>
                                 <p className="text-[#585858] text-xs ml-2">{exp.role} - {exp.company}</p>
                             </div>
                             <div className="flex items-center mt-1">

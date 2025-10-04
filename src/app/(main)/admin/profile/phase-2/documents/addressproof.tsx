@@ -1,6 +1,11 @@
 import UploadCard from "./uploadCards";
 
-export default function AddressProof() {
+interface AddressProofProps {
+  files: { [label: string]: File | null };
+  setFiles: React.Dispatch<React.SetStateAction<{ [label: string]: File | null }>>;
+}
+
+export default function AddressProof({ files, setFiles }: AddressProofProps) {
   const labels = ["Utility Bills", "Rent Agreement"];
 
   return (
@@ -14,7 +19,14 @@ export default function AddressProof() {
 
       <div className="flex flex-wrap mt-5 justify-center gap-4">
         {labels.map((label) => (
-          <UploadCard key={label} label={label} />
+          <UploadCard
+            key={label}
+            label={label}
+            file={files[label] ?? null}
+            setFile={(file: File | null) =>
+              setFiles((prev) => ({ ...prev, [label]: file }))
+            }
+          />
         ))}
       </div>
     </div>

@@ -1,6 +1,10 @@
-import Table from "./table";
+"use client";
 
-export default function AssignedAssets() {
+import { useEffect, useState } from "react";
+import Table from "./table";
+import { getAssignedAssets } from "@/api-requests/employeeApi";
+
+export default function AssignedAssets({ employeeId }: { employeeId: number }) {
     const columns = [
         "Asset Type",
         "Asset",
@@ -10,24 +14,39 @@ export default function AssignedAssets() {
         "Latest Condition",
     ];
 
-    const data = [
-        {
-            "Asset Type": "Laptop",
-            "Asset": "Dell XPS 13",
-            "Asset Category": "Electronics",
-            "Assigned on": "2025-09-30",
-            "Acknowledgement Status": "Acknowledged",
-            "Latest Condition": "Good",
-        },
-        {
-            "Asset Type": "Charger",
-            "Asset": "Laptop charger",
-            "Asset Category": "Electronics",
-            "Assigned on": "2025-09-28",
-            "Acknowledgement Status": "Acknowledged",
-            "Latest Condition": "Good",
-        },
-    ];
+    const [data, setData] = useState<any[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const assets = await getAssignedAssets(employeeId);
+
+                const mappedData = assets.map((row: any) => ({
+                    "Asset Type": row.assetType,
+                    "Asset": row.asset,
+                    "Asset Category": row.assetCategory,
+                    "Assigned on": row.assignedOn,
+                    "Acknowledgement Status": row.acknowledgementStatus,
+                    "Latest Condition": row.latestCondition
+                }));
+
+                setData(mappedData);
+            } catch (err: any) {
+                console.error(err);
+                setError("Failed to load assigned assets");
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchData();
+    }, [employeeId]);
+
+
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>{error}</p>;
 
     return (
         <div className="bg-white shadow-md rounded-lg p-5">

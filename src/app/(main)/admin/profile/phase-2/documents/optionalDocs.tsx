@@ -1,7 +1,15 @@
 import UploadCard from "./uploadCards";
 
-export default function OptionalDocs() {
-  const labels = ["Proof of Address of Nominee", "Passport / Visa (for international relocation)"];
+interface OptionalDocsProps {
+  files: { [label: string]: File | null };
+  setFiles: React.Dispatch<React.SetStateAction<{ [label: string]: File | null }>>;
+}
+
+export default function OptionalDocs({ files, setFiles }: OptionalDocsProps) {
+  const labels = [
+    "Proof of Address of Nominee",
+    "Passport / Visa (for international relocation)",
+  ];
 
   return (
     <div className="bg-white shadow-md rounded-lg p-5">
@@ -14,7 +22,14 @@ export default function OptionalDocs() {
 
       <div className="flex flex-wrap mt-5 justify-center gap-4">
         {labels.map((label) => (
-          <UploadCard key={label} label={label} />
+          <UploadCard
+            key={label}
+            label={label}
+            file={files[label] ?? null}
+            setFile={(file: File | null) =>
+              setFiles((prev) => ({ ...prev, [label]: file }))
+            }
+          />
         ))}
       </div>
     </div>
