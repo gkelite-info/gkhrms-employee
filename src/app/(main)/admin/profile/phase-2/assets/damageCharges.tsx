@@ -1,6 +1,10 @@
-import Table from "./table";
+"use client";
 
-export default function AssetDamageCharges() {
+import { useEffect, useState } from "react";
+import Table from "./table";
+import { getAssetDamages } from "@/api-requests/employeeApi";
+
+export default function AssetDamageCharges({ employeeId }: { employeeId: number }) {
   const columns = [
     "Asset Type",
     "Asset Name/code",
@@ -12,38 +16,40 @@ export default function AssetDamageCharges() {
     "Remarks",
   ];
 
-  const data = [
-    {
-      "Asset Type": "Laptop",
-      "Asset Name/code": "Dell XPS 13 - A1001",
-      "Damage Description": "Screen Crack",
-      "Reported on": "2025-09-28",
-      "Estimated Charges": "25500/-",
-      Status: "Pending",
-      "Payment Mode": "Cash",
-      Remarks: "Needs urgent repair",
-    },
-    {
-      "Asset Type": "Chair",
-      "Asset Name/code": "Ergo Chair - C2001",
-      "Damage Description": "Broken Wheel",
-      "Reported on": "2025-09-27",
-      "Estimated Charges": "1550/-",
-      Status: "Approved",
-      "Payment Mode": "Company Account",
-      Remarks: "-",
-    },
-    {
-      "Asset Type": "Monitor",
-      "Asset Name/code": "Samsung 24\" - M3002",
-      "Damage Description": "Dead Pixels",
-      "Reported on": "2025-09-25",
-      "Estimated Charges": "3000/-",
-      Status: "Paid",
-      "Payment Mode": "Online Transfer",
-      Remarks: "Replaced",
-    },
-  ];
+  const [data, setData] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const damages = await getAssetDamages(employeeId);
+
+        const mappedData = damages.map((row: any) => ({
+          "Asset Type": row.assetType,
+          "Asset Name/code": row.assetNameOrCode,
+          "Damage Description": row.damageDescription,
+          "Reported on": row.reportedOn,
+          "Estimated Charges": row.estimatedCharges,
+          Status: row.status,
+          "Payment Mode": row.paymentMode ?? "-",
+          Remarks: row.remarks ?? "-",
+        }));
+
+        setData(mappedData);
+      } catch (err: any) {
+        console.error(err);
+        setError("Failed to load asset damages");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [employeeId]);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>{error}</p>;
 
   return (
     <div className="bg-white shadow-md rounded-lg p-5">

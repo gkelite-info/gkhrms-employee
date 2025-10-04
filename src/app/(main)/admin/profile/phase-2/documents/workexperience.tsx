@@ -1,6 +1,11 @@
 import UploadCard from "./uploadCards";
 
-export default function WorkExperienceDocs() {
+interface WorkExperienceDocsProps {
+  files: { [label: string]: File | null };
+  setFiles: React.Dispatch<React.SetStateAction<{ [label: string]: File | null }>>;
+}
+
+export default function WorkExperienceDocs({ files, setFiles }: WorkExperienceDocsProps) {
   const labels = [
     "Relieving Letter",
     "Experience Certificates",
@@ -19,7 +24,14 @@ export default function WorkExperienceDocs() {
 
       <div className="flex flex-wrap mt-5 justify-center gap-4">
         {labels.map((label) => (
-          <UploadCard key={label} label={label} />
+          <UploadCard
+            key={label}
+            label={label}
+            file={files[label] ?? null}
+            setFile={(file: File | null) =>
+              setFiles((prev) => ({ ...prev, [label]: file }))
+            }
+          />
         ))}
       </div>
     </div>

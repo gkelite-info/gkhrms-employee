@@ -155,43 +155,71 @@ export const getEmployeeAddresses = async (employeeId: number | string) => {
     }
 };
 
-// export const getEmployeeFamily = async (token: string, employeeId: number | string) => {
-//     try {
-//         const token = localStorage.getItem("token");
-//         if (!token) throw new Error("User not authenticated");
-
-//         const res = await axios.get(`${origin}/api/v1/family${employeeId}`, {
-//             headers: {
-//                 Authorization: `Bearer ${token}`,
-//             }
-//         });
-//         return {
-//             family: res.data.family,
-//             siblings: res.data.siblings
-//         };
-//     } catch (err) {
-//         console.error("Failed to fetch employee family details",);
-//         throw err;
-//     }
-// };
-
 export const getEmployeeFamily = async (employeeId: number | string) => {
-    try {
-        const token = localStorage.getItem("token");
-        if (!token) throw new Error("User not authenticated");
+  try {
+    const token = localStorage.getItem("token");
+    if (!token) throw new Error("User not authenticated");
 
-        const res = await axios.get(`${origin}/api/v1/family/${employeeId}`, {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
+    const res = await axios.get(`${origin}/api/v1/family/${employeeId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    return {
+      family: res.data.family,
+      siblings: res.data.siblings,
+    };
+  } catch (err) {
+    console.error("Failed to fetch employee family details", err);
+    throw err;
+  }
+};
+
+export const getAssignedAssets = async (employeeId: number | string) => {
+    const token = localStorage.getItem("token");
+    if (!token) throw new Error("User not authenticated");
+
+    try {
+        const res = await axios.get(`${origin}/api/v1/assets/assigned-assets`, {
+            headers: { Authorization: `Bearer ${token}` },
+            params: { employeeId }
         });
 
-        return {
-            family: res.data.family,
-            siblings: res.data.siblings,
-        };
-    } catch (err) {
-        console.error("Failed to fetch employee family details", err);
+        return res.data;
+    } catch (err: any) {
+        throw err;
+    }
+};
+
+export const getRequestedAssets = async (employeeId: number | string) => {
+    const token = localStorage.getItem("token");
+    if (!token) throw new Error("User not authenticated");
+
+    try {
+        const res = await axios.get(`${origin}/api/v1/assets/requested-assets`, {
+            headers: { Authorization: `Bearer ${token}` },
+            params: { employeeId }
+        });
+
+        return res.data;
+    } catch (err: any) {
+        throw err;
+    }
+};
+
+export const getAssetDamages = async (employeeId: number | string) => {
+    const token = localStorage.getItem("token");
+    if (!token) throw new Error("User not authenticated");
+
+    try {
+        const res = await axios.get(`${origin}/api/v1/assets/asset-damages`, {
+            headers: { Authorization: `Bearer ${token}` },
+            params: { employeeId }
+        });
+
+        return res.data;
+    } catch (err: any) {
         throw err;
     }
 };

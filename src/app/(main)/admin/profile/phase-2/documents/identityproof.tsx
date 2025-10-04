@@ -1,6 +1,11 @@
 import UploadCard from "./uploadCards";
 
-export default function IdentityProof() {
+interface IdentityProofProps {
+  files: { [label: string]: File | null };
+  setFiles: React.Dispatch<React.SetStateAction<{ [label: string]: File | null }>>;
+}
+
+export default function IdentityProof({ files, setFiles }: IdentityProofProps) {
   const labels = [
     "Passport",
     "Aadhar Card",
@@ -20,7 +25,12 @@ export default function IdentityProof() {
 
       <div className="flex flex-wrap mt-5 justify-center gap-4">
         {labels.map((label) => (
-          <UploadCard key={label} label={label} />
+          <UploadCard
+            key={label}
+            label={label}
+            file={files[label] ?? null}
+            setFile={(file: any) => setFiles((prev) => ({ ...prev, [label]: file }))}
+          />
         ))}
       </div>
     </div>

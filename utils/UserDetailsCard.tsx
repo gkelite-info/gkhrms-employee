@@ -3,33 +3,43 @@ import { MapPin, Moon, Sun } from "phosphor-react"
 import React, { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import MicrCircle from "./MicrCircle"
-import axios from "axios"
-import { origin } from "@/api-requests/config"
+import { getEmployeeProfile } from "@/api-requests/employeeApi"
+
+interface Person {
+  location: string;
+  firstname: string;
+}
 
 const UserDetailsCard = () => {
   const [today, setToday] = useState("")
   const [timeString, setTimeString] = useState("")
   const [isDaytime, setIsDaytime] = useState(true)
-  const [firstname, setFirstname] = useState('');
+  const [profile, setProfile] = useState<Person | null>(null);
+
 
   useEffect(() => {
-    const fetchProfile = async () => {
+    const fetchData = async () => {
       try {
-        const token = localStorage.getItem('token');
-        if (!token) return;
+        const employeeId = localStorage.getItem("employeeId");
 
-        const { data } = await axios.get(`${origin}/api/v1/employee/profile`, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        if (!employeeId) {
+          console.error("Employee not found")
+          return
+        }
 
-        setFirstname(data.employee.firstname);
-      } catch (err) {
-        console.error('Failed to fetch profile', err);
+        const data = await getEmployeeProfile(employeeId);
+
+        setProfile(data);
+
+      } catch (error) {
+        console.error("Failed to fetch Data", error)
+        return
       }
-    };
+    }
+    fetchData()
+  }, [])
 
-    fetchProfile();
-  }, []);
+
 
   useEffect(() => {
     const now = new Date()
@@ -79,7 +89,8 @@ const UserDetailsCard = () => {
         </div>
         <div className="w-[85%] flex flex-col pt-2">
           <h2 className="text-[#323232] text-3xl font-semibold">
-            Hii {firstname ? `, ${firstname}` : "!"}
+            {/* Hii {firstname ? `, ${firstname}` : "!"} */}
+            Hii {profile?.firstname} !
           </h2>
           <div className="flex items-end justify-between pr-10">
             <p className="text-[#4B4B4B] text-xs mt-1">
@@ -91,7 +102,7 @@ const UserDetailsCard = () => {
           <div className="flex w-full mt-2 gap-4">
             <div className="flex items-center gap-2 w-[20%]">
               <MapPin size={15} weight="fill" className="text-[#323232]" />
-              <p className="text-[#323232] text-xs font-medium">Location</p>
+              <p className="text-[#323232] text-xs font-medium">{profile?.location}</p>
             </div>
             <div className="flex items-center w-[80%] px-3 gap-2">
               {isDaytime ? (
