@@ -14,7 +14,7 @@ export default function Table({ columns, data }: TableProps) {
             {columns.map((col) => (
               <th
                 key={col}
-                className="text-left px-4 py-2 border-b border-gray-300"
+                className="text-left px-4 py-3 border-b border-gray-300 font-semibold whitespace-nowrap"
               >
                 {col}
               </th>
@@ -26,7 +26,7 @@ export default function Table({ columns, data }: TableProps) {
           {data.map((row, index) => (
             <tr key={index} className="hover:bg-gray-50">
               {columns.map((col) => (
-                <td key={col} className="px-4 py-2 border-b border-gray-200">
+                <td key={col} className="px-4 py-3 border-b border-gray-200 whitespace-nowrap">
                   {row[col] ?? "-"}
                 </td>
               ))}

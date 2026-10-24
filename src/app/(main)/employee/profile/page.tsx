@@ -1,18 +1,12 @@
-import Phase2 from "./phase-2/page";
-import ProfileAndTimeline from "./profileAndBasic";
+"use client"
 
+import React from "react"
+import EmployeeProfileView from "../components/profile/EmployeeProfileView"
 
-
-export default function Profile() {
-    return (
-        <>
-            <div className="bg-red-00 p-3 flex">
-                <div className="flex w-[100%] rounded-lg flex flex-col">
-                    {/* <EmployeeProfile employeeId="2"/> */}
-                    <ProfileAndTimeline />
-                    <Phase2 />
-                </div>
-            </div>
-        </>
-    )
+export default function EmployeeProfilePage() {
+  return (
+    <div className="w-full max-w-full min-w-0 flex flex-col px-4 sm:px-6 md:px-8 py-3.5 sm:py-4">
+      <EmployeeProfileView />
+    </div>
+  )
 }

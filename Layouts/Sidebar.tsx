@@ -5,10 +5,16 @@ import { usePathname } from "next/navigation"
 import { roleBasedNav } from "./RoleBasedLink"
 import { RootState } from "../Redux/Store"
 import { useSelector } from "react-redux"
+import EmployeeSidebar from "./EmployeeSidebar"
 
 export default function Sidebar() {
 	const pathname = usePathname()
 	const { role } = useSelector((state: RootState) => state.auth) 
+
+	// If currently on an employee route or authenticated as employee, use dedicated Employee nav bar
+	if (pathname?.startsWith("/employee") || role === "Employee") {
+		return <EmployeeSidebar />
+	}
 
 	const navItems = roleBasedNav[role ?? "Hr"] || [] 
 

@@ -6,7 +6,8 @@ interface ProgressBarProps {
   percent: number
   fromColor: string
   toColor: string
-  label: string
+  label?: string
+  onClick?: () => void
 }
 
 const ProgressBar: React.FC<ProgressBarProps> = ({
@@ -14,9 +15,15 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
   fromColor,
   toColor,
   label,
+  onClick,
 }) => {
   return (
-    <div className="bg-[#E6E6E6] h-6 w-full rounded-r-full overflow-hidden">
+    <div
+      onClick={onClick}
+      className={`bg-[#E6E6E6] h-6 w-full rounded-r-full overflow-hidden ${
+        onClick ? "cursor-pointer hover:opacity-90 transition-opacity" : ""
+      }`}
+    >
       <motion.div
         className={`h-full rounded-r-full bg-gradient-to-r ${fromColor} ${toColor}`}
         initial={{ width: "0%" }}

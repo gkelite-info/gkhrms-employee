@@ -11,7 +11,7 @@ export default function MainLayout({
       <Header />
       <div className="w-full h-[calc(100%-70px)] flex items-start">
         <Sidebar />
-        <main className="h-full w-[calc(100%-100px)] flex flex-col overflow-y-auto scrollbar-hide">
+        <main className="h-full flex-1 min-w-0 flex flex-col overflow-y-auto overflow-x-hidden scrollbar-hide">
           {children}
         </main>
       </div>

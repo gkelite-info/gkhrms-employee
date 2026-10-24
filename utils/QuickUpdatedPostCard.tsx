@@ -1,3 +1,4 @@
+"use client"
 import {
   ChatCircleDots,
   Eye,
@@ -7,9 +8,26 @@ import {
   Repeat,
   ShareNetwork,
 } from "phosphor-react"
-import React from "react"
+import React, { useState, useEffect } from "react"
+import LikedByModal from "./LikedByModal"
+import CommentsModal from "./CommentsModal"
 
 const QuickUpdatedPostCard = () => {
+  const [isLikedByOpen, setIsLikedByOpen] = useState(false)
+  const [isCommentsOpen, setIsCommentsOpen] = useState(false)
+
+  // Open modal if URL has ?likedBy=true or ?comments=true
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const searchParams = new URLSearchParams(window.location.search)
+      if (searchParams.get("likedBy") === "true") {
+        setIsLikedByOpen(true)
+      }
+      if (searchParams.get("comments") === "true" || searchParams.get("comment") === "true") {
+        setIsCommentsOpen(true)
+      }
+    }
+  }, [])
   return (
     <div className="shadow-md h-76 w-[95%] bg-[#F9FAFB] mt-2 rounded-lg">
       <div className="bg-red-00 h-[15%] flex items-center justify-between px-3 py-2 rounded-t-lg">
@@ -52,11 +70,17 @@ const QuickUpdatedPostCard = () => {
           />
         </div>
         <div className="bg-red-00 mt-3 flex items-center justify-center gap-7 w-[100%]">
-          <div className="flex flex-col items-center justify-center">
-            <Heart size={20} color="#1C2334" className="cursor-pointer" />
-            <p className="text-xs text-[#1C2334] cursor-pointer">Like</p>
+          <div
+            onClick={() => setIsLikedByOpen(true)}
+            className="flex flex-col items-center justify-center cursor-pointer hover:opacity-80 transition-opacity"
+          >
+            <Heart size={20} color="#1C2334" />
+            <p className="text-xs text-[#1C2334]">Like</p>
           </div>
-          <div className="flex flex-col items-center justify-center">
+          <div
+            onClick={() => setIsCommentsOpen(true)}
+            className="flex flex-col items-center justify-center cursor-pointer hover:opacity-80 transition-opacity"
+          >
             <ChatCircleDots
               size={20}
               color="#1C2334"
@@ -78,6 +102,19 @@ const QuickUpdatedPostCard = () => {
           </div>
         </div>
       </div>
+
+      {/* Liked By Modal (Matches Screenshot) */}
+      <LikedByModal
+        isOpen={isLikedByOpen}
+        onClose={() => setIsLikedByOpen(false)}
+        totalCount={23}
+      />
+
+      {/* Comments Modal (Matches Screenshot) */}
+      <CommentsModal
+        isOpen={isCommentsOpen}
+        onClose={() => setIsCommentsOpen(false)}
+      />
     </div>
   )
 }
