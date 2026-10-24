@@ -2,14 +2,21 @@
 
 import { PieChart, Pie, Cell } from "recharts"
 
-export default function PercentPie() {
+interface PercentPieProps {
+  onClick?: () => void
+}
+
+export default function PercentPie({ onClick }: PercentPieProps = {}) {
   const data = [
     { name: "Complete", value: 95 },
     { name: "Remaining", value: 5 },
   ]
 
   return (
-    <div className="flex items-center mt-4 justify-center">
+    <div
+      onClick={onClick}
+      className={`flex items-center mt-4 justify-center ${onClick ? "cursor-pointer" : ""}`}
+    >
       <div className="relative w-40 h-40">
         <PieChart width={160} height={160}>
           <defs>

@@ -1,99 +1,126 @@
-'use client'
-import { useState } from "react";
-import Cards from "../components/cards/card";
-import AttendanceTable from "../components/attendancetable/table";
+"use client"
 
+import React, { useState, useEffect } from "react"
+import { useRouter } from "next/navigation"
+import EmployeeMeTabs, { MeTabType } from "../components/me/EmployeeMeTabs"
+import EmployeeMetricsRow from "../components/me/EmployeeMetricsRow"
+import EmployeeOperationsRow from "../components/me/EmployeeOperationsRow"
+import EmployeeLeaveBalance from "../components/me/EmployeeLeaveBalance"
+import EmployeeAttendanceLogTable from "../components/me/EmployeeAttendanceLogTable"
+import EmployeePerformanceDetail from "../components/me/EmployeePerformanceDetail"
+import EmployeeTimesheetView from "../components/me/EmployeeTimesheetView"
+import EmployeeProjectTimeOverview from "../components/me/EmployeeProjectTimeOverview"
+import EmployeeExpensesView from "../components/me/EmployeeExpensesView"
+import EmployeeTicketsView from "../components/tickets/EmployeeTicketsView"
 
 export default function EmployeeMe() {
+  const router = useRouter()
+  const [activeTab, setActiveTab] = useState<MeTabType>("overview")
 
-  const [is24, setIs24] = useState(true);
-  const [activeTab, setActiveTab] = useState("log");
-  const [activeButton, setActiveButton] = useState("30 DAYS");
+  useEffect(() => {
+    const syncTabFromUrl = () => {
+      if (typeof window === "undefined") return
+      const params = new URLSearchParams(window.location.search)
+      const tabParam = (params.get("tab") || params.get("view") || "").toLowerCase()
+      const subtabParam = params.get("subtab")
+      if (subtabParam) {
+        setActiveTab("expenses_travel")
+      } else if (tabParam === "timesheet") {
+        setActiveTab("timesheet")
+      } else if (tabParam === "performance" || tabParam === "monthly_performance" || tabParam === "monthly-performance") {
+        setActiveTab("monthly_performance")
+      } else if (tabParam === "project_time" || tabParam === "project_overview" || tabParam === "project-time") {
+        setActiveTab("project_time")
+      } else if (tabParam === "expenses" || tabParam === "expenses_travel" || tabParam === "expenses-travel") {
+        setActiveTab("expenses_travel")
+      } else if (tabParam === "tickets") {
+        setActiveTab("tickets" as any)
+      } else if (tabParam === "overview") {
+        setActiveTab("overview")
+      }
+    }
 
+    syncTabFromUrl()
+    window.addEventListener("popstate", syncTabFromUrl)
+    return () => window.removeEventListener("popstate", syncTabFromUrl)
+  }, [])
 
-  const tabs = [
-    { key: "log", label: "Attendance Log" },
-    { key: "cal", label: "Calendar" },
-    { key: "req", label: "Attendance Requests" },
-  ];
+  const handleSelectTab = (tab: MeTabType) => {
+    setActiveTab(tab)
+    if (tab === "timesheet") {
+      router.push("/employee/me/timesheet")
+    } else if (tab === "overview") {
+      router.push("/employee/me")
+    } else if (tab === "project_time") {
+      router.push("/employee/me/project-time")
+    } else if (tab === "monthly_performance") {
+      router.push("/employee/me/monthly-performance")
+    } else if (tab === "expenses_travel") {
+      router.push("/employee/me/expenses")
+    }
+  }
 
-  const btns = [
-    { key: "30 DAYS", label: "30 DAYS" },
-    { key: "jan", label: "JAN" },
-    { key: "feb", label: "FEB" },
-    { key: "mar", label: "MAR" },
-    { key: "apr", label: "APR" },
-    { key: "may", label: "MAY" },
-    { key: "jun", label: "JUN" },
+  const handleSelectPerformance = () => {
+    setActiveTab("monthly_performance")
+    router.push("/employee/me/monthly-performance")
+  }
 
-  ];
+  const handleBackToOverview = () => {
+    setActiveTab("overview")
+    router.push("/employee/me")
+  }
 
   return (
-    <>
-      <div className="bg-red-00 flex flex-col">
-        <div className="bg-gray-00 h-40 flex items-center justify-between p-3">
-          <Cards />
-        </div>
-        <div className="bg-blue-00 p-3 flex flex-col">
-          <div className="bg-red-00 flex justify-between">
-            <p className="text-[#323232] font-semibold">Logs & Requests</p>
-            <div className="bg-green-00 w-[14%]">
-              <label className="relative inline-flex items-center cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={is24}
-                  onChange={() => setIs24(!is24)}
-                  className="sr-only peer"
-                />
-                <div className="w-12 h-6 bg-gray-300 peer-focus:outline-none rounded-full
-                        peer peer-checked:bg-indigo-600 transition-colors duration-300" />
-                <div className="absolute left-0.5 top-0.5 bg-white w-5 h-5 rounded-full
-                        transition-transform duration-300
-                        peer-checked:translate-x-6" />
-                <span className="ml-3 text-sm font-medium text-[#323232] font-medium">
-                  {is24 ? "24 hrs format" : "12 hrs format"}
-                </span>
-              </label>
-            </div>
-          </div>
-          <div className="bg-white rounded-lg p-3 shadow-md">
-            <div className="bg-[#EAEAEA] h-10 flex">
-              {tabs.map(tab => (
-                <button
-                  key={tab.key}
-                  onClick={() => setActiveTab(tab.key)}
-                  className={`
-              h-full w-[15%] flex items-center justify-center cursor-pointer
-              ${activeTab === tab.key ? "bg-[#E1DFFB]" : "bg-[#EAEAEA]"}
-            `}
-                >
-                  <p className="text-[#323232] font-medium text-sm">{tab.label}</p>
-                </button>
-              ))}
-            </div>
-            <div className="bg-green-00 h-10 flex items-center justify-between px-3 mt-1">
-              <h3 className="text-[#585858] text-sm">Last 30 Days</h3>
-              <div className="w-[60%] bg-red-00 gap-4 h-[100%] flex items-center">
-                {btns.map((btn) => (
-                  <button
-                    key={btn.key}
-                    onClick={() => setActiveButton(btn.key)}
-                    className={`
-        h-[75%] rounded-lg w-[15%] flex items-center cursor-pointer text-sm justify-center
-        ${activeButton === btn.key ? "bg-[#7D73E3] text-white" : "bg-[#E1DFFB] text-[#323232]"}
-      `}
-                  >
-                    {btn.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-            <div className="bg-pink-00 px-3">
-              <AttendanceTable />
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
+    <div className="w-full max-w-full min-w-0 flex flex-col p-3 sm:p-4 md:p-6 pb-20 sm:pb-24 gap-4 sm:gap-5">
+      {/* Top Tab Bar (Matching Image-2 and Image-3) */}
+      <EmployeeMeTabs activeTab={activeTab} onSelectTab={handleSelectTab} />
+
+      {/* Tab Content */}
+      {activeTab === "timesheet" && (
+        /* Timesheet Screen (Image-3) */
+        <EmployeeTimesheetView />
+      )}
+
+      {activeTab === "project_time" && (
+        /* Project Time Overview Screen (Image-2) */
+        <EmployeeProjectTimeOverview />
+      )}
+
+      {activeTab === "monthly_performance" && (
+        /* Monthly Performance Detail Screen (Matches user screenshot) */
+        <EmployeePerformanceDetail />
+      )}
+
+      {activeTab === "expenses_travel" && (
+        /* Expenses & Travel Screen (Matches user screenshot) */
+        <EmployeeExpensesView onAddMore={() => router.push("/employee/me/tickets")} />
+      )}
+
+      {(activeTab as string) === "tickets" && (
+        /* Open Tickets & ClosedTickets Screen (Image-2) */
+        <EmployeeTicketsView onBack={() => handleSelectTab("expenses_travel")} />
+      )}
+
+      {activeTab === "overview" && (
+        /* Overview Screen (Image-2 from previous turn) */
+        <>
+          {/* 1. Top 4 Metric Cards (Alexander, Attendance 95%, Attendance Requests, Performance 95%) */}
+          <EmployeeMetricsRow
+            onSelectPerformance={handleSelectPerformance}
+          />
+
+          {/* 2. 3 Operations Cards (Attendance Stats, Clickable Timings card, Actions with live digital clock & Remote Check-Out) */}
+          <EmployeeOperationsRow
+            onSelectTimings={() => handleSelectTab("timesheet")}
+          />
+
+          {/* 3. Leave Balance (5 gradient progress capsules: Sick, Paid, Holidays, Unpaid, Vacation) */}
+          <EmployeeLeaveBalance />
+
+          {/* 4. Attendance Log Section (30 DAYS, JUN, MAY, etc., and 12-column table with 18 records & mood smileys) */}
+          <EmployeeAttendanceLogTable />
+        </>
+      )}
+    </div>
   )
 }

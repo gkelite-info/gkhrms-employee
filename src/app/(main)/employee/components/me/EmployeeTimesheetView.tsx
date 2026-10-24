@@ -1,0 +1,184 @@
+"use client"
+
+import React from "react"
+import { CalendarBlank } from "phosphor-react"
+import ReusableTable from "@/components/reusableComponents/ReusableTable"
+
+interface TimesheetRecord {
+  date: string
+  taskSummary: string
+  pending: string
+  comment: string
+}
+
+const timesheetData: TimesheetRecord[] = [
+  {
+    date: "22 Aug 2025",
+    taskSummary: "Created wireframes for HRMS",
+    pending: "Review from manager",
+    comment: "Shared in Figma link",
+  },
+  {
+    date: "21 Aug 2025",
+    taskSummary: "Designed dashboard UI",
+    pending: "Need stakeholder feedback",
+    comment: "Uploaded latest vers....",
+  },
+  {
+    date: "20 Aug 2025",
+    taskSummary: "Conducted user testing (mock)",
+    pending: "Report preparation pending",
+    comment: "Collected initial feed...",
+  },
+  {
+    date: "19 Aug 2025",
+    taskSummary: "Updated style guide",
+    pending: "Color palette finalization",
+    comment: "Waiting for brand tea...",
+  },
+  {
+    date: "18 Aug 2025",
+    taskSummary: "Timesheet update",
+    pending: "None",
+    comment: "Submitted before EOD",
+  },
+  {
+    date: "17 Aug 2025",
+    taskSummary: "Created wireframes for HRMS",
+    pending: "Review from manager",
+    comment: "Shared in Figma link",
+  },
+  {
+    date: "16 Aug 2025",
+    taskSummary: "Designed dashboard UI",
+    pending: "Need stakeholder feedback",
+    comment: "Uploaded latest vers....",
+  },
+  {
+    date: "15 Aug 2025",
+    taskSummary: "Conducted user testing (mock)",
+    pending: "Report preparation pending",
+    comment: "Collected initial feed...",
+  },
+  {
+    date: "14 Aug 2025",
+    taskSummary: "Updated style guide",
+    pending: "Color palette finalization",
+    comment: "Waiting for brand tea...",
+  },
+  {
+    date: "12 Aug 2025",
+    taskSummary: "Timesheet update",
+    pending: "None",
+    comment: "Submitted before EOD",
+  },
+  {
+    date: "11 Aug 2025",
+    taskSummary: "Updated style guide",
+    pending: "Color palette finalization",
+    comment: "Waiting for brand tea...",
+  },
+  {
+    date: "10 Aug 2025",
+    taskSummary: "Timesheet update",
+    pending: "None",
+    comment: "Submitted before EOD",
+  },
+]
+
+export default function EmployeeTimesheetView() {
+  return (
+    <div className="w-full max-w-full flex flex-col gap-4 sm:gap-5">
+      {/* 1. Top 4 Summary Cards (Responsive 1-col mobile, 2-col tablet, 4-col desktop) */}
+      <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+        {/* Card 1: Name, Employee ID, Manager */}
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-3.5 sm:p-4 md:p-5 flex flex-col justify-between min-h-[105px]">
+          <div>
+            <span className="text-[11px] sm:text-xs font-bold text-gray-500">Name</span>
+            <h4 className="text-sm font-semibold text-gray-800 leading-tight">Alexander</h4>
+          </div>
+          <div className="flex items-center justify-between pt-2">
+            <div>
+              <span className="text-[10px] sm:text-[11px] font-bold text-gray-500 block">Employee ID</span>
+              <span className="text-xs font-medium text-gray-700">0903672</span>
+            </div>
+            <div>
+              <span className="text-[10px] sm:text-[11px] font-bold text-gray-500 block">Manager</span>
+              <span className="text-xs font-medium text-gray-700">John Doe</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Card 2: Project Name */}
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-3.5 sm:p-4 md:p-5 flex flex-col justify-between min-h-[105px]">
+          <h3 className="text-sm sm:text-base font-bold text-[#1F2937]">Project Name</h3>
+          <p className="text-xs md:text-sm font-medium text-gray-600 mt-2">Lorem Ipsum</p>
+        </div>
+
+        {/* Card 3: Date & Time */}
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-3.5 sm:p-4 md:p-5 flex flex-col justify-between min-h-[105px]">
+          <h3 className="text-sm sm:text-base font-bold text-[#1F2937]">Date & Time</h3>
+          <div className="flex flex-col gap-0.5 mt-2">
+            <span className="text-xs font-semibold text-gray-800">
+              Date : <span className="font-normal text-gray-600">09/09/2025</span>
+            </span>
+            <span className="text-xs font-semibold text-gray-800">
+              Time: <span className="font-normal text-gray-600">10:30 AM</span>
+            </span>
+          </div>
+        </div>
+
+        {/* Card 4: Timesheets Date Range & Calendar */}
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-3.5 sm:p-4 md:p-5 flex items-center justify-between min-h-[105px]">
+          <div className="flex flex-col justify-between h-full">
+            <h3 className="text-sm sm:text-base font-bold text-[#1F2937]">Timesheets</h3>
+            <div className="flex flex-col text-[11px] text-gray-600 mt-1 leading-tight">
+              <span>Start Date : 18 Aug 2025</span>
+              <span className="text-gray-400 pl-4 py-0.5">To</span>
+              <span>End Date : 24 Aug 2025</span>
+            </div>
+          </div>
+          <div className="flex-shrink-0 text-[#1F2937] ml-2">
+            <CalendarBlank size={30} weight="regular" />
+          </div>
+        </div>
+      </div>
+
+      {/* 2. Timesheet Table using ReusableTable with Ash / Yeash Header */}
+      <div className="w-full max-w-full bg-white rounded-2xl shadow-sm border border-gray-100 p-3 sm:p-4 md:p-6 overflow-hidden">
+        <ReusableTable
+          columns={[
+            {
+              header: "Date",
+              accessor: "date",
+              className: "text-gray-700 font-medium py-3 px-3 sm:px-4 whitespace-nowrap",
+              headerClassName: "py-2.5 px-3 sm:px-4",
+            },
+            {
+              header: "Task Summary",
+              accessor: "taskSummary",
+              className: "text-gray-700 font-medium py-3 px-3 sm:px-4",
+              headerClassName: "py-2.5 px-3 sm:px-4",
+            },
+            {
+              header: "Pending",
+              accessor: "pending",
+              className: "text-gray-700 font-medium py-3 px-3 sm:px-4 whitespace-nowrap",
+              headerClassName: "py-2.5 px-3 sm:px-4",
+            },
+            {
+              header: "Comment",
+              accessor: "comment",
+              className: "text-gray-700 font-medium py-3 px-3 sm:px-4",
+              headerClassName: "py-2.5 px-3 sm:px-4",
+            },
+          ]}
+          data={timesheetData}
+          headerBgColor="#EAE8E4"
+          headerTextColor="#1F2937"
+          headerRounded="rounded-xl"
+        />
+      </div>
+    </div>
+  )
+}

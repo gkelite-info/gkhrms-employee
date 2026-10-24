@@ -1,6 +1,8 @@
 "use client"
-import React from "react"
+import React, { useState } from "react"
 import { ChatCircleDots, Heart, Repeat, ShareNetwork } from "phosphor-react"
+import LikedByModal from "./LikedByModal"
+import CommentsModal from "./CommentsModal"
 
 type PostAction = {
   icon: React.ReactNode
@@ -19,15 +21,20 @@ const PostItem: React.FC<PostItemProps> = ({
   imageUrl,
   actions = [],
 }) => {
+  const [isLikedByOpen, setIsLikedByOpen] = useState(false)
+  const [isCommentsOpen, setIsCommentsOpen] = useState(false)
+
   // Default actions if none provided
   const defaultActions: PostAction[] = [
     {
       icon: <Heart size={20} weight="regular" color="#1C2334" />,
       label: "Like",
+      onClick: () => setIsLikedByOpen(true),
     },
     {
       icon: <ChatCircleDots size={20} color="#1C2334" />,
       label: "Comment",
+      onClick: () => setIsCommentsOpen(true),
     },
     {
       icon: <Repeat size={20} color="#1C2334" />,
@@ -60,8 +67,15 @@ const PostItem: React.FC<PostItemProps> = ({
           {finalActions.map((action, idx) => (
             <div
               key={idx}
-              className="flex flex-col items-center justify-center cursor-pointer"
-              onClick={action.onClick}
+              className="flex flex-col items-center justify-center cursor-pointer hover:opacity-80 transition-opacity"
+              onClick={
+                action.onClick ||
+                (action.label === "Like"
+                  ? () => setIsLikedByOpen(true)
+                  : action.label === "Comment"
+                  ? () => setIsCommentsOpen(true)
+                  : undefined)
+              }
             >
               {action.icon}
               <p className="text-xs text-[#1C2334]">{action.label}</p>
@@ -69,6 +83,17 @@ const PostItem: React.FC<PostItemProps> = ({
           ))}
         </div>
       </div>
+
+      <LikedByModal
+        isOpen={isLikedByOpen}
+        onClose={() => setIsLikedByOpen(false)}
+        totalCount={23}
+      />
+
+      <CommentsModal
+        isOpen={isCommentsOpen}
+        onClose={() => setIsCommentsOpen(false)}
+      />
     </div>
   )
 }

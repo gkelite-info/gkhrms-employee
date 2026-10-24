@@ -13,6 +13,8 @@ import {
   Lock,
   Plugs,
   ChatsCircle,
+  TrendUp,
+  ChatCircleDots,
 } from "phosphor-react"
 import { Roles } from "../features/Auth/Slice/loginType"
 
@@ -62,12 +64,13 @@ export const roleBasedNav: Record<
     { label: "Me", href: "/employee/me", icon: User },
     { label: "My Team", href: "/employee/myteam", icon: UsersThree },
     {
-      label: "My Finance",
+      label: "Finance & Payroll",
       href: "/employee/finance",
       icon: CurrencyCircleDollar,
     },
     { label: "Org", href: "/employee/org", icon: Buildings },
-    { label: "Engage", href: "/employee/engage", icon: ChatsCircle },
+    { label: "Performance", href: "/employee/performance", icon: TrendUp },
+    { label: "Engage", href: "/employee/engage", icon: ChatCircleDots },
   ],
   Hr: [
     { label: "Home", href: "/", icon: House },

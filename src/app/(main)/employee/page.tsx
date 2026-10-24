@@ -8,6 +8,7 @@ import {
 } from "phosphor-react"
 import { useEffect, useState } from "react"
 import TaskCard from "../../../../utils/taskCard"
+import EmployeeTasks from "./components/EmployeeTasks"
 import MyTeam from "../../../../utils/myTeam"
 import PostUploadCard from "../../../../utils/PostUploadCard"
 import BirthdatNewJoinCount from "../../../../utils/BirthdatNewJoinCount"
@@ -34,29 +35,32 @@ export default function Dashboard() {
   const [today, setToday] = useState("")
   const [timeString, setTimeString] = useState("")
   const [isDaytime, setIsDaytime] = useState(true)
-  const [profile, setProfile] = useState<Person | null>(null);
+  const [profile, setProfile] = useState<Person | null>({
+    firstname: "Employee",
+    location: "Hyderabad",
+  });
 
   useEffect(() => {
     const fetchProfile = async () => {
       try {
+        if (typeof window === "undefined") return;
         const employeeId = localStorage.getItem("employeeId");
+        const token = localStorage.getItem("token");
 
-        if (!employeeId) {
-          console.error("Employee not found")
-          return
+        if (!employeeId || !token) {
+          return;
         }
 
-        const data = await getEmployeeProfile(employeeId)
-
-        setProfile(data)
-
+        const data = await getEmployeeProfile(employeeId);
+        if (data) {
+          setProfile(data);
+        }
       } catch (error) {
-        console.error("Failed to fetch details", error)
-        return
+        console.warn("Could not fetch employee profile details:", error);
       }
-    }
-    fetchProfile()
-  }, [])
+    };
+    fetchProfile();
+  }, []);
 
 
   useEffect(() => {
@@ -103,7 +107,7 @@ export default function Dashboard() {
           </div>
           <div className="w-[85%] flex flex-col pt-2">
             <h2 className="text-[#323232] text-3xl font-semibold">
-              Hii {profile?.firstname} !
+              Hii {profile?.firstname || "Employee"} !
             </h2>
             <div className="flex items-end justify-between pr-10">
               <p className="text-[#4B4B4B] text-xs mt-1">
@@ -115,7 +119,7 @@ export default function Dashboard() {
             <div className="flex w-full mt-2 gap-4">
               <div className="flex items-center gap-2 w-[20%]">
                 <MapPin size={15} weight="fill" className="text-[#323232]" />
-                <p className="text-[#323232] text-xs font-medium">{profile?.location}</p>
+                <p className="text-[#323232] text-xs font-medium">{profile?.location || "Hyderabad"}</p>
               </div>
               <div className="flex items-center w-[80%] px-3 gap-2">
                 {isDaytime ? (
@@ -243,15 +247,8 @@ export default function Dashboard() {
             </div>
           </div>
         </div>
-        <div className="bg-red-400 rounded-lg flex flex-col justify-center items-between h-95 w-[95%] mt-2">
-          <TaskCard
-            style="w-[100%]"
-            gapStyle="w-[14%]"
-            rounded="rounded-t-lg"
-            boxShadow="shadow-md"
-            customHeight="h-[70%]"
-          />
-          <PendingTaskCard style="w-[100%]" rounded="rounded-b-lg" />
+        <div className="w-[95%] mt-2">
+          <EmployeeTasks />
         </div>
         <MeetingCalendarComp />
         <div className="bg-[#F9FAFB] rounded-lg flex flex-col items-center h-85 w-[95%] mt-2 shadow-md pt-3 p-3">
