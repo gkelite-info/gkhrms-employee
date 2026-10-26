@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit"
 import storage from "redux-persist/lib/storage"
 import { persistReducer, persistStore } from "redux-persist"
 import { combineReducers } from "redux"
-import authReducer from "../features/Auth/Slice/loginSlice"
+import authReducer from "../Features/Auth/Slice/loginSlice"
 
 const persistConfig = {
   key: "root",

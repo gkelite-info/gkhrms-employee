@@ -42,6 +42,59 @@ body {
   scrollbar-width: none;
 }
 
+/* Reusable Custom Scrollbar - apply .custom-scrollbar anywhere in the project */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #C5C1FF transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  display: block !important;
+  width: 6px;
+  height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 9999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #C5C1FF;
+  border-radius: 9999px;
+  transition: background-color 0.2s ease;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #5B50EC;
+}
+
+/* Reusable Purple Scrollbar - apply .scrollbar-purple anywhere */
+.scrollbar-purple {
+  scrollbar-width: thin;
+  scrollbar-color: #8570EE #F1F0FD;
+}
+
+.scrollbar-purple::-webkit-scrollbar {
+  display: block !important;
+  width: 5px;
+  height: 5px;
+}
+
+.scrollbar-purple::-webkit-scrollbar-track {
+  background: #F1F0FD;
+  border-radius: 9999px;
+}
+
+.scrollbar-purple::-webkit-scrollbar-thumb {
+  background: #8570EE;
+  border-radius: 9999px;
+}
+
+.scrollbar-purple::-webkit-scrollbar-thumb:hover {
+  background: #5B50EC;
+}
+
 .react-calendar__tile--now,
 .react-calendar__tile--active {
   border-radius: 25px;
@@ -69,10 +122,12 @@ body {
   font-size: 0.600rem;
 }
 
-
-
-
-/* 
-* {
-  border: 1px solid red;
-} */
+.no-spinner::-webkit-inner-spin-button,
+.no-spinner::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.no-spinner {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}

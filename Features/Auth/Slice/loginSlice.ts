@@ -33,7 +33,7 @@ const initialState: AuthState = {
 	photoURL: null
 }
 
-const validRoles: Roles[] = ["Employee", "Hr", "Manager", "Admin"]
+const validRoles: Roles[] = ["Employee", "Hr", "Manager", "Admin", "TeamLead"]
 
 function isValidRole(role: string): role is Roles {
 	return validRoles.includes(role as Roles)

@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from "react"
 import { AppDispatch } from "../../../Redux/Store"
 import { useDispatch } from "react-redux"
-import { userLogin } from "../slice/loginSlice"
+import { userLogin } from "../Slice/loginSlice"
 import { useRouter } from "next/navigation"
 export type loginData = {
   email: string
@@ -38,6 +38,9 @@ export const useLogin = () => {
           break
         case "Admin":
           router.push("/admin")
+          break
+        case "TeamLead":
+          router.push("/teamlead")
           break
         default:
           router.push("/login")

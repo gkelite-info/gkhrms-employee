@@ -1,7 +1,5 @@
 "use client"
 
-import React from "react"
-
 export interface TableColumn<T> {
   key?: string
   header: string
@@ -66,14 +64,15 @@ export default function ReusableTable<T>({
             {columns.map((col, index) => {
               const isFirst = index === 0
               const isLast = index === columns.length - 1
+              const colKey = col.key || (col.accessor ? String(col.accessor) : `col-${index}`)
               return (
                 <th
-                  key={col.key || String(col.accessor) || index}
+                  key={colKey}
                   style={{
                     width: col.width || "auto",
                     color: headerTextColor,
                   }}
-                  className={`py-3 px-4 font-semibold text-xs tracking-tight select-none ${getAlignmentClass(
+                  className={`py-3 px-4 font-semibold text-xs tracking-tight select-none whitespace-nowrap ${getAlignmentClass(
                     col.align
                   )} ${isFirst ? "rounded-l-xl" : ""} ${
                     isLast ? "rounded-r-xl" : ""
@@ -105,10 +104,12 @@ export default function ReusableTable<T>({
                       ? (row[col.accessor] as unknown as React.ReactNode)
                       : null
 
+                    const cellKey = col.key || (col.accessor ? String(col.accessor) : `cell-${colIndex}`)
+
                     return (
                       <td
-                        key={col.key || String(col.accessor) || colIndex}
-                        className={`py-3.5 px-4 ${getAlignmentClass(col.align)} ${
+                        key={cellKey}
+                        className={`py-3.5 px-4 whitespace-nowrap ${getAlignmentClass(col.align)} ${
                           col.className || "text-gray-700"
                         }`}
                       >

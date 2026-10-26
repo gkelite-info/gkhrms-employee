@@ -1,13 +1,14 @@
 "use client"
 
-import { Bell, MagnifyingGlass, Tray } from "phosphor-react"
+import React, { useState } from "react"
+import { Bell, MagnifyingGlass, Tray, List } from "phosphor-react"
 import NotificationCount from "../../../utils/notificationCount"
-import { useState } from "react"
 import NotificationModal from "../../../utils/notificationModel"
 import InboxModal from "../../../utils/inboxModal"
 import { usePathname, useRouter } from "next/navigation"
 import { useSelector } from "react-redux"
 import { RootState } from "../../../Redux/Store"
+import ReusableAvatar from "../../../reusableComponents/ReusableAvatar"
 
 export default function MainNavbarHeader() {
   const router = useRouter()
@@ -19,8 +20,6 @@ export default function MainNavbarHeader() {
     (state: RootState) => state.auth
   )
 
-  const userInitial = fullname ? fullname.charAt(0).toUpperCase() : "A"
-
   const handleProfile = () => {
     const targetRole =
       (role && role.toLowerCase()) ||
@@ -30,68 +29,96 @@ export default function MainNavbarHeader() {
         ? "hr"
         : pathname?.startsWith("/manager")
         ? "manager"
+        : pathname?.startsWith("/teamlead")
+        ? "teamlead"
         : "employee")
     router.push(`/${targetRole}/profile`)
   }
 
   return (
     <>
-      <div className="w-full h-[70px] flex items-center bg-white border-b border-gray-100 select-none">
-        <div className="bg-white w-[108.5px] h-[100%] flex items-center justify-center border-r border-gray-100">
-          <img
-            src="/images/gkLogoblack.png"
-            alt="gkLogoblack.png"
-            className="w-[60%]"
-          />
-        </div>
-        <div className="bg-white h-[100%] w-[100%] flex items-center justify-between pr-4">
-          <div className="flex items-center justify-end h-[100%] w-[66%] gap-5">
-            <div className="flex items-center bg-[#C5C1FF] gap-3 h-[40px] w-[60%] rounded-full px-3">
-              <MagnifyingGlass
-                size={19}
-                weight="bold"
-                className="text-[#323232] cursor-pointer"
-              />
-              <input
-                placeholder="Search employees, Payroll , Leave, Performance"
-                className="text-[#323232] font-medium placeholder:text-[#4B5563] text-xs focus:outline-none w-full bg-transparent"
-              />
-            </div>
+      <header className="w-full h-[70px] flex items-center justify-between bg-white border-b border-gray-100 select-none px-2 sm:px-4 gap-2">
+        {/* Left: Logo & Mobile Menu Button */}
+        <div className="flex items-center gap-1 sm:gap-2 shrink-0">
+          <div className="w-[80px] sm:w-[108px] h-[70px] flex items-center justify-center border-r border-gray-100 pr-2 sm:pr-3">
+            <img
+              src="/images/gkLogoblack.png"
+              alt="GK HRMS"
+              className="w-full max-w-[85px] object-contain"
+            />
           </div>
 
-          {/* Icons */}
-          <div className="h-[100%] w-[12%] flex items-center justify-center gap-5">
-            <div className="relative h-[24px]">
-              <Bell
-                onClick={() => setShowModal(true)}
-                className="text-[#1E1D32] cursor-pointer h-6 w-6 hover:shadow-xl transition-all duration-200"
-              />
-              <NotificationCount count={100} />
-            </div>
-            <Tray
-              onClick={() => setShowIndex(true)}
-              className="text-[#1E1D32] cursor-pointer h-6 w-6 hover:shadow-xl transition-all duration-200"
-            />
-            <NotificationCount count={100} style="right-18 top-5" />
-            <div
-              className="h-9 w-9 flex items-center justify-center rounded-full cursor-pointer overflow-hidden border border-gray-200 hover:ring-2 hover:ring-[#8570EE] transition-all bg-purple-100 flex-shrink-0"
-              onClick={handleProfile}
-              title="Alexander - View Profile"
-              style={{ cursor: "pointer" }}
+          {pathname?.startsWith("/teamlead") && (
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new CustomEvent("toggle-teamlead-sidebar"))}
+              className="lg:hidden p-2 rounded-xl text-gray-700 hover:bg-gray-100 cursor-pointer flex items-center justify-center transition-colors"
+              aria-label="Toggle navigation menu"
             >
-              <img
-                src={photoURL || "/images/alexander.png"}
-                alt={fullname || "Alexander"}
-                className="h-full w-full object-cover rounded-full"
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  target.src = "/images/alexander.png";
-                }}
-              />
-            </div>
+              <List size={20} weight="bold" />
+            </button>
+          )}
+        </div>
+
+        {/* Center: Search input (Visible on md and larger screens) */}
+        <div className="hidden md:flex flex-1 items-center justify-center px-4 max-w-[500px]">
+          <div className="flex items-center bg-[#C5C1FF] gap-3 h-[40px] w-full rounded-full px-3.5">
+            <MagnifyingGlass
+              size={18}
+              weight="bold"
+              className="text-[#323232] cursor-pointer flex-shrink-0"
+            />
+            <input
+              placeholder="Search employees, Payroll, Leave, Performance"
+              className="text-[#323232] font-medium placeholder:text-[#4B5563] text-xs focus:outline-none w-full bg-transparent"
+            />
           </div>
         </div>
-      </div>
+
+        {/* Right: Notifications, Inbox, Profile Avatar */}
+        <div className="flex items-center justify-end gap-3 sm:gap-4 shrink-0">
+          {/* Notification Bell */}
+          <div className="relative flex items-center justify-center">
+            <button
+              type="button"
+              onClick={() => setShowModal(true)}
+              className="text-[#1E1D32] p-1.5 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer"
+              aria-label="Notifications"
+            >
+              <Bell size={20} weight="bold" />
+            </button>
+            <NotificationCount count={100} style="-top-1 -right-1" />
+          </div>
+
+          {/* Inbox Tray */}
+          <div className="relative flex items-center justify-center">
+            <button
+              type="button"
+              onClick={() => setShowIndex(true)}
+              className="text-[#1E1D32] p-1.5 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer"
+              aria-label="Inbox"
+            >
+              <Tray size={20} weight="bold" />
+            </button>
+            <NotificationCount count={100} style="-top-1 -right-1" />
+          </div>
+
+          {/* Reusable Profile Avatar */}
+          <ReusableAvatar
+            src={photoURL || "/images/alexander.png"}
+            name={fullname || "Alexander"}
+            size={36}
+            shape="circle"
+            showBorder={true}
+            borderColor="#E5E7EB"
+            onClick={handleProfile}
+            title={`${fullname || "Alexander"} - View Profile`}
+            className="hover:ring-2 hover:ring-[#8570EE] transition-all cursor-pointer"
+          />
+        </div>
+      </header>
+
+      {/* Modals */}
       <NotificationModal open={showModal} onClose={() => setShowModal(false)} />
       <InboxModal open={showIndex} onClose={() => setShowIndex(false)} />
     </>
