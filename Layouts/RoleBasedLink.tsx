@@ -15,8 +15,10 @@ import {
   ChatsCircle,
   TrendUp,
   ChatCircleDots,
+  ClipboardText,
+  ChartLineUp,
 } from "phosphor-react"
-import { Roles } from "../features/Auth/Slice/loginType"
+import { Roles } from "../Features/Auth/Slice/loginType"
 
 export const roleBasedNav: Record<
   Roles,
@@ -53,8 +55,8 @@ export const roleBasedNav: Record<
     },
   ],
   Manager: [
-    { label: "Home", href: "/dashboard", icon: House },
-    { label: "Me", href: "/manager_dash/details", icon: User },
+    { label: "Home", href: "/manager", icon: House },
+    { label: "Me", href: "/manager/details", icon: User },
     { label: "My Team", href: "/manager/my-team", icon: UsersThree },
     { label: "Reports", href: "/manager/reports", icon: Files },
     { label: "Org Engage", href: "/manager/org-engage", icon: Buildings },
@@ -91,5 +93,11 @@ export const roleBasedNav: Record<
       href: "/hr/analytics-reports",
       icon: ChartBar,
     },
+  ],
+  TeamLead: [
+    { label: "Attendance", href: "/teamlead", icon: UsersThree },
+    { label: "Requests", href: "/teamlead/requests", icon: ClipboardText },
+    { label: "Performance", href: "/teamlead/performance", icon: ChartLineUp },
+    { label: "Profile", href: "/teamlead/profile", icon: User },
   ],
 }

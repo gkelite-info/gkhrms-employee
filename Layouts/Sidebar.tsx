@@ -6,18 +6,30 @@ import { roleBasedNav } from "./RoleBasedLink"
 import { RootState } from "../Redux/Store"
 import { useSelector } from "react-redux"
 import EmployeeSidebar from "./EmployeeSidebar"
+import TeamLeadSidebar from "./TeamLeadSidebar"
 
 export default function Sidebar() {
 	const pathname = usePathname()
 	const { role } = useSelector((state: RootState) => state.auth) 
 
-	// If currently on an employee route or authenticated as employee, use dedicated Employee nav bar
+	if (pathname?.startsWith("/teamlead") || role === "TeamLead") {
+		return <TeamLeadSidebar />
+	}
+
 	if (pathname?.startsWith("/employee") || role === "Employee") {
 		return <EmployeeSidebar />
 	}
 
-	// const navItems = roleBasedNav[role ?? "Hr"] || []
-	const navItems = roleBasedNav[role ?? "Employee"] || [] // fallback to Employee (previously "Hr")
+	const activeRole =
+		pathname?.startsWith("/manager") || role === "Manager"
+			? "Manager"
+			: pathname?.startsWith("/admin") || role === "Admin"
+			? "Admin"
+			: pathname?.startsWith("/hr") || role === "Hr"
+			? "Hr"
+			: role ?? "Employee"
+
+	const navItems = roleBasedNav[activeRole] || []
 
 	return (
 		<div className="w-[100px] bg-white relative h-full flex flex-col items-center text-center gap-1">

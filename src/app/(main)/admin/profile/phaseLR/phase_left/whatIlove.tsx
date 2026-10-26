@@ -1,3 +1,5 @@
+"use client";
+
 import { getEmployeeProfil } from "@/api-requests/employeeApi";
 import { useEffect, useState } from "react";
 

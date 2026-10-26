@@ -4,8 +4,8 @@ import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { origin } from '@/api-requests/config';
 import { useDispatch } from 'react-redux';
-import { setRoleFromStorage, setTokenFromStorage } from '../../../../features/Auth/Slice/loginSlice';
-import { Roles } from '../../../../features/Auth/Slice/loginType';
+import { setRoleFromStorage, setTokenFromStorage } from '../../../../Features/Auth/Slice/loginSlice';
+import { Roles } from '../../../../Features/Auth/Slice/loginType';
 
 export default function Signin() {
 	const router = useRouter();
@@ -40,6 +40,8 @@ export default function Signin() {
 				roleForRedux = 'Hr';
 			} else if (apiRole === 'manager') {
 				roleForRedux = 'Manager';
+			} else if (apiRole === 'teamlead' || apiRole === 'team lead') {
+				roleForRedux = 'TeamLead';
 			}
 
 			if (roleForRedux) {
@@ -57,11 +59,11 @@ export default function Signin() {
 				router.push('/employee')
 			} else if (apiRole === 'hr') {
 				router.push('/hr')
-			}
-			else if (apiRole === 'manager') {
+			} else if (apiRole === 'manager') {
 				router.push('/manager')
-			}
-			else {
+			} else if (apiRole === 'teamlead' || apiRole === 'team lead') {
+				router.push('/teamlead')
+			} else {
 				router.push('/unauthorized')
 			}
 
