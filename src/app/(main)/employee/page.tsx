@@ -97,7 +97,7 @@ export default function Dashboard() {
   }, [])
 
   return (
-    <div className="flex justify-between">
+    <div className="flex justify-between pb-2">
       <div className="w-[60%] h-auto flex flex-col items-center overflow-y-auto">
         <div className="bg-red-00 flex h-31 w-[95%]">
           <div className="w-[15%] flex justify-center pl-2">

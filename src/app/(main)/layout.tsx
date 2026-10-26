@@ -1,3 +1,6 @@
+"use client"
+
+import { usePathname } from "next/navigation"
 import Header from "../../../Layouts/Header"
 import Sidebar from "../../../Layouts/Sidebar"
 
@@ -6,6 +9,13 @@ export default function MainLayout({
 }: {
   children: React.ReactNode
 }) {
+  const pathname = usePathname()
+  const isSuperAdmin = pathname?.startsWith("/superadmin")
+
+  if (isSuperAdmin) {
+    return <div className="w-full h-screen overflow-hidden">{children}</div>
+  }
+
   return (
     <div className="w-full h-[100vh] bg-gradient-to-b from-[#DEDCFA] to-[#F1F1FD] flex flex-col">
       <Header />

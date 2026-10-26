@@ -16,7 +16,8 @@ export default function Sidebar() {
 		return <EmployeeSidebar />
 	}
 
-	const navItems = roleBasedNav[role ?? "Hr"] || [] 
+	// const navItems = roleBasedNav[role ?? "Hr"] || []
+	const navItems = roleBasedNav[role ?? "Employee"] || [] // fallback to Employee (previously "Hr")
 
 	return (
 		<div className="w-[100px] bg-white relative h-full flex flex-col items-center text-center gap-1">
