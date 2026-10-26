@@ -23,12 +23,13 @@ export interface ReusableTableProps<T> {
   rowHover?: boolean
   keyExtractor?: (row: T, index: number) => string | number
   emptyMessage?: string
+  maxHeight?: string | number
 }
 
 export default function ReusableTable<T>({
   columns,
   data,
-  headerBgColor = "#EAE8E4", // Ash / yeash color matching design screenshot
+  headerBgColor = "#EAE8E4",
   headerTextColor = "#1F2937",
   headerRounded = "rounded-xl",
   showBorder = false,
@@ -37,6 +38,7 @@ export default function ReusableTable<T>({
   rowHover = true,
   keyExtractor,
   emptyMessage = "No data available",
+  maxHeight,
 }: ReusableTableProps<T>) {
   const getAlignmentClass = (align?: "left" | "center" | "right") => {
     switch (align) {
@@ -54,7 +56,10 @@ export default function ReusableTable<T>({
   )
 
   return (
-    <div className={`w-full overflow-x-auto ${containerClassName}`}>
+    <div
+      style={maxHeight ? { maxHeight } : undefined}
+      className={`w-full overflow-x-auto ${maxHeight ? "overflow-y-auto" : ""} table-scrollbar ${containerClassName}`}
+    >
       <table
         className={`w-full ${
           isRoundedHeader ? "border-collapse" : "border-separate border-spacing-0"
@@ -70,14 +75,10 @@ export default function ReusableTable<T>({
             {columns.map((col, index) => {
               const isFirst = index === 0
               const isLast = index === columns.length - 1
-<<<<<<< Updated upstream
               const colKey = col.key || (col.accessor ? String(col.accessor) : `col-${index}`)
-=======
               const thCornerClass = isRoundedHeader
                 ? `${isFirst ? "rounded-l-xl" : ""} ${isLast ? "rounded-r-xl" : ""}`
                 : ""
-
->>>>>>> Stashed changes
               return (
                 <th
                   key={colKey}

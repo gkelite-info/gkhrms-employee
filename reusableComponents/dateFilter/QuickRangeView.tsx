@@ -2,10 +2,10 @@
 
 import React from "react"
 import { Clock, CalendarCheck, Check } from "phosphor-react"
-import { DateFilterValue, MONTH_NAMES, QuickRangeOption } from "./types"
+import { DateFilterStructuredValue, MONTH_NAMES, QuickRangeOption } from "./types"
 
 interface QuickRangeViewProps {
-  currentValue: DateFilterValue
+  currentValue: DateFilterStructuredValue
   onSelectRange: (range: QuickRangeOption) => void
   options?: QuickRangeOption[]
 }
