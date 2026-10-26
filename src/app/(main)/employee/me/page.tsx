@@ -71,7 +71,7 @@ export default function EmployeeMe() {
   }
 
   return (
-    <div className="w-full max-w-full min-w-0 flex flex-col p-3 sm:p-4 md:p-6 pb-20 sm:pb-24 gap-4 sm:gap-5">
+    <div className="w-full max-w-full min-w-0 flex flex-col px-3 pt-3 sm:px-4 sm:pt-4 md:px-6 md:pt-6 pb-4 md:pb-6 gap-4 sm:gap-5">
       {/* Top Tab Bar (Matching Image-2 and Image-3) */}
       <EmployeeMeTabs activeTab={activeTab} onSelectTab={handleSelectTab} />
 
@@ -121,6 +121,9 @@ export default function EmployeeMe() {
           <EmployeeAttendanceLogTable />
         </>
       )}
+
+      {/* Bottom clearance spacer so content never touches the bottom of the viewport when scrolled */}
+      <div className="w-full h-4 shrink-0" aria-hidden="true" />
     </div>
   )
 }
