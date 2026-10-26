@@ -3,16 +3,12 @@
 import React, { useState, useMemo } from "react"
 import { ReusableTable, TableColumn } from "../../../../../reusableComponents"
 import ReusablePagination from "../../../../../reusableComponents/ReusablePagination"
-import ReusableDateFilter, { DateFilterValue } from "../../../../../reusableComponents/ReusableDateFilter"
+import ReusableDateFilter, { DateFilterStructuredValue } from "../../../../../reusableComponents/ReusableDateFilter"
+import { getDefaultDateFilterValue } from "../data/dateFilterUtils"
 import { AttendanceRecord, initialAttendanceRecords } from "./attendanceData"
 
 export default function AttendanceLogSection() {
-  const [dateFilter, setDateFilter] = useState<DateFilterValue>({
-    mode: "30-days",
-    label: "Last 30 Days",
-    selectedYear: 2025,
-    selectedMonth: 8,
-  })
+  const [dateFilter, setDateFilter] = useState<DateFilterStructuredValue>(getDefaultDateFilterValue)
   const [currentPage, setCurrentPage] = useState(1)
   const [pageSize, setPageSize] = useState(10)
 
@@ -122,7 +118,7 @@ export default function AttendanceLogSection() {
 
         <ReusableDateFilter
           value={dateFilter}
-          onChange={(newVal) => {
+          onChange={(newVal: DateFilterStructuredValue) => {
             setDateFilter(newVal)
             setCurrentPage(1)
           }}

@@ -7,5 +7,7 @@ export type { DropdownOption, ReusableDropdownProps } from "../../../reusableCom
 export { default as ReusablePagination } from "../../../reusableComponents/ReusablePagination"
 export type { ReusablePaginationProps } from "../../../reusableComponents/ReusablePagination"
 export { default as ReusableDateFilter, DATE_FILTER_PRESETS } from "../../../reusableComponents/ReusableDateFilter"
-export type { DateFilterMode, DateFilterValue, ReusableDateFilterProps, QuickRangeOption } from "../../../reusableComponents/ReusableDateFilter"
+export type { DateFilterMode, DateFilterValue, DateFilterStructuredValue, DateRangeValue, DateFilterCompatibleValue, ReusableDateFilterProps, QuickRangeOption } from "../../../reusableComponents/ReusableDateFilter"
+export { default as ReusableConfirmationModal } from "../../../reusableComponents/ReusableConfirmationModal"
+export type { ReusableConfirmationModalProps, ConfirmationType } from "../../../reusableComponents/ReusableConfirmationModal"
 export { default } from "./ReusableTable"

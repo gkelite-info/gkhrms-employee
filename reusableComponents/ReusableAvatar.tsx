@@ -96,7 +96,14 @@ export default function ReusableAvatar({
   }
 
   const { width, height, fontSize, iconSize } = getSizeStyles(size)
-  const initial = name ? name.trim().charAt(0).toUpperCase() : null
+  const getInitials = (n: string) => {
+    const parts = n.trim().split(/\s+/)
+    if (parts.length >= 2) {
+      return `${parts[0].charAt(0)}${parts[parts.length - 1].charAt(0)}`.toUpperCase()
+    }
+    return n.trim().slice(0, 2).toUpperCase()
+  }
+  const initial = name ? getInitials(name) : null
   const hasImage = Boolean(src && !imageError)
 
   const borderStyle = showBorder

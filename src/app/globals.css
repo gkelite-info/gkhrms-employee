@@ -130,4 +130,34 @@ body {
 .no-spinner {
   -moz-appearance: textfield;
   appearance: textfield;
+}
+
+.table-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #C5C1FF #F8F9FD;
+}
+
+.table-scrollbar::-webkit-scrollbar {
+  display: block !important;
+  width: 6px;
+  height: 6px;
+}
+
+.table-scrollbar::-webkit-scrollbar-track {
+  background: #F8F9FD;
+  border-radius: 9999px;
+}
+
+.table-scrollbar::-webkit-scrollbar-thumb {
+  background: #C5C1FF;
+  border-radius: 9999px;
+  transition: background-color 0.2s ease;
+}
+
+.table-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #5B50EC;
+}
+
+.table-scrollbar::-webkit-scrollbar-corner {
+  background: transparent;
 }
