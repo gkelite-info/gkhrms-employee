@@ -1,7 +1,8 @@
+"use client"
+
 import React from "react"
+import MyTeamPage from "../../employee/myteam/page"
 
-const ManagerMyTeam = () => {
-  return <div>ManagerMyTeam</div>
+export default function ManagerMyTeam() {
+  return <MyTeamPage />
 }
-
-export default ManagerMyTeam
