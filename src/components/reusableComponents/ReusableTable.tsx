@@ -49,34 +49,46 @@ export default function ReusableTable<T>({
     }
   }
 
+  const isRoundedHeader = Boolean(
+    headerRounded && headerRounded !== "rounded-none"
+  )
+
   return (
     <div className={`w-full overflow-x-auto ${containerClassName}`}>
       <table
-        className={`w-full border-collapse text-xs text-[#323232] min-w-[650px] ${tableClassName}`}
+        className={`w-full ${
+          isRoundedHeader ? "border-collapse" : "border-separate border-spacing-0"
+        } text-xs text-[#323232] min-w-[650px] ${tableClassName}`}
       >
         <thead>
           <tr
             style={{ backgroundColor: headerBgColor }}
-            className={`w-full overflow-hidden ${headerRounded} ${
-              showBorder ? "border border-gray-200" : ""
-            }`}
+            className={`w-full ${
+              isRoundedHeader ? `overflow-hidden ${headerRounded}` : ""
+            } ${showBorder ? "border border-gray-200" : ""}`}
           >
             {columns.map((col, index) => {
               const isFirst = index === 0
               const isLast = index === columns.length - 1
+<<<<<<< Updated upstream
               const colKey = col.key || (col.accessor ? String(col.accessor) : `col-${index}`)
+=======
+              const thCornerClass = isRoundedHeader
+                ? `${isFirst ? "rounded-l-xl" : ""} ${isLast ? "rounded-r-xl" : ""}`
+                : ""
+
+>>>>>>> Stashed changes
               return (
                 <th
                   key={colKey}
                   style={{
                     width: col.width || "auto",
                     color: headerTextColor,
+                    backgroundColor: headerBgColor,
                   }}
                   className={`py-3 px-4 font-semibold text-xs tracking-tight select-none whitespace-nowrap ${getAlignmentClass(
                     col.align
-                  )} ${isFirst ? "rounded-l-xl" : ""} ${
-                    isLast ? "rounded-r-xl" : ""
-                  } ${col.headerClassName || ""}`}
+                  )} ${thCornerClass} ${col.headerClassName || ""}`}
                 >
                   {col.header}
                 </th>
