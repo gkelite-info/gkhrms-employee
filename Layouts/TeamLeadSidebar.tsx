@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
 import {
   UsersThree,
-  ClipboardText,
   User,
   ChartLineUp,
   X,
@@ -14,7 +13,6 @@ import {
 
 export const teamLeadNavItems = [
   { label: "Attendance", href: "/teamlead", icon: UsersThree },
-  { label: "Requests", href: "/teamlead/requests", icon: ClipboardText },
   { label: "Performance", href: "/teamlead/performance", icon: ChartLineUp },
   { label: "Profile", href: "/teamlead/profile", icon: User },
 ]
@@ -39,7 +37,6 @@ export default function TeamLeadSidebar() {
       {teamLeadNavItems.map((item) => {
         const Icon = item.icon
         const isOtherSubRoute = [
-          "/teamlead/requests",
           "/teamlead/performance",
           "/teamlead/profile",
         ].some((route) => pathname === route || pathname?.startsWith(`${route}/`))

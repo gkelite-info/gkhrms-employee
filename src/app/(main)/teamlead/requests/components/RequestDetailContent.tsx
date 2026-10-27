@@ -73,14 +73,14 @@ export default function RequestDetailContent({
           </span>
         </div>
 
-        <div className="flex items-start justify-between gap-2">
-          <span className="flex items-center gap-1.5 text-gray-400 font-medium shrink-0 pt-0.5">
+        <div className="flex flex-col gap-1.5 pt-0.5">
+          <span className="flex items-center gap-1.5 text-gray-400 font-medium">
             <ChatCircleText size={14} weight="bold" />
             Reason
           </span>
-          <span className="font-medium text-gray-700 text-right break-words max-w-[240px] sm:max-w-xs">
+          <div className="p-3 rounded-2xl bg-gray-50 border border-gray-100 text-xs text-gray-700 font-medium leading-relaxed whitespace-pre-wrap break-words max-h-44 overflow-y-auto">
             {request.reason}
-          </span>
+          </div>
         </div>
 
         <div className="flex items-center justify-between gap-2">

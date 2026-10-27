@@ -7,6 +7,7 @@ import { RootState } from "../Redux/Store"
 import { useSelector } from "react-redux"
 import EmployeeSidebar from "./EmployeeSidebar"
 import TeamLeadSidebar from "./TeamLeadSidebar"
+import ManagerSidebar from "./ManagerSidebar"
 
 export default function Sidebar() {
 	const pathname = usePathname()
@@ -16,14 +17,16 @@ export default function Sidebar() {
 		return <TeamLeadSidebar />
 	}
 
+	if (pathname?.startsWith("/manager") || role === "Manager") {
+		return <ManagerSidebar />
+	}
+
 	if (pathname?.startsWith("/employee") || role === "Employee") {
 		return <EmployeeSidebar />
 	}
 
 	const activeRole =
-		pathname?.startsWith("/manager") || role === "Manager"
-			? "Manager"
-			: pathname?.startsWith("/admin") || role === "Admin"
+		pathname?.startsWith("/admin") || role === "Admin"
 			? "Admin"
 			: pathname?.startsWith("/hr") || role === "Hr"
 			? "Hr"
