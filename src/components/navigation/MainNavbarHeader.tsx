@@ -48,10 +48,16 @@ export default function MainNavbarHeader() {
             />
           </div>
 
-          {pathname?.startsWith("/teamlead") && (
+          {(pathname?.startsWith("/teamlead") || pathname?.startsWith("/manager")) && (
             <button
               type="button"
-              onClick={() => window.dispatchEvent(new CustomEvent("toggle-teamlead-sidebar"))}
+              onClick={() => {
+                if (pathname?.startsWith("/manager")) {
+                  window.dispatchEvent(new CustomEvent("toggle-manager-sidebar"))
+                } else {
+                  window.dispatchEvent(new CustomEvent("toggle-teamlead-sidebar"))
+                }
+              }}
               className="lg:hidden p-2 rounded-xl text-gray-700 hover:bg-gray-100 cursor-pointer flex items-center justify-center transition-colors"
               aria-label="Toggle navigation menu"
             >

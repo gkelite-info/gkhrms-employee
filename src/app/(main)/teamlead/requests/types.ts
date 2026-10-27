@@ -14,3 +14,21 @@ export interface AttendanceRequestItem {
   reason: string
   status: RequestStatus
 }
+
+export const getValidStatus = (val: string | null): string => {
+  if (!val) return "All Statuses"
+  const normalized = val.trim().toLowerCase()
+  if (normalized === "pending") return "Pending"
+  if (normalized === "approved") return "Approved"
+  if (normalized === "rejected") return "Rejected"
+  return "All Statuses"
+}
+
+export const getValidType = (val: string | null): string => {
+  if (!val) return "All Types"
+  const normalized = val.trim().toLowerCase()
+  if (normalized === "leave") return "Leave"
+  if (normalized === "work from home" || normalized === "wfh") return "Work From Home"
+  if (normalized === "half day") return "Half Day"
+  return "All Types"
+}

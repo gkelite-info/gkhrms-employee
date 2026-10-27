@@ -13,7 +13,7 @@ import TimingsCard from "./components/TimingsCard"
 import ActionsCard from "./components/ActionsCard"
 import LeaveBalanceSection from "./components/LeaveBalanceSection"
 import AttendanceLogSection from "./components/AttendanceLogSection"
-import TeamLeadRequestsPage from "./requests/page"
+import TeamLeadRequestsSection from "./components/TeamLeadRequestsSection"
 
 function TeamLeadAttendanceContent() {
   const router = useRouter()
@@ -35,7 +35,7 @@ function TeamLeadAttendanceContent() {
       {activeTab === "team-attendance" ? (
         <TeamAttendanceSection />
       ) : activeTab === "requests" ? (
-        <TeamLeadRequestsPage showBackLink={false} />
+        <TeamLeadRequestsSection />
       ) : (
         <>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
