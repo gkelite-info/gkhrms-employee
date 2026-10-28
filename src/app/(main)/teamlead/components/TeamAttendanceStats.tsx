@@ -1,6 +1,5 @@
 "use client"
 
-import React from "react"
 import { UsersThree, CheckCircle, XCircle, Clock, ArrowUp, ArrowDown } from "phosphor-react"
 
 interface TeamAttendanceStatsProps {

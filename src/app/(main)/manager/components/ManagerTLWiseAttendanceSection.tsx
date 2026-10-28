@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useMemo } from "react"
+import {  useState, useMemo  } from "react";
 import { DateFilterValue } from "@/components/reusableComponents"
 import { MANAGER_TEAM_LEADS } from "../data/managerAttendanceData"
 import TLWiseStatsCards from "./tl-wise/TLWiseStatsCards"

@@ -1,6 +1,5 @@
 "use client"
 
-import React from "react"
 import { CalendarBlank } from "phosphor-react"
 import ReusableTable from "@/components/reusableComponents/ReusableTable"
 

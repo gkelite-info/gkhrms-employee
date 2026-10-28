@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useMemo } from "react"
+import {  useMemo  } from "react";
 import { useRouter } from "next/navigation"
 import { MagnifyingGlass } from "phosphor-react"
 import {

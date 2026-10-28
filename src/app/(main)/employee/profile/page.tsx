@@ -1,6 +1,5 @@
 "use client"
 
-import React from "react"
 import EmployeeProfileView from "../components/profile/EmployeeProfileView"
 
 export default function EmployeeProfilePage() {

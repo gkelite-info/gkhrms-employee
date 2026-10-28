@@ -1,6 +1,5 @@
 "use client"
 
-import React from "react"
 import { ReusableConfirmationModal } from "@/components/reusableComponents"
 import RequestDetailModal from "../../../teamlead/requests/components/RequestDetailModal"
 import { ManagerRequestItem } from "../../data/managerRequestsData"

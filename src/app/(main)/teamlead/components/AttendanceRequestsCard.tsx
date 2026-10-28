@@ -1,6 +1,5 @@
 "use client"
 
-import React from "react"
 import { CaretRight } from "phosphor-react"
 import Link from "next/link"
 

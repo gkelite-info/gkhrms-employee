@@ -1,6 +1,5 @@
 "use client"
 
-import React from "react"
 import { ReusablePagination } from "@/components/reusableComponents"
 import { ManagerRequestItem } from "../../data/managerRequestsData"
 import ManagerRequestItemCard from "./ManagerRequestItemCard"

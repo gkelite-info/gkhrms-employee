@@ -1,4 +1,3 @@
-import React from "react"
 
 const AdminAnalyticReports = () => {
   return <div>AdminAnalyticReports</div>

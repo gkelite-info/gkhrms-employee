@@ -1,6 +1,5 @@
 "use client"
 
-import React from "react"
 import EmployeeTicketsView from "../../components/tickets/EmployeeTicketsView"
 
 export default function EmployeeMeTicketsPage() {

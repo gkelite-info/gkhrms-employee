@@ -1,6 +1,6 @@
 "use client"
 
-import React, { Suspense } from "react"
+import { Suspense } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
 import AttendanceTabs, { TabKey } from "./components/AttendanceTabs"
 import TeamAttendanceSection from "./components/TeamAttendanceSection"
@@ -14,13 +14,28 @@ import ActionsCard from "./components/ActionsCard"
 import LeaveBalanceSection from "./components/LeaveBalanceSection"
 import AttendanceLogSection from "./components/AttendanceLogSection"
 import TeamLeadRequestsSection from "./components/TeamLeadRequestsSection"
+import TeamLeadApplyLeaveSection from "./components/TeamLeadApplyLeaveSection"
+import TeamLeadMyRequestsSection from "./components/my-requests/TeamLeadMyRequestsSection"
+import TeamLeadExceptionHistorySection from "./components/exception-history/TeamLeadExceptionHistorySection"
 
 function TeamLeadAttendanceContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
-  const tabParam = searchParams.get("tab") as TabKey | null
+  const tabParam = searchParams.get("tab")
+
+  if (tabParam === "apply-leave") {
+    return <TeamLeadApplyLeaveSection initialFormType="leave" />
+  }
+
+  if (tabParam === "request-wfh") {
+    return <TeamLeadApplyLeaveSection initialFormType="wfh" />
+  }
+
   const activeTab: TabKey =
-    tabParam === "team-attendance" || tabParam === "requests"
+    tabParam === "team-attendance" ||
+    tabParam === "requests" ||
+    tabParam === "my-requests" ||
+    tabParam === "exception-history"
       ? tabParam
       : "my-attendance"
 
@@ -36,6 +51,10 @@ function TeamLeadAttendanceContent() {
         <TeamAttendanceSection />
       ) : activeTab === "requests" ? (
         <TeamLeadRequestsSection />
+      ) : activeTab === "my-requests" ? (
+        <TeamLeadMyRequestsSection />
+      ) : activeTab === "exception-history" ? (
+        <TeamLeadExceptionHistorySection />
       ) : (
         <>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">

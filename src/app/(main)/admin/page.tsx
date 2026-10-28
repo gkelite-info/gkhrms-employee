@@ -1,4 +1,3 @@
-import React from "react"
 import UserDetailsCard from "../../../../utils/UserDetailsCard"
 import LoginLogoutMoodtracker from "../../../../utils/LoginLogoutMoodtracker"
 import AdminUserManager from "../../../../features/admin/components/AdminUserManager"

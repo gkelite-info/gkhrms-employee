@@ -1,4 +1,3 @@
-import React from "react"
 import AuthSelect from "../../../../../utils/AuthSelect"
 import { usePendingApprovedHook } from "../../../../../features/manager/hooks/pending-approved.hook"
 import { useManagerPendingApprovedTable } from "../../../../../features/manager/data/pending-approved-table.data"

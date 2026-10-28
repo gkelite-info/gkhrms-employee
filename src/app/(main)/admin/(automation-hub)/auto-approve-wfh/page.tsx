@@ -1,5 +1,4 @@
 "use client"
-import React from "react"
 import AdminAutomationHub from "../../../../../../utils/AdminAutomationHub"
 import { useAutoApprovedWFHTable } from "../../../../../../features/admin/data/auto-approved-wfh.table.data"
 import { useAutoApprovedWfhHook } from "../../../../../../features/admin/hooks/authApprovedWFH.hoo"

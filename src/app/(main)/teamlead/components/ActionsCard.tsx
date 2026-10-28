@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useEffect } from "react"
+import { useState, useEffect } from "react"
 import { FileText } from "phosphor-react"
 
 export default function ActionsCard() {

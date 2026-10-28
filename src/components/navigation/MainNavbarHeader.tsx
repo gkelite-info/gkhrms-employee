@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from "react"
+import { useState } from "react"
 import { Bell, MagnifyingGlass, Tray, List } from "phosphor-react"
 import NotificationCount from "../../../utils/notificationCount"
 import NotificationModal from "../../../utils/notificationModel"

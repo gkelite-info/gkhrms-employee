@@ -1,6 +1,5 @@
 "use client"
 
-import React from "react"
 import { User, Users, UsersThree, CalendarBlank } from "phosphor-react"
 import { ManagerTabKey } from "./ManagerAttendanceTabs"
 

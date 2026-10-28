@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from "react"
+import { useState } from "react"
 import { AlertTriangle, X, ChevronDown, Info, Ban } from "lucide-react"
 
 export interface SuspendCompanyModalProps {

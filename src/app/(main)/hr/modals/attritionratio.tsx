@@ -1,5 +1,4 @@
 "use client"
-import React from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import AreaCharts from "../../../../../utils/areaChart"
 import AttritionTrendCard from "../components/attritionGraph"

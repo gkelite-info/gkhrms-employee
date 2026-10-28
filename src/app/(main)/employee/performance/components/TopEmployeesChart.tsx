@@ -1,6 +1,5 @@
 "use client"
 
-import React from "react"
 import { CaretDown } from "phosphor-react"
 
 interface TopEmployee {

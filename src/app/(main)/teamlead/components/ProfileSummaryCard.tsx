@@ -1,6 +1,5 @@
 "use client"
 
-import React from "react"
 import ReusableAvatar from "../../../../../reusableComponents/ReusableAvatar"
 
 interface ProfileSummaryCardProps {
@@ -30,7 +29,6 @@ export default function ProfileSummaryCard({
         fallbackType="icon"
       />
 
-      {/* Info */}
       <div className="flex flex-col">
         <h3 className="text-base font-bold text-[#1F2433] leading-tight">
           {name}
