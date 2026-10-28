@@ -75,10 +75,15 @@ export default function ReusableTable<T>({
             {columns.map((col, index) => {
               const isFirst = index === 0
               const isLast = index === columns.length - 1
-              const colKey = col.key || (col.accessor ? String(col.accessor) : `col-${index}`)
+              const colKey =
+                col.key ||
+                (col.accessor ? String(col.accessor) : `col-${index}`)
               const thCornerClass = isRoundedHeader
-                ? `${isFirst ? "rounded-l-xl" : ""} ${isLast ? "rounded-r-xl" : ""}`
+                ? `${isFirst ? "rounded-l-xl" : ""} ${
+                    isLast ? "rounded-r-xl" : ""
+                  }`
                 : ""
+
               return (
                 <th
                   key={colKey}
