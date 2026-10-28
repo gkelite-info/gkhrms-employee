@@ -1,12 +1,23 @@
 export type DateFilterMode = "30-days" | "date" | "month" | "year"
 
-export interface DateFilterValue {
+export interface DateFilterStructuredValue {
   mode: DateFilterMode
   label: string
-  selectedDate?: string // "DD/MM/YYYY"
-  selectedMonth?: number // 0-11
+  selectedDate?: string
+  selectedMonth?: number
   selectedYear?: number
+  startDate?: Date
+  endDate?: Date
 }
+
+export type DateRangeValue = { startDate: Date; endDate: Date }
+
+export type DateFilterValue =
+  | DateFilterStructuredValue
+  | Date
+  | DateRangeValue
+  | null
+  | undefined
 
 export interface QuickRangeOption {
   mode: "30-days" | "month" | "year"

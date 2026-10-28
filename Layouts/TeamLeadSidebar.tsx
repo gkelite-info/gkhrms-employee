@@ -6,15 +6,13 @@ import { usePathname } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
 import {
   UsersThree,
-  ClipboardText,
   User,
   ChartLineUp,
   X,
 } from "phosphor-react"
 
 export const teamLeadNavItems = [
-  { label: "Attendance", href: "/teamlead", icon: UsersThree, exact: true },
-  { label: "Requests", href: "/teamlead/requests", icon: ClipboardText },
+  { label: "Attendance", href: "/teamlead", icon: UsersThree },
   { label: "Performance", href: "/teamlead/performance", icon: ChartLineUp },
   { label: "Profile", href: "/teamlead/profile", icon: User },
 ]
@@ -23,7 +21,6 @@ export default function TeamLeadSidebar() {
   const pathname = usePathname()
   const [drawerOpen, setDrawerOpen] = useState(false)
 
-  // Listen to external toggle events (e.g. from header or tabs bar)
   useEffect(() => {
     const handleToggle = () => setDrawerOpen((prev) => !prev)
     const handleClose = () => setDrawerOpen(false)
@@ -35,14 +32,21 @@ export default function TeamLeadSidebar() {
     }
   }, [])
 
-  // Navigation Items Renderer - No Logo / Company Name (Only Nav Items)
   const renderNavList = () => (
     <nav className="flex flex-col gap-1.5 w-full">
       {teamLeadNavItems.map((item) => {
         const Icon = item.icon
-        const isActive = item.exact
-          ? pathname === item.href
-          : pathname === item.href || pathname?.startsWith(`${item.href}/`)
+        const isOtherSubRoute = [
+          "/teamlead/performance",
+          "/teamlead/profile",
+        ].some((route) => pathname === route || pathname?.startsWith(`${route}/`))
+
+        const isActive =
+          item.href === "/teamlead"
+            ? pathname === "/teamlead" ||
+              pathname?.startsWith("/teamlead/member") ||
+              (!isOtherSubRoute && pathname?.startsWith("/teamlead"))
+            : pathname === item.href || pathname?.startsWith(`${item.href}/`)
 
         return (
           <Link
@@ -69,11 +73,9 @@ export default function TeamLeadSidebar() {
 
   return (
     <>
-      {/* ===== MOBILE / TABLET / IPAD DRAWER (< lg / 1024px) ===== */}
       <AnimatePresence>
         {drawerOpen && (
           <>
-            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -83,7 +85,6 @@ export default function TeamLeadSidebar() {
               className="lg:hidden fixed inset-0 bg-black/40 z-40 backdrop-blur-xs"
             />
 
-            {/* Slide-in Drawer */}
             <motion.aside
               initial={{ x: "-100%" }}
               animate={{ x: 0 }}
@@ -118,7 +119,6 @@ export default function TeamLeadSidebar() {
         )}
       </AnimatePresence>
 
-      {/* ===== LAPTOP & DESKTOP FIXED SIDEBAR (>= lg / 1024px) ===== */}
       <aside className="hidden lg:flex w-[210px] min-w-[210px] bg-white h-full border-r border-gray-100 p-4 flex-col justify-between select-none">
         <div className="flex flex-col pt-1">
           {renderNavList()}

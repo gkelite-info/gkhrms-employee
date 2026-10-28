@@ -1,18 +1,14 @@
 "use client"
 
 import React, { useState, useMemo } from "react"
-import { ReusableTable, TableColumn } from "../../../../../reusableComponents"
+import { ReusableTable, TableColumn, ReusableAvatar } from "../../../../../reusableComponents"
 import ReusablePagination from "../../../../../reusableComponents/ReusablePagination"
-import ReusableDateFilter, { DateFilterValue } from "../../../../../reusableComponents/ReusableDateFilter"
+import ReusableDateFilter, { DateFilterStructuredValue } from "../../../../../reusableComponents/ReusableDateFilter"
+import { getDefaultDateFilterValue } from "../data/dateFilterUtils"
 import { AttendanceRecord, initialAttendanceRecords } from "./attendanceData"
 
 export default function AttendanceLogSection() {
-  const [dateFilter, setDateFilter] = useState<DateFilterValue>({
-    mode: "30-days",
-    label: "Last 30 Days",
-    selectedYear: 2025,
-    selectedMonth: 8,
-  })
+  const [dateFilter, setDateFilter] = useState<DateFilterStructuredValue>(getDefaultDateFilterValue)
   const [currentPage, setCurrentPage] = useState(1)
   const [pageSize, setPageSize] = useState(10)
 
@@ -57,22 +53,20 @@ export default function AttendanceLogSection() {
     {
       key: "name",
       header: "Name",
-      width: "120px",
+      width: "150px",
       align: "left",
-      render: (row) => {
-        const dotColor =
-          row.status === "online"
-            ? "bg-emerald-500"
-            : row.status === "warning"
-            ? "bg-amber-500"
-            : "bg-red-500"
-        return (
-          <div className="flex items-center gap-1.5 font-medium text-gray-800">
-            <span>{row.name}</span>
-            <span className={`w-1.5 h-1.5 rounded-full ${dotColor}`} />
-          </div>
-        )
-      },
+      render: (row) => (
+        <div className="flex items-center gap-2.5 font-medium text-gray-800">
+          <ReusableAvatar
+            src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=160&auto=format&fit=crop&q=80"
+            alt={row.name}
+            name={row.name}
+            size="sm"
+            fallbackType="icon"
+          />
+          <span className="font-semibold text-gray-900 text-xs">{row.name}</span>
+        </div>
+      ),
     },
     { key: "email", header: "Email", accessor: "email", width: "170px", align: "left", className: "text-gray-500" },
     { key: "employeeId", header: "Employee ID", accessor: "employeeId", width: "100px", align: "left", className: "text-gray-600 font-medium" },
@@ -122,7 +116,7 @@ export default function AttendanceLogSection() {
 
         <ReusableDateFilter
           value={dateFilter}
-          onChange={(newVal) => {
+          onChange={(newVal: DateFilterStructuredValue) => {
             setDateFilter(newVal)
             setCurrentPage(1)
           }}

@@ -55,11 +55,8 @@ export const roleBasedNav: Record<
     },
   ],
   Manager: [
-    { label: "Home", href: "/manager", icon: House },
-    { label: "Me", href: "/manager/details", icon: User },
-    { label: "My Team", href: "/manager/my-team", icon: UsersThree },
-    { label: "Reports", href: "/manager/reports", icon: Files },
-    { label: "Org Engage", href: "/manager/org-engage", icon: Buildings },
+    { label: "Attendance", href: "/manager", icon: UsersThree },
+    { label: "Profile", href: "/manager/profile", icon: User },
   ],
   Employee: [
     { label: "Home", href: "/employee", icon: House },
@@ -96,7 +93,6 @@ export const roleBasedNav: Record<
   ],
   TeamLead: [
     { label: "Attendance", href: "/teamlead", icon: UsersThree },
-    { label: "Requests", href: "/teamlead/requests", icon: ClipboardText },
     { label: "Performance", href: "/teamlead/performance", icon: ChartLineUp },
     { label: "Profile", href: "/teamlead/profile", icon: User },
   ],
