@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useRef, useEffect, Suspense } from "react"
+import {  useState, useRef, useEffect, Suspense  } from "react";
 import { useRouter, useSearchParams } from "next/navigation"
 import { Plus, AirplaneInFlight, Laptop } from "phosphor-react"
 

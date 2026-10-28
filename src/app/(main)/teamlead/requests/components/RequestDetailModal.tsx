@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from "react"
+import { useState } from "react"
 import { X } from "phosphor-react"
 import { AttendanceRequestItem } from "../types"
 import { ReusableAvatar } from "@/components/reusableComponents"

@@ -1,6 +1,5 @@
 "use client"
 
-import React from "react"
 import { CircleNotch, User, Clock } from "phosphor-react"
 
 interface MemberStatCardsProps {

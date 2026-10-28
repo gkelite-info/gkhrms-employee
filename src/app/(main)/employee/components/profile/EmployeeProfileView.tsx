@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useRef, useState, useEffect, Suspense } from "react"
+import {  useRef, useState, useEffect, Suspense  } from "react";
 import { useRouter, useSearchParams } from "next/navigation"
 import { CaretRight, CheckCircle, Plus } from "phosphor-react"
 

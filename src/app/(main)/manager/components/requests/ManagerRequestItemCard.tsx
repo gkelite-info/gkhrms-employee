@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from "react"
+import {  useState  } from "react";
 import { AirplaneTilt, House } from "phosphor-react"
 import { ReusableAvatar } from "@/components/reusableComponents"
 import { ManagerRequestItem } from "../../data/managerRequestsData"

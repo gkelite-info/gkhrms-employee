@@ -1,5 +1,4 @@
 "use client"
-import React from "react"
 import IconButton from "../../../../../../utils/IconButton"
 import { useAttendanceRulesHook } from "../../../../../../features/admin/hooks/attendance-rule.hook"
 import DataWrapper from "../../../../../../utils/DataWrapper"

@@ -1,6 +1,5 @@
 "use client"
 
-import React from "react"
 import { Star } from "phosphor-react"
 
 export default function PerformanceMetricCards() {

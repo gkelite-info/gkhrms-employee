@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useEffect, Suspense } from "react"
+import {  useState, useEffect, Suspense  } from "react";
 import { useRouter, useSearchParams } from "next/navigation"
 import PerformanceMetricCards from "./components/PerformanceMetricCards"
 import PerformanceScoreChart from "./components/PerformanceScoreChart"

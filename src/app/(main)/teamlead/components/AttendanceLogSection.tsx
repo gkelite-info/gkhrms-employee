@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useMemo } from "react"
+import { useState, useMemo } from "react"
 import { ReusableTable, TableColumn, ReusableAvatar } from "../../../../../reusableComponents"
 import ReusablePagination from "../../../../../reusableComponents/ReusablePagination"
 import ReusableDateFilter, { DateFilterStructuredValue } from "../../../../../reusableComponents/ReusableDateFilter"

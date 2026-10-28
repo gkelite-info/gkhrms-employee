@@ -1,4 +1,3 @@
-import React from "react"
 import RetentionAlertCard from "../../../../../../features/admin/components/RetentionAlert/RetentionAlertCard"
 import RetentionTableWithHealth from "../../../../../../features/admin/components/RetentionAlert/RetentionTableWithHealth"
 

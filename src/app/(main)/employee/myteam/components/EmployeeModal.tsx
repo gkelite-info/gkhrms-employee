@@ -1,6 +1,5 @@
 "use client"
 
-import React from "react"
 import { X, Phone, EnvelopeSimple, MapPin, CheckCircle, Clock, HouseLine, Globe, CalendarBlank } from "phosphor-react"
 
 export interface StatusEmployee {

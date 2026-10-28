@@ -1,4 +1,3 @@
-import React from "react"
 import BackupProgressCardMain from "../../../../../../features/admin/components/Backupprogress/BackupProgressCardMain"
 import BackupProgressTableGraphMain from "../../../../../../features/admin/components/Backupprogress/BackupProgressTableGraphMain"
 

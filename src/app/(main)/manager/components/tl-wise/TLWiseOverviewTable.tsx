@@ -1,6 +1,5 @@
 "use client"
 
-import React from "react"
 import { ChartBar } from "phosphor-react"
 import { ReusableAvatar, ReusablePagination } from "@/components/reusableComponents"
 import { ManagerTeamLead } from "../../data/managerAttendanceData"

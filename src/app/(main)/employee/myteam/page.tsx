@@ -1,6 +1,5 @@
 "use client"
 
-import React from "react"
 import StatusCards from "./components/StatusCards"
 import TeamTreeChart from "./components/TeamTreeChart"
 import TeamCalendar from "./components/TeamCalendar"

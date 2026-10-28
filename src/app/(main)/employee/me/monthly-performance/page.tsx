@@ -1,6 +1,5 @@
 "use client"
 
-import React from "react"
 import { useRouter } from "next/navigation"
 import EmployeeMeTabs, { MeTabType } from "../../components/me/EmployeeMeTabs"
 import EmployeePerformanceDetail from "../../components/me/EmployeePerformanceDetail"

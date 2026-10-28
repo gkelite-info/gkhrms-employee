@@ -1,4 +1,3 @@
-import React from "react"
 import ImageImpactCounterCard from "../../../../../features/admin/components/ImageImpactPreview/ImageImpactCounterCard"
 import ImageImpactTableWithGraph from "../../../../../features/admin/components/ImageImpactPreview/ImageImpactTableWithGraph"
 

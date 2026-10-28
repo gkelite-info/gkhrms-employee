@@ -1,4 +1,3 @@
-import React from "react"
 import DataBackupProcessMainCard from "../../../../../../features/admin/components/DataBackupProcess/DataBackupProcessMainCard"
 
 const DataBackupProcess = () => {

@@ -1,6 +1,5 @@
 "use client"
 import { CaretDown } from "phosphor-react"
-import React from "react"
 import DataWrapper from "../../../../../../utils/DataWrapper"
 import Table from "../../../../../../utils/Table/Table"
 import { useSetLeaveTypeTable } from "../../../../../../features/admin/data/set-leave-type.table.data"

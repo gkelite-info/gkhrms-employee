@@ -1,5 +1,4 @@
 "use client"
-import React from "react"
 import IconButton from "../../../../../../utils/IconButton"
 import { usePayrollWorkflowsHook } from "../../../../../../features/admin/hooks/payroll-workflows.hook"
 import { usePayrollWorkflowsTableData } from "../../../../../../features/admin/data/payroll-workflows.table.data"

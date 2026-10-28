@@ -1,6 +1,5 @@
 "use client"
 
-import React from "react"
 import ReusableTable, { TableColumn } from "@/components/reusableComponents/ReusableTable"
 
 export interface FeedbackRow {

@@ -19,7 +19,7 @@ export interface ReusableDropdownProps<T = string | number> {
   className?: string
   buttonClassName?: string
   menuClassName?: string
-  align?: "left" | "right"
+  align?: "left" | "right" | "full"
   dropdownHeight?: number
 }
 
@@ -110,8 +110,12 @@ export default function ReusableDropdown<T extends string | number>({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: openUpward ? 4 : -4 }}
             transition={{ duration: 0.15, ease: "easeOut" }}
-            className={`absolute z-50 min-w-[120px] max-h-52 overflow-y-auto bg-white border border-gray-100 rounded-xl shadow-xl p-1.5 scrollbar-hide ${
-              align === "right" ? "right-0" : "left-0"
+            className={`absolute z-50 max-h-52 overflow-y-auto bg-white border border-gray-100 rounded-xl shadow-xl p-1.5 scrollbar-hide ${
+              align === "full"
+                ? "left-0 right-0 w-full"
+                : align === "right"
+                ? "right-0 min-w-[120px]"
+                : "left-0 min-w-[120px]"
             } ${openUpward ? "bottom-full mb-1.5" : "top-full mt-1.5"} ${menuClassName}`}
             role="listbox"
           >

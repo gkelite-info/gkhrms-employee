@@ -1,5 +1,4 @@
 "use client"
-import React from "react"
 import AdminAutomationHub from "../../../../../../utils/AdminAutomationHub"
 import { useAutoSendRemainders } from "../../../../../../features/admin/hooks/auto-send-reminders.hook"
 import DataWrapper from "../../../../../../utils/DataWrapper"

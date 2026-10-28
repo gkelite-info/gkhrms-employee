@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from "react"
+import {  useState  } from "react";
 import { ArrowLeft, ArrowUp, CaretDown, Star } from "phosphor-react"
 import ReusableTable from "@/components/reusableComponents/ReusableTable"
 

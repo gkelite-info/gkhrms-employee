@@ -1,6 +1,5 @@
 "use client"
 
-import React from "react"
 
 interface ManagerRequestsSubtabsProps {
   currentSubtab: "team-member" | "team-lead"

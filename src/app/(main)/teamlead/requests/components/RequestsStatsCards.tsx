@@ -1,6 +1,5 @@
 "use client"
 
-import React from "react"
 import { Clock, CheckCircle, XCircle, ArrowUp } from "phosphor-react"
 
 interface RequestsStatsCardsProps {

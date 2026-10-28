@@ -1,6 +1,5 @@
 "use client"
 
-import React from "react"
 import { Check, X } from "phosphor-react"
 import { TableColumn, ReusableAvatar } from "@/components/reusableComponents"
 import { AttendanceRequestItem } from "../types"
