@@ -1,7 +1,8 @@
 "use client"
 
+import React, { useState } from "react"
 import { CalendarBlank } from "phosphor-react"
-import ReusableTable from "@/components/reusableComponents/ReusableTable"
+import { ReusableTable, ReusablePagination, TableColumn } from "@/../reusableComponents"
 
 interface TimesheetRecord {
   date: string
@@ -85,12 +86,50 @@ const timesheetData: TimesheetRecord[] = [
   },
 ]
 
+const columns: TableColumn<TimesheetRecord>[] = [
+  {
+    key: "date",
+    header: "Date",
+    accessor: "date",
+    className: "text-gray-700 font-medium py-3 px-3 sm:px-4 whitespace-nowrap",
+    headerClassName: "py-2.5 px-3 sm:px-4",
+  },
+  {
+    key: "taskSummary",
+    header: "Task Summary",
+    accessor: "taskSummary",
+    className: "text-gray-700 font-medium py-3 px-3 sm:px-4",
+    headerClassName: "py-2.5 px-3 sm:px-4",
+  },
+  {
+    key: "pending",
+    header: "Pending",
+    accessor: "pending",
+    className: "text-gray-700 font-medium py-3 px-3 sm:px-4 whitespace-nowrap",
+    headerClassName: "py-2.5 px-3 sm:px-4",
+  },
+  {
+    key: "comment",
+    header: "Comment",
+    accessor: "comment",
+    className: "text-gray-700 font-medium py-3 px-3 sm:px-4",
+    headerClassName: "py-2.5 px-3 sm:px-4",
+  },
+]
+
 export default function EmployeeTimesheetView() {
+  const [currentPage, setCurrentPage] = useState(1)
+  const [pageSize, setPageSize] = useState(5)
+
+  const totalPages = Math.ceil(timesheetData.length / pageSize)
+  const paginatedData = timesheetData.slice(
+    (currentPage - 1) * pageSize,
+    currentPage * pageSize
+  )
+
   return (
     <div className="w-full max-w-full flex flex-col gap-4 sm:gap-5">
-      {/* 1. Top 4 Summary Cards (Responsive 1-col mobile, 2-col tablet, 4-col desktop) */}
       <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-        {/* Card 1: Name, Employee ID, Manager */}
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-3.5 sm:p-4 md:p-5 flex flex-col justify-between min-h-[105px]">
           <div>
             <span className="text-[11px] sm:text-xs font-bold text-gray-500">Name</span>
@@ -108,13 +147,11 @@ export default function EmployeeTimesheetView() {
           </div>
         </div>
 
-        {/* Card 2: Project Name */}
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-3.5 sm:p-4 md:p-5 flex flex-col justify-between min-h-[105px]">
           <h3 className="text-sm sm:text-base font-bold text-[#1F2937]">Project Name</h3>
           <p className="text-xs md:text-sm font-medium text-gray-600 mt-2">Lorem Ipsum</p>
         </div>
 
-        {/* Card 3: Date & Time */}
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-3.5 sm:p-4 md:p-5 flex flex-col justify-between min-h-[105px]">
           <h3 className="text-sm sm:text-base font-bold text-[#1F2937]">Date & Time</h3>
           <div className="flex flex-col gap-0.5 mt-2">
@@ -127,7 +164,6 @@ export default function EmployeeTimesheetView() {
           </div>
         </div>
 
-        {/* Card 4: Timesheets Date Range & Calendar */}
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-3.5 sm:p-4 md:p-5 flex items-center justify-between min-h-[105px]">
           <div className="flex flex-col justify-between h-full">
             <h3 className="text-sm sm:text-base font-bold text-[#1F2937]">Timesheets</h3>
@@ -137,46 +173,35 @@ export default function EmployeeTimesheetView() {
               <span>End Date : 24 Aug 2025</span>
             </div>
           </div>
-          <div className="flex-shrink-0 text-[#1F2937] ml-2">
+          <div className="shrink-0 text-[#1F2937] ml-2">
             <CalendarBlank size={30} weight="regular" />
           </div>
         </div>
       </div>
 
-      {/* 2. Timesheet Table using ReusableTable with Ash / Yeash Header */}
       <div className="w-full max-w-full bg-white rounded-2xl shadow-sm border border-gray-100 p-3 sm:p-4 md:p-6 overflow-hidden">
-        <ReusableTable
-          columns={[
-            {
-              header: "Date",
-              accessor: "date",
-              className: "text-gray-700 font-medium py-3 px-3 sm:px-4 whitespace-nowrap",
-              headerClassName: "py-2.5 px-3 sm:px-4",
-            },
-            {
-              header: "Task Summary",
-              accessor: "taskSummary",
-              className: "text-gray-700 font-medium py-3 px-3 sm:px-4",
-              headerClassName: "py-2.5 px-3 sm:px-4",
-            },
-            {
-              header: "Pending",
-              accessor: "pending",
-              className: "text-gray-700 font-medium py-3 px-3 sm:px-4 whitespace-nowrap",
-              headerClassName: "py-2.5 px-3 sm:px-4",
-            },
-            {
-              header: "Comment",
-              accessor: "comment",
-              className: "text-gray-700 font-medium py-3 px-3 sm:px-4",
-              headerClassName: "py-2.5 px-3 sm:px-4",
-            },
-          ]}
-          data={timesheetData}
+        <ReusableTable<TimesheetRecord>
+          columns={columns}
+          data={paginatedData}
           headerBgColor="#EAE8E4"
           headerTextColor="#1F2937"
           headerRounded="rounded-xl"
         />
+
+        <div className="pt-3 border-t border-gray-100 mt-3">
+          <ReusablePagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            totalItems={timesheetData.length}
+            pageSize={pageSize}
+            onPageChange={setCurrentPage}
+            onPageSizeChange={(newSize) => {
+              setPageSize(newSize)
+              setCurrentPage(1)
+            }}
+            pageSizeOptions={[5, 10, 15]}
+          />
+        </div>
       </div>
     </div>
   )

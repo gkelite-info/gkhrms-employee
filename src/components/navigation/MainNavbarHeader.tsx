@@ -38,7 +38,6 @@ export default function MainNavbarHeader() {
   return (
     <>
       <header className="w-full h-[70px] flex items-center justify-between bg-white border-b border-gray-100 select-none px-2 sm:px-4 gap-2">
-        {/* Left: Logo & Mobile Menu Button */}
         <div className="flex items-center gap-1 sm:gap-2 shrink-0">
           <div className="w-[80px] sm:w-[108px] h-[70px] flex items-center justify-center border-r border-gray-100 pr-2 sm:pr-3">
             <img
@@ -48,14 +47,18 @@ export default function MainNavbarHeader() {
             />
           </div>
 
-          {(pathname?.startsWith("/teamlead") || pathname?.startsWith("/manager")) && (
+          {(pathname?.startsWith("/teamlead") ||
+            pathname?.startsWith("/manager") ||
+            pathname?.startsWith("/employee")) && (
             <button
               type="button"
               onClick={() => {
                 if (pathname?.startsWith("/manager")) {
                   window.dispatchEvent(new CustomEvent("toggle-manager-sidebar"))
-                } else {
+                } else if (pathname?.startsWith("/teamlead")) {
                   window.dispatchEvent(new CustomEvent("toggle-teamlead-sidebar"))
+                } else {
+                  window.dispatchEvent(new CustomEvent("toggle-employee-sidebar"))
                 }
               }}
               className="lg:hidden p-2 rounded-xl text-gray-700 hover:bg-gray-100 cursor-pointer flex items-center justify-center transition-colors"
@@ -66,7 +69,6 @@ export default function MainNavbarHeader() {
           )}
         </div>
 
-        {/* Center: Search input (Visible on md and larger screens) */}
         <div className="hidden md:flex flex-1 items-center justify-center px-4 max-w-[500px]">
           <div className="flex items-center bg-[#C5C1FF] gap-3 h-[40px] w-full rounded-full px-3.5">
             <MagnifyingGlass
@@ -81,9 +83,7 @@ export default function MainNavbarHeader() {
           </div>
         </div>
 
-        {/* Right: Notifications, Inbox, Profile Avatar */}
         <div className="flex items-center justify-end gap-3 sm:gap-4 shrink-0">
-          {/* Notification Bell */}
           <div className="relative flex items-center justify-center">
             <button
               type="button"
@@ -96,7 +96,6 @@ export default function MainNavbarHeader() {
             <NotificationCount count={100} style="-top-1 -right-1" />
           </div>
 
-          {/* Inbox Tray */}
           <div className="relative flex items-center justify-center">
             <button
               type="button"
@@ -109,7 +108,6 @@ export default function MainNavbarHeader() {
             <NotificationCount count={100} style="-top-1 -right-1" />
           </div>
 
-          {/* Reusable Profile Avatar */}
           <ReusableAvatar
             src={photoURL || "/images/alexander.png"}
             name={fullname || "Alexander"}
@@ -124,7 +122,6 @@ export default function MainNavbarHeader() {
         </div>
       </header>
 
-      {/* Modals */}
       <NotificationModal open={showModal} onClose={() => setShowModal(false)} />
       <InboxModal open={showIndex} onClose={() => setShowIndex(false)} />
     </>
