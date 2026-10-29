@@ -18,6 +18,7 @@ import {
   ArrowRight,
 } from "phosphor-react"
 import OrgTree from "./components/OrgTree"
+import { ReusablePagination } from "@/../reusableComponents"
 
 interface EmployeeRecord {
   id: number
@@ -470,6 +471,9 @@ function OrgPageContent() {
   }
 
   // Reset Filters
+  const [directoryPage, setDirectoryPage] = useState(1)
+  const [directoryPageSize, setDirectoryPageSize] = useState(8)
+
   const handleResetFilters = () => {
     setSelectedBusinessUnit("Business Unit")
     setSelectedDepartment("Department")
@@ -478,6 +482,7 @@ function OrgPageContent() {
     setSelectedLegalEntry("Legal Entry")
     setSearchQuery("")
     setOpenDropdown(null)
+    setDirectoryPage(1)
   }
 
   // Filtered Employees
@@ -525,6 +530,14 @@ function OrgPageContent() {
     selectedCostCenter,
     selectedLegalEntry,
   ])
+
+  const totalDirectoryPages = Math.ceil(filteredEmployees.length / directoryPageSize)
+  const paginatedEmployees = useMemo(() => {
+    return filteredEmployees.slice(
+      (directoryPage - 1) * directoryPageSize,
+      directoryPage * directoryPageSize
+    )
+  }, [filteredEmployees, directoryPage, directoryPageSize])
 
   return (
     <div
@@ -807,7 +820,7 @@ function OrgPageContent() {
 
               {/* 4-Column Responsive Grid of Employee Cards */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                {filteredEmployees.map((emp) => (
+                {paginatedEmployees.map((emp) => (
                   <div
                     key={emp.id}
                     className="bg-white rounded-2xl p-5 shadow-xs hover:shadow-md transition-all duration-200 flex flex-col items-center border border-gray-100"
@@ -863,6 +876,23 @@ function OrgPageContent() {
                   </div>
                 ))}
               </div>
+
+              {filteredEmployees.length > 0 && (
+                <div className="bg-white rounded-2xl p-4 shadow-xs border border-gray-100 mt-2">
+                  <ReusablePagination
+                    currentPage={directoryPage}
+                    totalPages={totalDirectoryPages}
+                    totalItems={filteredEmployees.length}
+                    pageSize={directoryPageSize}
+                    onPageChange={setDirectoryPage}
+                    onPageSizeChange={(newSize) => {
+                      setDirectoryPageSize(newSize)
+                      setDirectoryPage(1)
+                    }}
+                    pageSizeOptions={[4, 8, 12, 16]}
+                  />
+                </div>
+              )}
 
               {filteredEmployees.length === 0 && (
                 <div className="bg-white rounded-2xl p-12 text-center shadow-xs border border-gray-100 flex flex-col items-center gap-3">

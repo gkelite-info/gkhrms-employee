@@ -1,6 +1,8 @@
 "use client"
 
-import {  useState  } from "react";
+import React, { useState } from "react"
+import { ReusableTable, ReusablePagination, TableColumn } from "@/../reusableComponents"
+
 
 interface LogRecord {
   sNo: string
@@ -51,6 +53,8 @@ const filterTabs = [
 
 export default function EmployeeAttendanceLogTable() {
   const [activeFilter, setActiveFilter] = useState("30days")
+  const [currentPage, setCurrentPage] = useState(1)
+  const [pageSize, setPageSize] = useState(6)
 
   const getDotClass = (dot: "green" | "orange" | "red") => {
     switch (dot) {
@@ -65,16 +69,118 @@ export default function EmployeeAttendanceLogTable() {
     }
   }
 
+  const columns: TableColumn<LogRecord>[] = [
+    {
+      key: "sNo",
+      header: "S.No",
+      accessor: "sNo",
+      className: "py-3 px-3 text-gray-400 font-medium text-xs whitespace-nowrap",
+      headerClassName: "py-3 px-3 text-gray-500 font-semibold text-xs whitespace-nowrap",
+    },
+    {
+      key: "date",
+      header: "Date",
+      accessor: "date",
+      className: "py-3 px-3 text-gray-700 font-medium text-xs whitespace-nowrap",
+      headerClassName: "py-3 px-3 text-gray-500 font-semibold text-xs whitespace-nowrap",
+    },
+    {
+      key: "name",
+      header: "Name",
+      render: (row) => (
+        <div className="flex items-center gap-1.5 font-semibold text-gray-800 whitespace-nowrap">
+          <span>{row.name}</span>
+          <span className={`h-2 w-2 rounded-full ${getDotClass(row.statusDot)}`} />
+        </div>
+      ),
+      className: "py-3 px-3 text-xs",
+      headerClassName: "py-3 px-3 text-gray-500 font-semibold text-xs whitespace-nowrap",
+    },
+    {
+      key: "email",
+      header: "Email",
+      accessor: "email",
+      className: "py-3 px-3 text-gray-500 text-xs whitespace-nowrap",
+      headerClassName: "py-3 px-3 text-gray-500 font-semibold text-xs whitespace-nowrap",
+    },
+    {
+      key: "empId",
+      header: "Employee ID",
+      accessor: "empId",
+      className: "py-3 px-3 text-gray-600 text-xs whitespace-nowrap",
+      headerClassName: "py-3 px-3 text-gray-500 font-semibold text-xs whitespace-nowrap",
+    },
+    {
+      key: "dept",
+      header: "Department",
+      accessor: "dept",
+      className: "py-3 px-3 text-gray-600 text-xs whitespace-nowrap",
+      headerClassName: "py-3 px-3 text-gray-500 font-semibold text-xs whitespace-nowrap",
+    },
+    {
+      key: "attendance",
+      header: "Attendance %",
+      accessor: "attendance",
+      className: "py-3 px-3 font-semibold text-gray-800 text-xs whitespace-nowrap",
+      headerClassName: "py-3 px-3 text-gray-500 font-semibold text-xs whitespace-nowrap",
+    },
+    {
+      key: "effective",
+      header: "Effective Hours",
+      accessor: "effective",
+      className: "py-3 px-3 text-gray-700 text-xs whitespace-nowrap",
+      headerClassName: "py-3 px-3 text-gray-500 font-semibold text-xs whitespace-nowrap",
+    },
+    {
+      key: "gross",
+      header: "Gross Hours",
+      accessor: "gross",
+      className: "py-3 px-3 text-gray-700 text-xs whitespace-nowrap",
+      headerClassName: "py-3 px-3 text-gray-500 font-semibold text-xs whitespace-nowrap",
+    },
+    {
+      key: "checkIn",
+      header: "Check-in",
+      accessor: "checkIn",
+      className: "py-3 px-3 text-gray-600 text-xs whitespace-nowrap",
+      headerClassName: "py-3 px-3 text-gray-500 font-semibold text-xs whitespace-nowrap",
+    },
+    {
+      key: "checkOut",
+      header: "Check-Out",
+      accessor: "checkOut",
+      className: "py-3 px-3 text-gray-600 text-xs whitespace-nowrap",
+      headerClassName: "py-3 px-3 text-gray-500 font-semibold text-xs whitespace-nowrap",
+    },
+    {
+      key: "mood",
+      header: "Mood",
+      accessor: "mood",
+      align: "center",
+      className: "py-3 px-3 text-center text-sm whitespace-nowrap",
+      headerClassName: "py-3 px-3 text-gray-500 font-semibold text-xs text-center whitespace-nowrap",
+    },
+  ]
+
+  const totalPages = Math.ceil(mockData.length / pageSize)
+  const paginatedData = mockData.slice(
+    (currentPage - 1) * pageSize,
+    currentPage * pageSize
+  )
+
+  const handleFilterChange = (key: string) => {
+    setActiveFilter(key)
+    setCurrentPage(1)
+  }
+
   return (
     <div className="w-full max-w-full bg-white rounded-2xl shadow-sm border border-gray-100 p-5 mt-2">
-      {/* Top Header of Table Card */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4">
         <div>
           <h3 className="text-base font-bold text-[#1F2937]">Attendance Log</h3>
           <p className="text-xs text-gray-400 font-medium mt-0.5">Last 30 Days</p>
         </div>
 
-        {/* Filter Pills */}
         <div className="flex items-center flex-wrap gap-2">
           {filterTabs.map((tab) => {
             const isActive = activeFilter === tab.key
@@ -82,12 +188,11 @@ export default function EmployeeAttendanceLogTable() {
               <button
                 key={tab.key}
                 type="button"
-                onClick={() => setActiveFilter(tab.key)}
-                className={`text-xs px-3.5 py-1.5 rounded-lg font-semibold transition-all cursor-pointer ${
-                  isActive
-                    ? "bg-[#7D73E3] text-white shadow-sm"
-                    : "bg-[#E1DFFB] text-[#323232] hover:bg-[#d5d2fa]"
-                }`}
+                onClick={() => handleFilterChange(tab.key)}
+                className={`text-xs px-3.5 py-1.5 rounded-lg font-semibold transition-all cursor-pointer ${isActive
+                  ? "bg-[#7D73E3] text-white shadow-sm"
+                  : "bg-[#E1DFFB] text-[#323232] hover:bg-[#d5d2fa]"
+                  }`}
               >
                 {tab.label}
               </button>
@@ -96,56 +201,32 @@ export default function EmployeeAttendanceLogTable() {
         </div>
       </div>
 
-      {/* Responsive Data Table */}
-      <div className="w-full max-w-full overflow-x-auto rounded-xl">
-        <table className="w-full text-left text-xs text-[#323232] border-collapse whitespace-nowrap min-w-[750px]">
-          <thead>
-            <tr className="text-gray-400 font-semibold border-b border-gray-100 text-[11px]">
-              <th className="py-2.5 px-2 font-semibold">S.No</th>
-              <th className="py-2.5 px-2 font-semibold">Date</th>
-              <th className="py-2.5 px-2 font-semibold">Name</th>
-              <th className="py-2.5 px-2 font-semibold">Email</th>
-              <th className="py-2.5 px-2 font-semibold">Employee ID</th>
-              <th className="py-2.5 px-2 font-semibold">Department</th>
-              <th className="py-2.5 px-2 font-semibold">Attendance %</th>
-              <th className="py-2.5 px-2 font-semibold">Effective Hours</th>
-              <th className="py-2.5 px-2 font-semibold">Gross Hours</th>
-              <th className="py-2.5 px-2 font-semibold">Check-in</th>
-              <th className="py-2.5 px-2 font-semibold">Check-Out</th>
-              <th className="py-2.5 px-2 text-center font-semibold">Mood</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-gray-50">
-            {mockData.map((row, index) => (
-              <tr
-                key={index}
-                className="hover:bg-[#F9F9FE] transition-colors font-medium text-[12px]"
-              >
-                <td className="py-2.5 px-2 text-gray-400">{row.sNo}</td>
-                <td className="py-2.5 px-2 text-gray-700">{row.date}</td>
-                <td className="py-2.5 px-2 font-semibold text-gray-800">
-                  <div className="flex items-center gap-1.5">
-                    <span>{row.name}</span>
-                    <span
-                      className={`h-2 w-2 rounded-full ${getDotClass(row.statusDot)}`}
-                    />
-                  </div>
-                </td>
-                <td className="py-2.5 px-2 text-gray-500">{row.email}</td>
-                <td className="py-2.5 px-2 text-gray-600">{row.empId}</td>
-                <td className="py-2.5 px-2 text-gray-600">{row.dept}</td>
-                <td className="py-2.5 px-2 font-semibold text-gray-800">
-                  {row.attendance}
-                </td>
-                <td className="py-2.5 px-2 text-gray-700">{row.effective}</td>
-                <td className="py-2.5 px-2 text-gray-700">{row.gross}</td>
-                <td className="py-2.5 px-2 text-gray-600">{row.checkIn}</td>
-                <td className="py-2.5 px-2 text-gray-600">{row.checkOut}</td>
-                <td className="py-2.5 px-2 text-center text-sm">{row.mood}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div className="w-full max-w-full overflow-hidden rounded-xl border border-gray-100">
+        <ReusableTable<LogRecord>
+          columns={columns}
+          data={paginatedData}
+          headerBgColor="#F9FAFB"
+          headerTextColor="#6B7280"
+          headerRounded="rounded-none"
+          rowHover={true}
+          tableClassName="w-full text-left"
+          keyExtractor={(row) => row.sNo}
+        />
+      </div>
+
+      <div className="pt-3 border-t border-gray-100 mt-3">
+        <ReusablePagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          totalItems={mockData.length}
+          pageSize={pageSize}
+          onPageChange={setCurrentPage}
+          onPageSizeChange={(newSize) => {
+            setPageSize(newSize)
+            setCurrentPage(1)
+          }}
+          pageSizeOptions={[6, 12, 18]}
+        />
       </div>
     </div>
   )

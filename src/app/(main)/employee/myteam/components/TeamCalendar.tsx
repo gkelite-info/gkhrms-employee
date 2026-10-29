@@ -2,6 +2,7 @@
 
 import {  useState, useMemo, useRef  } from "react";
 import { CaretLeft, CaretRight, ArrowLeft, ArrowRight } from "phosphor-react"
+import { ReusablePagination } from "@/../reusableComponents"
 
 type StatusType = "purple" | "cyan" | "green" | "pink"
 
@@ -178,11 +179,18 @@ export default function TeamCalendar() {
     year: number
     status: string
   } | null>(null)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [pageSize, setPageSize] = useState(5)
 
   const scrollContainerRef = useRef<HTMLDivElement>(null)
 
   const year = currentDate.getFullYear()
   const month = currentDate.getMonth()
+
+  const totalPages = Math.ceil(teamMembers.length / pageSize)
+  const paginatedMembers = useMemo(() => {
+    return teamMembers.slice((currentPage - 1) * pageSize, currentPage * pageSize)
+  }, [currentPage, pageSize])
 
   const monthLabel = currentDate.toLocaleDateString("en-US", {
     month: "short",
@@ -304,7 +312,7 @@ export default function TeamCalendar() {
 
             {/* Team Members Calendar Rows */}
             <div className="flex flex-col divide-y divide-gray-50 pt-2">
-              {teamMembers.map((member) => (
+              {paginatedMembers.map((member) => (
                 <div
                   key={member.id}
                   className="flex items-center py-2.5 hover:bg-gray-50/50 rounded-xl transition-colors group"
@@ -403,6 +411,21 @@ export default function TeamCalendar() {
               <span>Leave / Off / Late</span>
             </div>
           </div>
+        </div>
+
+        <div className="mt-3 pt-3 border-t border-gray-100">
+          <ReusablePagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            totalItems={teamMembers.length}
+            pageSize={pageSize}
+            onPageChange={setCurrentPage}
+            onPageSizeChange={(newSize) => {
+              setPageSize(newSize)
+              setCurrentPage(1)
+            }}
+            pageSizeOptions={[3, 5, 7, 10]}
+          />
         </div>
       </div>
     </div>

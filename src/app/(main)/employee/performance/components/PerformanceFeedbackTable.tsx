@@ -1,7 +1,7 @@
 "use client"
 
-import ReusableTable, { TableColumn } from "@/components/reusableComponents/ReusableTable"
-
+import React, { useState } from "react"
+import { ReusableTable, ReusablePagination, TableColumn } from "@/../reusableComponents"
 export interface FeedbackRow {
   month: string
   score: string
@@ -85,6 +85,15 @@ const feedbackRows: FeedbackRow[] = [
 ]
 
 export default function PerformanceFeedbackTable() {
+  const [currentPage, setCurrentPage] = useState(1)
+  const [pageSize, setPageSize] = useState(5)
+
+  const totalPages = Math.ceil(feedbackRows.length / pageSize)
+  const paginatedRows = feedbackRows.slice(
+    (currentPage - 1) * pageSize,
+    currentPage * pageSize
+  )
+
   const columns: TableColumn<FeedbackRow>[] = [
     {
       key: "month",
@@ -120,13 +129,28 @@ export default function PerformanceFeedbackTable() {
     <div className="w-full bg-white rounded-2xl shadow-xs border border-gray-100 overflow-hidden">
       <ReusableTable<FeedbackRow>
         columns={columns}
-        data={feedbackRows}
+        data={paginatedRows}
         headerBgColor="#EAE8E4"
         headerTextColor="#1F2937"
         headerRounded="rounded-none"
         rowHover={true}
         tableClassName="w-full text-left"
       />
+
+      <div className="p-3 sm:p-4 border-t border-gray-100">
+        <ReusablePagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          totalItems={feedbackRows.length}
+          pageSize={pageSize}
+          onPageChange={setCurrentPage}
+          onPageSizeChange={(newSize) => {
+            setPageSize(newSize)
+            setCurrentPage(1)
+          }}
+          pageSizeOptions={[5, 10, 15]}
+        />
+      </div>
     </div>
   )
 }

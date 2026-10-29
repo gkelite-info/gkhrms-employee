@@ -8,6 +8,7 @@ import {
   CaretDown,
   X,
 } from "phosphor-react"
+import { ReusablePagination } from "@/../reusableComponents"
 
 export interface Certificate {
   id: number
@@ -115,6 +116,9 @@ export default function SkillsBuildingView() {
     showNotice(`Added certificate "${newCert.title}"`)
   }
 
+  const [currentPage, setCurrentPage] = useState(1)
+  const [pageSize, setPageSize] = useState(6)
+
   // Filtered Certificates
   const filteredCertificates = useMemo(() => {
     return certificates.filter((cert) => {
@@ -125,6 +129,14 @@ export default function SkillsBuildingView() {
       return matchCategory && matchIssuer
     })
   }, [certificates, selectedCategory, selectedIssuer])
+
+  const totalPages = Math.ceil(filteredCertificates.length / pageSize)
+  const paginatedCertificates = useMemo(() => {
+    return filteredCertificates.slice(
+      (currentPage - 1) * pageSize,
+      currentPage * pageSize
+    )
+  }, [filteredCertificates, currentPage, pageSize])
 
   return (
     <div
@@ -255,7 +267,7 @@ export default function SkillsBuildingView() {
 
       {/* 2. Certificate Cards Grid (3 Columns, NO share or download icons) */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 w-full">
-        {filteredCertificates.map((cert) => (
+        {paginatedCertificates.map((cert) => (
           <div
             key={cert.id}
             className="bg-white rounded-2xl p-6 sm:p-7 shadow-xs border border-gray-100 flex flex-col items-center justify-between text-center relative hover:shadow-md transition-all duration-200 group"
@@ -292,6 +304,23 @@ export default function SkillsBuildingView() {
           </div>
         ))}
       </div>
+
+      {filteredCertificates.length > 0 && (
+        <div className="bg-white rounded-2xl p-4 shadow-xs border border-gray-100 mt-2">
+          <ReusablePagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            totalItems={filteredCertificates.length}
+            pageSize={pageSize}
+            onPageChange={setCurrentPage}
+            onPageSizeChange={(newSize) => {
+              setPageSize(newSize)
+              setCurrentPage(1)
+            }}
+            pageSizeOptions={[3, 6, 9, 12]}
+          />
+        </div>
+      )}
 
       {filteredCertificates.length === 0 && (
         <div className="w-full bg-white rounded-2xl p-12 text-center text-gray-400 text-sm border border-gray-100 shadow-xs">

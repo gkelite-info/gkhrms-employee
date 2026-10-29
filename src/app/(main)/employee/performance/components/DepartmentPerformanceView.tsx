@@ -2,7 +2,7 @@
 
 import {  useState  } from "react";
 import { CaretDown } from "phosphor-react"
-import ReusableTable, { TableColumn } from "@/components/reusableComponents/ReusableTable"
+import { ReusableTable, ReusablePagination, TableColumn } from "@/../reusableComponents"
 
 export interface DepartmentObjective {
   id: number
@@ -165,8 +165,15 @@ const availableDepartments = [
 export default function DepartmentPerformanceView() {
   const [selectedDept, setSelectedDept] = useState("Design")
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [pageSize, setPageSize] = useState(5)
 
   const currentData = departmentObjectivesData[selectedDept] || []
+  const totalPages = Math.ceil(currentData.length / pageSize)
+  const paginatedData = currentData.slice(
+    (currentPage - 1) * pageSize,
+    currentPage * pageSize
+  )
 
   const columns: TableColumn<DepartmentObjective>[] = [
     {
@@ -245,6 +252,7 @@ export default function DepartmentPerformanceView() {
                 type="button"
                 onClick={() => {
                   setSelectedDept(dept)
+                  setCurrentPage(1)
                   setIsDropdownOpen(false)
                 }}
                 className={`w-full text-left px-4 py-2 text-xs sm:text-sm cursor-pointer transition-colors ${
@@ -260,17 +268,31 @@ export default function DepartmentPerformanceView() {
         )}
       </div>
 
-      {/* 2. Objectives Card using ReusableTable */}
       <div className="w-full bg-white rounded-2xl shadow-xs border border-gray-100 overflow-hidden">
         <ReusableTable<DepartmentObjective>
           columns={columns}
-          data={currentData}
+          data={paginatedData}
           headerBgColor="#EAE8E4"
           headerTextColor="#1F2937"
           headerRounded="rounded-none"
           rowHover={true}
           tableClassName="w-full text-left"
         />
+
+        <div className="p-3 sm:p-4 border-t border-gray-100">
+          <ReusablePagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            totalItems={currentData.length}
+            pageSize={pageSize}
+            onPageChange={setCurrentPage}
+            onPageSizeChange={(newSize) => {
+              setPageSize(newSize)
+              setCurrentPage(1)
+            }}
+            pageSizeOptions={[3, 5, 10]}
+          />
+        </div>
       </div>
     </div>
   )

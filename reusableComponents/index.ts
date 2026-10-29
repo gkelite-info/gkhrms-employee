@@ -10,4 +10,6 @@ export { default as ReusableDateFilter, DATE_FILTER_PRESETS } from "./ReusableDa
 export type { DateFilterMode, DateFilterValue, DateFilterStructuredValue, DateRangeValue, DateFilterCompatibleValue, ReusableDateFilterProps, QuickRangeOption } from "./ReusableDateFilter"
 export { default as ReusableConfirmationModal } from "./ReusableConfirmationModal"
 export type { ReusableConfirmationModalProps, ConfirmationType } from "./ReusableConfirmationModal"
+export { default as ReusableSidebar } from "./ReusableSidebar"
+export type { ReusableSidebarProps, ReusableSidebarItem } from "./ReusableSidebar"
 export { default } from "../src/components/reusableComponents/ReusableTable"
