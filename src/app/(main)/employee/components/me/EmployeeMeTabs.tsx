@@ -1,6 +1,5 @@
 "use client"
 
-
 export type MeTabType =
   | "overview"
   | "timesheet"
@@ -17,8 +16,6 @@ const tabs: TabItem[] = [
   { id: "overview", label: "Overview" },
   { id: "timesheet", label: "Timesheet" },
   { id: "project_time", label: "Project Time Overview" },
-  { id: "monthly_performance", label: "Monthly Performance" },
-  { id: "expenses_travel", label: "Expenses and Travel" },
 ]
 
 export default function EmployeeMeTabs({

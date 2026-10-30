@@ -14,10 +14,6 @@ export default function EmployeeProjectTimeDirectPage() {
       router.push("/employee/me/timesheet")
     } else if (tab === "project_time") {
       router.push("/employee/me/project-time")
-    } else if (tab === "monthly_performance") {
-      router.push("/employee/me?tab=monthly_performance")
-    } else if (tab === "expenses_travel") {
-      router.push("/employee/me?tab=expenses_travel")
     }
   }
 

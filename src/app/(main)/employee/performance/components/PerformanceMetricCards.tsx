@@ -1,12 +1,11 @@
 "use client"
 
-import { Star } from "phosphor-react"
+import { Star, ArrowUp } from "phosphor-react"
 
 export default function PerformanceMetricCards() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 md:gap-4 w-full">
-      {/* 1. Overall Rating Card */}
-      <div className="bg-white rounded-2xl p-5 shadow-xs border border-gray-100 flex flex-col items-center justify-center text-center hover:shadow-md transition-shadow duration-200 min-h-[115px]">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 md:gap-4 w-full">
+      <div className="bg-white rounded-2xl p-4 sm:p-5 shadow-xs border border-gray-100 flex flex-col items-center justify-center text-center hover:shadow-md transition-shadow duration-200 min-h-[115px]">
         <span className="text-xs sm:text-sm font-semibold text-gray-700">
           Overall Rating
         </span>
@@ -22,8 +21,7 @@ export default function PerformanceMetricCards() {
         </div>
       </div>
 
-      {/* 2. Best Month Card */}
-      <div className="bg-white rounded-2xl p-5 shadow-xs border border-gray-100 flex flex-col items-center justify-center text-center hover:shadow-md transition-shadow duration-200 min-h-[115px]">
+      <div className="bg-white rounded-2xl p-4 sm:p-5 shadow-xs border border-gray-100 flex flex-col items-center justify-center text-center hover:shadow-md transition-shadow duration-200 min-h-[115px]">
         <span className="text-xs sm:text-sm font-semibold text-gray-700">
           Best Month
         </span>
@@ -42,8 +40,18 @@ export default function PerformanceMetricCards() {
         </div>
       </div>
 
-      {/* 3. Need Improvement Card */}
-      <div className="bg-white rounded-2xl p-5 shadow-xs border border-gray-100 flex flex-col items-center justify-center text-center hover:shadow-md transition-shadow duration-200 min-h-[115px]">
+      <div className="bg-white rounded-2xl p-4 sm:p-5 shadow-xs border border-gray-100 flex flex-col items-center justify-center text-center hover:shadow-md transition-shadow duration-200 min-h-[115px]">
+        <span className="text-xs sm:text-sm font-semibold text-gray-700">
+          Growth
+        </span>
+        <div className="flex items-center gap-1.5 mt-2 text-[#10B981]">
+          <ArrowUp size={22} weight="bold" />
+          <span className="text-2xl sm:text-3xl font-bold">+12%</span>
+        </div>
+        <span className="text-[11px] text-gray-400 mt-0.5">vs last year</span>
+      </div>
+
+      <div className="bg-white rounded-2xl p-4 sm:p-5 shadow-xs border border-gray-100 flex flex-col items-center justify-center text-center hover:shadow-md transition-shadow duration-200 min-h-[115px]">
         <span className="text-xs sm:text-sm font-semibold text-gray-700">
           Need Improvement
         </span>

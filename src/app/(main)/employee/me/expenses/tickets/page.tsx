@@ -1,11 +1,14 @@
 "use client"
 
-import EmployeeTicketsView from "../../../components/tickets/EmployeeTicketsView"
+import { useEffect } from "react"
+import { useRouter } from "next/navigation"
 
-export default function EmployeeExpensesTicketsPage() {
-  return (
-    <div className="w-full max-w-full min-w-0 flex flex-col px-4 sm:px-6 md:px-8 py-3.5 sm:py-4 pb-12">
-      <EmployeeTicketsView />
-    </div>
-  )
+export default function EmployeeMeExpensesTicketsRedirect() {
+  const router = useRouter()
+
+  useEffect(() => {
+    router.replace("/employee/tickets")
+  }, [router])
+
+  return null
 }

@@ -1,6 +1,6 @@
 "use client"
 
-import {  useState, useEffect  } from "react";
+import { useState, useEffect } from "react"
 import { CaretDown, ArrowUp } from "phosphor-react"
 import {
   AreaChart,
@@ -13,18 +13,50 @@ import {
 
 const chartData = [
   { month: "Jan", score: 2.0 },
-  { month: "Feb", score: 2.6 },
+  { month: "Feb", score: 2.8 },
   { month: "Mar", score: 2.3 },
-  { month: "Apr", score: 3.5 },
-  { month: "May", score: 3.6 },
-  { month: "Jun", score: 3.8 },
-  { month: "Jul", score: 3.7 },
-  { month: "Aug", score: 2.9 },
-  { month: "Sep", score: 3.4 },
+  { month: "Apr", score: 3.3 },
+  { month: "May", score: 3.3 },
+  { month: "Jun", score: 3.5 },
+  { month: "Jul", score: 3.4 },
+  { month: "Aug", score: 2.8 },
+  { month: "Sep", score: 3.5 },
   { month: "Oct", score: 3.9 },
   { month: "Nov", score: 4.5 },
-  { month: "Dec", score: 4.2 },
+  { month: "Dec", score: 4.6 },
 ]
+
+interface CustomizedDotProps {
+  cx?: number
+  cy?: number
+  value?: number
+}
+
+function CustomizedDot({ cx, cy, value }: CustomizedDotProps) {
+  if (cx == null || cy == null) return null
+  return (
+    <g>
+      <circle
+        cx={cx}
+        cy={cy}
+        r={4}
+        fill="#FFFFFF"
+        stroke="#8571EE"
+        strokeWidth={2.5}
+      />
+      <text
+        x={cx}
+        y={cy - 9}
+        textAnchor="middle"
+        fontSize={10}
+        fontWeight={600}
+        fill="#4B5563"
+      >
+        {value}
+      </text>
+    </g>
+  )
+}
 
 export default function PerformanceScoreChart() {
   const [mounted, setMounted] = useState(false)
@@ -37,7 +69,6 @@ export default function PerformanceScoreChart() {
 
   return (
     <div className="bg-white rounded-2xl p-5 sm:p-6 shadow-xs border border-gray-100 flex flex-col justify-between h-full">
-      {/* Header Row */}
       <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
         <div className="flex flex-wrap items-center gap-2.5">
           <h3 className="text-xs sm:text-sm font-bold text-gray-900 tracking-tight">
@@ -52,7 +83,6 @@ export default function PerformanceScoreChart() {
           </span>
         </div>
 
-        {/* Filter Dropdown */}
         <div className="relative">
           <button
             type="button"
@@ -93,13 +123,12 @@ export default function PerformanceScoreChart() {
         </div>
       </div>
 
-      {/* Recharts Area Canvas */}
       <div className="w-full h-56 sm:h-64 mt-2">
         {mounted ? (
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart
               data={chartData}
-              margin={{ top: 12, right: 12, left: -20, bottom: 0 }}
+              margin={{ top: 20, right: 12, left: -20, bottom: 0 }}
             >
               <defs>
                 <linearGradient id="scoreGradient" x1="0" y1="0" x2="0" y2="1">
@@ -144,14 +173,9 @@ export default function PerformanceScoreChart() {
                 strokeWidth={2.5}
                 fillOpacity={1}
                 fill="url(#scoreGradient)"
-                dot={{
-                  r: 3,
-                  fill: "#FFFFFF",
-                  stroke: "#8571EE",
-                  strokeWidth: 2,
-                }}
+                dot={<CustomizedDot />}
                 activeDot={{
-                  r: 5,
+                  r: 6,
                   fill: "#8571EE",
                   stroke: "#FFFFFF",
                   strokeWidth: 2,
