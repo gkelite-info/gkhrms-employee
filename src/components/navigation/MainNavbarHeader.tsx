@@ -49,12 +49,15 @@ export default function MainNavbarHeader() {
 
           {(pathname?.startsWith("/teamlead") ||
             pathname?.startsWith("/manager") ||
+            pathname?.startsWith("/hr") ||
             pathname?.startsWith("/employee")) && (
             <button
               type="button"
               onClick={() => {
                 if (pathname?.startsWith("/manager")) {
                   window.dispatchEvent(new CustomEvent("toggle-manager-sidebar"))
+                } else if (pathname?.startsWith("/hr")) {
+                  window.dispatchEvent(new CustomEvent("toggle-hr-sidebar"))
                 } else if (pathname?.startsWith("/teamlead")) {
                   window.dispatchEvent(new CustomEvent("toggle-teamlead-sidebar"))
                 } else {

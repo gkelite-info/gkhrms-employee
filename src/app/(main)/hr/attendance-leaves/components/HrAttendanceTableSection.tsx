@@ -1,0 +1,272 @@
+"use client"
+
+import { useMemo } from "react"
+import {
+  MagnifyingGlass,
+  Eye,
+} from "phosphor-react"
+import {
+  ReusableTable,
+  TableColumn,
+  ReusableAvatar,
+  ReusablePagination,
+  ReusableDropdown,
+  ReusableDateFilter,
+  DateFilterValue,
+} from "@/components/reusableComponents"
+import { HrAttendanceRecord } from "../data/hrAttendanceData"
+
+interface HrAttendanceTableSectionProps {
+  records: HrAttendanceRecord[]
+  totalItems: number
+  currentPage: number
+  pageSize: number
+  totalPages: number
+  searchQuery: string
+  roleFilter: string
+  fromDate: DateFilterValue
+  toDate: DateFilterValue
+  onSearchChange: (query: string) => void
+  onRoleFilterChange: (role: string) => void
+  onFromDateChange: (date: DateFilterValue) => void
+  onToDateChange: (date: DateFilterValue) => void
+  onResetFilters: () => void
+  onPageChange: (page: number) => void
+  onPageSizeChange: (size: number) => void
+  onViewRecord: (record: HrAttendanceRecord) => void
+}
+
+export default function HrAttendanceTableSection({
+  records,
+  totalItems,
+  currentPage,
+  pageSize,
+  totalPages,
+  searchQuery,
+  roleFilter,
+  fromDate,
+  toDate,
+  onSearchChange,
+  onRoleFilterChange,
+  onFromDateChange,
+  onToDateChange,
+  onResetFilters,
+  onPageChange,
+  onPageSizeChange,
+  onViewRecord,
+}: HrAttendanceTableSectionProps) {
+  const roleOptions = [
+    { label: "All Roles", value: "All" },
+    { label: "Team Lead", value: "Team Lead" },
+    { label: "Manager", value: "Manager" },
+    { label: "Employee", value: "Employee" },
+    { label: "HR", value: "HR" },
+  ]
+
+  const getStatusBadge = (status: HrAttendanceRecord["status"]) => {
+    switch (status) {
+      case "Present":
+        return {
+          bg: "bg-emerald-50 text-emerald-700 border-emerald-200/60",
+          dot: "bg-emerald-500",
+        }
+      case "Late":
+        return {
+          bg: "bg-amber-50 text-amber-700 border-amber-200/60",
+          dot: "bg-amber-500",
+        }
+      case "Absent":
+        return {
+          bg: "bg-rose-50 text-rose-700 border-rose-200/60",
+          dot: "bg-rose-500",
+        }
+      case "On Leave":
+        return {
+          bg: "bg-amber-50 text-amber-700 border-amber-200/60",
+          dot: "bg-amber-500",
+        }
+      case "Work From Home":
+        return {
+          bg: "bg-[#EEF2FF] text-[#5B50EC] border-[#DDD9FD]",
+          dot: "bg-[#5B50EC]",
+        }
+      default:
+        return {
+          bg: "bg-gray-50 text-gray-700 border-gray-200",
+          dot: "bg-gray-400",
+        }
+    }
+  }
+
+  const columns: TableColumn<HrAttendanceRecord>[] = useMemo(
+    () => [
+      {
+        header: "Employee",
+        accessor: "name",
+        className: "whitespace-nowrap min-w-[190px]",
+        render: (row) => (
+          <div className="flex items-center gap-3">
+            <ReusableAvatar
+              src={row.avatar}
+              alt={row.name}
+              name={row.name}
+              size="sm"
+              fallbackType="icon"
+            />
+            <span className="font-bold text-gray-900 text-xs sm:text-sm">
+              {row.name}
+            </span>
+          </div>
+        ),
+      },
+      {
+        header: "Employee ID",
+        accessor: "employeeId",
+        className: "text-gray-400 font-mono text-xs whitespace-nowrap",
+      },
+      {
+        header: "Department",
+        accessor: "department",
+        className: "text-gray-600 font-medium text-xs whitespace-nowrap",
+      },
+      {
+        header: "Role",
+        accessor: "role",
+        className: "text-gray-700 font-medium text-xs whitespace-nowrap",
+      },
+      {
+        header: "Status",
+        accessor: "status",
+        className: "whitespace-nowrap",
+        render: (row) => {
+          const config = getStatusBadge(row.status)
+          return (
+            <span
+              className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold border ${config.bg}`}
+            >
+              <span className={`w-1.5 h-1.5 rounded-full ${config.dot}`} />
+              {row.status}
+            </span>
+          )
+        },
+      },
+      {
+        header: "Check-in",
+        accessor: "checkIn",
+        className: "text-gray-700 font-medium text-xs whitespace-nowrap",
+      },
+      {
+        header: "Check-out",
+        accessor: "checkOut",
+        className: "text-gray-700 font-medium text-xs whitespace-nowrap",
+      },
+      {
+        header: "Working Hours",
+        accessor: "workingHours",
+        className: "text-gray-800 font-semibold text-xs whitespace-nowrap",
+      },
+      {
+        header: "Action",
+        key: "action",
+        className: "text-center whitespace-nowrap",
+        align: "center",
+        render: (row) => (
+          <button
+            type="button"
+            onClick={() => onViewRecord(row)}
+            className="p-1.5 rounded-lg text-gray-400 hover:text-[#5B50EC] hover:bg-[#F3F2FD] transition-colors cursor-pointer inline-flex items-center justify-center"
+            aria-label={`View details for ${row.name}`}
+          >
+            <Eye size={18} weight="bold" />
+          </button>
+        ),
+      },
+    ],
+    [onViewRecord]
+  )
+
+  return (
+    <div className="bg-white rounded-2xl p-4 sm:p-5 border border-gray-100 shadow-xs flex flex-col gap-4">
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3 flex-1 min-w-0">
+          <div className="relative w-full sm:w-auto sm:flex-1 sm:min-w-[240px] sm:max-w-sm">
+            <MagnifyingGlass
+              size={16}
+              weight="bold"
+              className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"
+            />
+            <input
+              type="text"
+              placeholder="Search by name, employee ID, department..."
+              value={searchQuery}
+              onChange={(e) => onSearchChange(e.target.value)}
+              className="w-full pl-9 pr-3.5 py-2 rounded-xl border border-gray-200 text-xs sm:text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#5B50EC] focus:ring-1 focus:ring-[#5B50EC] transition-all bg-white"
+            />
+          </div>
+
+          <div className="w-full sm:w-auto">
+            <ReusableDateFilter
+              value={fromDate}
+              onChange={onFromDateChange}
+              modes={["date", "30-days"]}
+              title="Select From Date"
+              className="w-full sm:w-auto"
+            />
+          </div>
+
+          <div className="w-full sm:w-auto">
+            <ReusableDateFilter
+              value={toDate}
+              onChange={onToDateChange}
+              modes={["date", "30-days"]}
+              title="Select To Date"
+              className="w-full sm:w-auto"
+            />
+          </div>
+
+          <div className="w-full sm:w-auto">
+            <ReusableDropdown
+              value={roleFilter}
+              options={roleOptions}
+              onChange={(val) => onRoleFilterChange(String(val))}
+              placeholder="Select Role"
+              align="left"
+              buttonClassName="px-3.5 py-2 rounded-xl border border-gray-200 text-xs sm:text-sm text-gray-700 bg-white hover:bg-gray-50/50"
+            />
+          </div>
+        </div>
+
+        <div className="flex items-center justify-end">
+          <button
+            type="button"
+            onClick={onResetFilters}
+            className="text-xs font-semibold text-[#5B50EC] hover:underline cursor-pointer transition-colors px-2 py-1"
+          >
+            Reset Filters
+          </button>
+        </div>
+      </div>
+
+      <div className="w-full overflow-x-auto custom-scrollbar">
+        <ReusableTable
+          columns={columns}
+          data={records}
+          headerBgColor="transparent"
+          headerTextColor="#9CA3AF"
+          headerRounded="rounded-none"
+          rowHover={true}
+          emptyMessage="No employees found matching the filters."
+        />
+      </div>
+
+      <ReusablePagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        pageSize={pageSize}
+        totalItems={totalItems}
+        onPageChange={onPageChange}
+        onPageSizeChange={onPageSizeChange}
+      />
+    </div>
+  )
+}

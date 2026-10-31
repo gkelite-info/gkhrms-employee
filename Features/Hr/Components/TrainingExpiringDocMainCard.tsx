@@ -1,5 +1,4 @@
 "use client"
-import React from "react"
 import ExpiringDocument from "./ExpiringDocument"
 
 type ProgramSectionProps = {
@@ -8,11 +7,11 @@ type ProgramSectionProps = {
   programs: string[]
 }
 
-const ProgramSection: React.FC<ProgramSectionProps> = ({
+const ProgramSection = ({
   number,
   title,
   programs,
-}) => (
+}: ProgramSectionProps) => (
   <div className="w-full flex flex-col lg:flex-row items-start gap-2">
     <div className="w-full lg:w-1/2 flex items-center gap-2">
       <span className="w-[25px] h-[25px] flex rounded-full justify-center items-center bg-[#272372] text-white font-semibold">
@@ -30,7 +29,7 @@ const ProgramSection: React.FC<ProgramSectionProps> = ({
   </div>
 )
 
-const TrainingExpiringDocMainCard: React.FC = () => {
+const TrainingExpiringDocMainCard = () => {
   const onGoingPrograms = [
     "AI ML - Certification",
     "Project Management - Certification",
@@ -65,7 +64,6 @@ const TrainingExpiringDocMainCard: React.FC = () => {
         </div>
       </div>
 
-      {/* Right Section */}
       <ExpiringDocument />
     </div>
   )

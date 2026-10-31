@@ -69,6 +69,32 @@ body {
   background: #5B50EC;
 }
 
+/* Sidebar Custom Scrollbar - for vertical nav overflow in teamlead, manager, hr */
+.sidebar-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #C5C1FF transparent;
+}
+
+.sidebar-scrollbar::-webkit-scrollbar {
+  display: block !important;
+  width: 5px;
+}
+
+.sidebar-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 9999px;
+}
+
+.sidebar-scrollbar::-webkit-scrollbar-thumb {
+  background: #C5C1FF;
+  border-radius: 9999px;
+  transition: background-color 0.2s ease;
+}
+
+.sidebar-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #5B50EC;
+}
+
 /* Reusable Purple Scrollbar - apply .scrollbar-purple anywhere */
 .scrollbar-purple {
   scrollbar-width: thin;

@@ -1,7 +1,7 @@
 "use client"
 
 import { useMemo } from "react"
-import { useSearchParams, useRouter } from "next/navigation"
+import { useSearchParams, useRouter, usePathname } from "next/navigation"
 import { ExceptionSubTab } from "./types"
 import { teamMembersExceptions } from "./exceptionHistoryData"
 import ExceptionHistoryHeader from "./ExceptionHistoryHeader"
@@ -12,6 +12,8 @@ import EmployeeExceptionHistorySection from "./EmployeeExceptionHistorySection"
 
 export default function TeamLeadExceptionHistorySection() {
   const router = useRouter()
+  const pathname = usePathname()
+  const basePath = pathname?.startsWith("/manager") ? "/manager" : "/teamlead"
   const searchParams = useSearchParams()
   const subParam = searchParams.get("sub") as ExceptionSubTab | null
   const memberIdParam = searchParams.get("memberId")
@@ -24,15 +26,15 @@ export default function TeamLeadExceptionHistorySection() {
   }, [memberIdParam])
 
   const handleSubTabChange = (tab: ExceptionSubTab) => {
-    router.replace(`/teamlead?tab=exception-history&sub=${tab}`, { scroll: false })
+    router.replace(`${basePath}?tab=exception-history&sub=${tab}`, { scroll: false })
   }
 
   const handleSelectMember = (memberId: string) => {
-    router.push(`/teamlead?tab=exception-history&sub=team&memberId=${memberId}`, { scroll: false })
+    router.push(`${basePath}?tab=exception-history&sub=team&memberId=${memberId}`, { scroll: false })
   }
 
   const handleBackToTeam = () => {
-    router.push(`/teamlead?tab=exception-history&sub=team`, { scroll: false })
+    router.push(`${basePath}?tab=exception-history&sub=team`, { scroll: false })
   }
 
   return (

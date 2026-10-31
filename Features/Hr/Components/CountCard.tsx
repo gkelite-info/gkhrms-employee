@@ -1,22 +1,22 @@
 "use client"
-import React, { useEffect, useState } from "react"
+import { useEffect, useState, type ReactNode } from "react"
 import { motion } from "framer-motion"
 
 type CountCardProps = {
   title: string
   count: number
-  icon: React.ReactNode
+  icon: ReactNode
   iconBg?: string
   style?: string
 }
 
-const CountCard: React.FC<CountCardProps> = ({
+export default function CountCard({
   title,
   count,
   icon,
   iconBg = "#E0DEFBD6",
-  style = 'h-[100px] bg-[#F9FAFB]'
-}) => {
+  style = "h-[100px]",
+}: CountCardProps) {
   const [displayCount, setDisplayCount] = useState(0)
 
   useEffect(() => {
@@ -39,45 +39,24 @@ const CountCard: React.FC<CountCardProps> = ({
 
   return (
     <motion.div
-      className={`w-full md:w-[250px] shadow rounded-lg cursor-pointer flex justify-around items-center ${style}`}
+      className={`w-full shadow-xs rounded-2xl cursor-pointer flex justify-around items-center transition-all hover:shadow-md px-4 py-3 bg-white border border-gray-100 ${style}`}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
       <motion.span
-        className="w-[50px] h-[50px] rounded-full flex justify-center items-center"
+        className="w-[48px] h-[48px] rounded-full flex justify-center items-center shrink-0"
         style={{ backgroundColor: iconBg }}
-        initial={{ scale: 0 }}
-        whileInView={{ scale: 1 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.2 }}
       >
         {icon}
       </motion.span>
-
-      <div className="flex flex-col gap-1">
-        <motion.span
-          className="text-xs text-[#323232]"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ delay: 0.3 }}
-        >
-          {title}
-        </motion.span>
-        <motion.span
-          className="text-[28px] text-[#323232] font-semibold"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ delay: 0.4 }}
-        >
+      <div className="flex flex-col text-center">
+        <span className="text-[#323232] font-semibold text-xs leading-tight">{title}</span>
+        <span className="text-xl sm:text-2xl font-bold text-[#323232] mt-0.5">
           {displayCount}
-        </motion.span>
+        </span>
       </div>
     </motion.div>
   )
 }
-
-export default CountCard

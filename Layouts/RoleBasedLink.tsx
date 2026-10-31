@@ -72,7 +72,7 @@ export const roleBasedNav: Record<
     { label: "Engage", href: "/employee/engage", icon: ChatCircleDots },
   ],
   Hr: [
-    { label: "Home", href: "/", icon: House },
+    { label: "Home", href: "/hr", icon: House },
     { label: "Workforce", href: "/hr/workforce", icon: User },
     {
       label: "Payroll & Compliance",

@@ -1,6 +1,6 @@
 "use client"
 
-import {  Suspense  } from "react";
+import { Suspense } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
 import ManagerAttendanceTabs, { ManagerTabKey } from "./components/ManagerAttendanceTabs"
 import ManagerTabHeaderBanner from "./components/ManagerTabHeaderBanner"
@@ -16,19 +16,35 @@ import LeaveBalanceSection from "../teamlead/components/LeaveBalanceSection"
 import ManagerTLWiseAttendanceSection from "./components/ManagerTLWiseAttendanceSection"
 import ManagerRequestsSection from "./components/requests/ManagerRequestsSection"
 import AttendanceLogSection from "../teamlead/components/AttendanceLogSection"
+import TeamLeadMyRequestsSection from "../teamlead/components/my-requests/TeamLeadMyRequestsSection"
+import TeamLeadExceptionHistorySection from "../teamlead/components/exception-history/TeamLeadExceptionHistorySection"
+import TeamLeadAttendanceFormContainer from "../teamlead/components/attendance-forms/TeamLeadAttendanceFormContainer"
 
 function ManagerAttendanceContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
-  const tabParam = searchParams.get("tab") as ManagerTabKey | null
+  const tabParam = searchParams.get("tab")
+
+  if (tabParam === "apply-leave") {
+    return <TeamLeadAttendanceFormContainer initialFormType="leave" />
+  }
+
+  if (tabParam === "request-wfh") {
+    return <TeamLeadAttendanceFormContainer initialFormType="wfh" />
+  }
+
   const validTabs: ManagerTabKey[] = [
     "my-attendance",
     "team-attendance",
     "tl-wise-attendance",
     "requests",
+    "my-requests",
+    "exception-history",
   ]
   const activeTab: ManagerTabKey =
-    tabParam && validTabs.includes(tabParam) ? tabParam : "my-attendance"
+    tabParam && validTabs.includes(tabParam as ManagerTabKey)
+      ? (tabParam as ManagerTabKey)
+      : "my-attendance"
 
   const handleTabChange = (newTab: ManagerTabKey) => {
     router.push(`/manager?tab=${newTab}`)
@@ -37,16 +53,29 @@ function ManagerAttendanceContent() {
   return (
     <div className="w-full flex-1 p-3 sm:p-4 md:p-6 pb-16 sm:pb-8 flex flex-col gap-4 sm:gap-5 max-w-[1600px] mx-auto animate-in fade-in duration-200 min-w-0">
       <ManagerAttendanceTabs activeTab={activeTab} onTabChange={handleTabChange} />
-      <ManagerTabHeaderBanner activeTab={activeTab} />
 
       {activeTab === "team-attendance" ? (
-        <ManagerTeamAttendanceSection />
+        <>
+          <ManagerTabHeaderBanner activeTab={activeTab} />
+          <ManagerTeamAttendanceSection />
+        </>
       ) : activeTab === "tl-wise-attendance" ? (
-        <ManagerTLWiseAttendanceSection />
+        <>
+          <ManagerTabHeaderBanner activeTab={activeTab} />
+          <ManagerTLWiseAttendanceSection />
+        </>
       ) : activeTab === "requests" ? (
-        <ManagerRequestsSection />
+        <>
+          <ManagerTabHeaderBanner activeTab={activeTab} />
+          <ManagerRequestsSection />
+        </>
+      ) : activeTab === "my-requests" ? (
+        <TeamLeadMyRequestsSection />
+      ) : activeTab === "exception-history" ? (
+        <TeamLeadExceptionHistorySection />
       ) : (
         <>
+          <ManagerTabHeaderBanner activeTab={activeTab} />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <ProfileSummaryCard name="David Miller" employeeId="MGR001" />
             <AttendanceDonutCard />
