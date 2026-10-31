@@ -1,6 +1,6 @@
 "use client"
 
-import { useRouter } from "next/navigation"
+import { useRouter, usePathname } from "next/navigation"
 import toast from "react-hot-toast"
 import { MagnifyingGlass, X } from "phosphor-react"
 import {
@@ -37,13 +37,15 @@ export default function MyRequestsFilterBar({
   onToDateChange,
 }: MyRequestsFilterBarProps) {
   const router = useRouter()
+  const pathname = usePathname()
+  const basePath = pathname?.startsWith("/manager") ? "/manager" : "/teamlead"
   const filterTabs: MyFilterType[] = ["All", "Leave", "Work From Home"]
 
   const handleTabClick = (tab: MyFilterType) => {
     onFilterTypeChange(tab)
     const typeQuery =
       tab === "Leave" ? "leave" : tab === "Work From Home" ? "wfh" : "all"
-    router.replace(`/teamlead?tab=my-requests&type=${typeQuery}`, {
+    router.replace(`${basePath}?tab=my-requests&type=${typeQuery}`, {
       scroll: false,
     })
   }
@@ -113,19 +115,22 @@ export default function MyRequestsFilterBar({
       </div>
 
       <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 w-full min-w-0">
-        <div className="relative flex-1 max-w-xl w-full">
-          <MagnifyingGlass
-            size={16}
-            weight="bold"
-            className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"
-          />
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={(e) => onSearchChange(e.target.value)}
-            placeholder="Search by request type or approver..."
-            className="w-full h-10 pl-10 pr-3.5 rounded-xl border border-gray-200 bg-white text-xs text-gray-700 placeholder:text-gray-400 hover:border-[#5B50EC] focus:border-[#5B50EC] outline-none transition-all"
-          />
+        <div className="flex flex-col gap-1 flex-1 max-w-xl w-full">
+          <span className="text-[11px] font-bold text-gray-700">Search</span>
+          <div className="relative w-full">
+            <MagnifyingGlass
+              size={16}
+              weight="bold"
+              className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"
+            />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => onSearchChange(e.target.value)}
+              placeholder="Search by request type or approver..."
+              className="w-full h-10 pl-10 pr-3.5 rounded-xl border border-gray-200 bg-white text-xs text-gray-700 placeholder:text-gray-400 hover:border-[#5B50EC] focus:border-[#5B50EC] outline-none transition-all"
+            />
+          </div>
         </div>
 
         <div className="flex flex-wrap sm:flex-nowrap items-end gap-2.5 sm:gap-3 w-full lg:w-auto min-w-0">
@@ -150,7 +155,7 @@ export default function MyRequestsFilterBar({
                 onChange={handleFromDateSelect}
                 modes={["date", "month", "year"]}
                 title="Select From Date"
-                className="w-full sm:w-auto"
+                className="w-full sm:w-auto [&>button]:h-10 [&>button]:px-3.5 [&>button]:w-full [&>button]:rounded-xl"
               />
             </div>
 
@@ -161,7 +166,7 @@ export default function MyRequestsFilterBar({
                 onChange={handleToDateSelect}
                 modes={["date", "month", "year"]}
                 title="Select To Date"
-                className="w-full sm:w-auto"
+                className="w-full sm:w-auto [&>button]:h-10 [&>button]:px-3.5 [&>button]:w-full [&>button]:rounded-xl"
               />
             </div>
           </div>

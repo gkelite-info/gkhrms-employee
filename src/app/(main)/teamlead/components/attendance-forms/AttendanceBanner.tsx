@@ -1,6 +1,6 @@
 "use client"
 
-import { useRouter } from "next/navigation"
+import { useRouter, usePathname } from "next/navigation"
 import { CalendarBlank, ArrowLeft } from "phosphor-react"
 
 interface AttendanceBannerProps {
@@ -9,12 +9,14 @@ interface AttendanceBannerProps {
 
 export default function AttendanceBanner({ onBack }: AttendanceBannerProps) {
   const router = useRouter()
+  const pathname = usePathname()
+  const defaultBack = pathname?.startsWith("/manager") ? "/manager" : "/teamlead"
 
   const handleBack = () => {
     if (onBack) {
       onBack()
     } else {
-      router.push("/teamlead")
+      router.push(defaultBack)
     }
   }
 

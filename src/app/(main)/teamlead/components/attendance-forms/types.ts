@@ -2,6 +2,16 @@ import type { ElementType } from "react"
 
 export type FormTabType = "leave" | "wfh"
 export type DayOption = "full" | "half"
+export type ApplicantRole = "Employee" | "Team Lead" | "Manager" | "HR"
+
+export interface RoleApprovalConfig {
+  primaryLabel: string
+  primaryPlaceholder: string
+  primaryOptions: string[]
+  secondaryLabel: string
+  secondaryPlaceholder: string
+  secondaryOptions: string[]
+}
 
 export interface LeaveBalanceItem {
   id: string
@@ -17,7 +27,7 @@ export interface WfhGuidelineItem {
   id: string
   title: string
   description: string
-  icon: React.ElementType
+  icon: ElementType
   iconBg: string
   iconColor: string
 }

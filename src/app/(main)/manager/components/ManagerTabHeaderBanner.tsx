@@ -1,6 +1,14 @@
 "use client"
 
-import { User, Users, UsersThree, CalendarBlank } from "phosphor-react"
+import type { ElementType } from "react"
+import {
+  User,
+  Users,
+  UsersThree,
+  CalendarBlank,
+  FileText,
+  ClockCounterClockwise,
+} from "phosphor-react"
 import { ManagerTabKey } from "./ManagerAttendanceTabs"
 
 interface ManagerTabHeaderBannerProps {
@@ -12,7 +20,7 @@ export default function ManagerTabHeaderBanner({
 }: ManagerTabHeaderBannerProps) {
   const tabMetadata: Record<
     ManagerTabKey,
-    { title: string; subtitle: string; icon: React.ElementType }
+    { title: string; subtitle: string; icon: ElementType }
   > = {
     "my-attendance": {
       title: "My Attendance",
@@ -38,9 +46,21 @@ export default function ManagerTabHeaderBanner({
         "Review and manage leave and work from home requests from your team members and team leads.",
       icon: CalendarBlank,
     },
+    "my-requests": {
+      title: "My Requests",
+      subtitle:
+        "Track all personal attendance requests you have submitted for approval.",
+      icon: FileText,
+    },
+    "exception-history": {
+      title: "Exception History",
+      subtitle:
+        "Review previous attendance regularizations and exception records for yourself and your team.",
+      icon: ClockCounterClockwise,
+    },
   }
 
-  const current = tabMetadata[activeTab]
+  const current = tabMetadata[activeTab] || tabMetadata["my-attendance"]
   const IconComponent = current.icon
 
   return (

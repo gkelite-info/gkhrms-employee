@@ -1,5 +1,6 @@
 "use client"
 
+import type { ChangeEvent } from "react"
 import toast from "react-hot-toast"
 import { CalendarBlank } from "phosphor-react"
 import { DayOption } from "./types"
@@ -23,7 +24,7 @@ export default function LeaveDateDaySelector({
   onDayTypeChange,
   totalDays,
 }: LeaveDateDaySelectorProps) {
-  const handleFromChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFromChange = (e: ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value
     if (toDate && val && new Date(val) > new Date(toDate)) {
       toast.error("From Date cannot be after To Date.", { position: "top-right" })
@@ -32,7 +33,7 @@ export default function LeaveDateDaySelector({
     onFromDateChange(val)
   }
 
-  const handleToChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleToChange = (e: ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value
     if (fromDate && val && new Date(val) < new Date(fromDate)) {
       toast.error("To Date cannot be before From Date.", { position: "top-right" })
@@ -89,30 +90,71 @@ export default function LeaveDateDaySelector({
           <label className="text-xs font-bold text-gray-700">
             Day Type <span className="text-red-500">*</span>
           </label>
-          <div className="flex flex-wrap items-center gap-4 sm:gap-5 h-10">
-            <label className="flex items-center gap-2 text-xs font-semibold text-gray-700 cursor-pointer select-none">
-              <input
-                type="radio"
-                name="leaveDayType"
-                checked={dayType === "full"}
-                onChange={() => onDayTypeChange("full")}
-                className="w-4 h-4 text-[#5B50EC] accent-[#5B50EC] cursor-pointer shrink-0"
-              />
-              <span>Full Day</span>
-            </label>
-            <label className="flex items-center gap-2 text-xs font-semibold text-gray-700 cursor-pointer select-none">
-              <input
-                type="radio"
-                name="leaveDayType"
-                checked={dayType === "half"}
-                onChange={() => {
-                  onDayTypeChange("half")
-                  if (fromDate) onToDateChange(fromDate)
-                }}
-                className="w-4 h-4 text-[#5B50EC] accent-[#5B50EC] cursor-pointer shrink-0"
-              />
-              <span>Half Day</span>
-            </label>
+          <div className="grid grid-cols-2 gap-2.5 sm:gap-3 w-full">
+            <button
+              type="button"
+              onClick={() => onDayTypeChange("full")}
+              className={`h-10 px-3.5 sm:px-4 rounded-xl border flex items-center gap-2.5 sm:gap-3 transition-all cursor-pointer select-none ${
+                dayType === "full"
+                  ? "bg-[#EEF2FF] border-[#C7D2FE] text-[#1E1B4B]"
+                  : "bg-white border-gray-200 text-gray-600 hover:border-gray-300"
+              }`}
+            >
+              <span
+                className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 transition-all ${
+                  dayType === "full"
+                    ? "bg-[#5B50EC]"
+                    : "border border-gray-300 bg-white"
+                }`}
+              >
+                {dayType === "full" && (
+                  <span className="w-2 h-2 rounded-full bg-white shrink-0" />
+                )}
+              </span>
+              <span
+                className={`text-xs sm:text-sm whitespace-nowrap ${
+                  dayType === "full"
+                    ? "font-bold text-[#1E1B4B]"
+                    : "font-medium text-gray-600"
+                }`}
+              >
+                Full Day
+              </span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => {
+                onDayTypeChange("half")
+                if (fromDate) onToDateChange(fromDate)
+              }}
+              className={`h-10 px-3.5 sm:px-4 rounded-xl border flex items-center gap-2.5 sm:gap-3 transition-all cursor-pointer select-none ${
+                dayType === "half"
+                  ? "bg-[#EEF2FF] border-[#C7D2FE] text-[#1E1B4B]"
+                  : "bg-white border-gray-200 text-gray-600 hover:border-gray-300"
+              }`}
+            >
+              <span
+                className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 transition-all ${
+                  dayType === "half"
+                    ? "bg-[#5B50EC]"
+                    : "border border-gray-300 bg-white"
+                }`}
+              >
+                {dayType === "half" && (
+                  <span className="w-2 h-2 rounded-full bg-white shrink-0" />
+                )}
+              </span>
+              <span
+                className={`text-xs sm:text-sm whitespace-nowrap ${
+                  dayType === "half"
+                    ? "font-bold text-[#1E1B4B]"
+                    : "font-medium text-gray-600"
+                }`}
+              >
+                Half Day
+              </span>
+            </button>
           </div>
         </div>
 

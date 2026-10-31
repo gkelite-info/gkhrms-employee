@@ -2,7 +2,6 @@
 import {
   Briefcase,
   House,
-  Key,
   Smiley,
   TrendDown,
   User,
@@ -20,7 +19,6 @@ import AttritionRatioEmployeesModal from "@/app/(main)/hr/modals/attritionratio"
 import EmployeesSatisfactionModal from "@/app/(main)/hr/modals/employeesatisfaction"
 
 const DashboardCards = () => {
-
   const [openModal, setOpenModal] = useState<string | null>(null)
 
   const cardsData = [
@@ -32,50 +30,49 @@ const DashboardCards = () => {
       iconBg: "#E0DEFBD6",
     },
     {
-      key: 'active',
+      key: "active",
       title: "Active Employees",
       count: 150,
       icon: <UsersThree color="#8248E3" size={27} />,
       iconBg: "#E0DEFBD6",
     },
     {
-      key: 'leave',
+      key: "leave",
       title: "Leave Employees",
       count: 150,
       icon: <UsersThree color="#8248E3" size={27} />,
       iconBg: "#E0DEFBD6",
     },
     {
-      key: 'workfromhome',
+      key: "workfromhome",
       title: "Work From Home",
       count: 10,
       icon: <House size={27} color="#8248E3" />,
       iconBg: "#E0DEFBD6",
     },
-    //
     {
-      key: 'newhire',
+      key: "newhire",
       title: "New Hire",
       count: 10,
       icon: <User size={27} color="#8248E3" />,
       iconBg: "#E0DEFBD6",
     },
     {
-      key: 'openings',
+      key: "openings",
       title: "Open Positions",
       count: 10,
       icon: <Briefcase size={27} color="#8248E3" />,
       iconBg: "#E0DEFBD6",
     },
     {
-      key: 'attrition',
+      key: "attrition",
       title: "Attrition Ratio",
       count: 10,
       icon: <TrendDown size={27} color="#8248E3" />,
       iconBg: "#E0DEFBD6",
     },
     {
-      key: 'satisfaction',
+      key: "satisfaction",
       title: "Employee Satisfaction",
       count: 10,
       icon: <Smiley size={27} color="#8248E3" />,
@@ -85,12 +82,12 @@ const DashboardCards = () => {
 
   return (
     <>
-      <div className="w-full flex flex-wrap gap-6 justify-between">
+      <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3.5 sm:gap-4">
         {cardsData.map((card) => (
           <div
             key={card.key}
             onClick={() => setOpenModal(card.key)}
-            className="cursor-pointer"
+            className="w-full cursor-pointer"
           >
             <CountCard
               title={card.title}
@@ -103,35 +100,35 @@ const DashboardCards = () => {
       </div>
 
       <TotalEmployeesModal
-        isOpen={openModal === 'total'}
+        isOpen={openModal === "total"}
         onClose={() => setOpenModal(null)}
       />
       <ActiveEmployeesModal
-        isOpen={openModal === 'active'}
+        isOpen={openModal === "active"}
         onClose={() => setOpenModal(null)}
       />
       <LeaveEmployeesModal
-        isOpen={openModal === 'leave'}
+        isOpen={openModal === "leave"}
         onClose={() => setOpenModal(null)}
       />
       <WorkFromHomeEmployeesModal
-        isOpen={openModal === 'workfromhome'}
+        isOpen={openModal === "workfromhome"}
         onClose={() => setOpenModal(null)}
       />
       <NewHireEmployeesModal
-        isOpen={openModal === 'newhire'}
+        isOpen={openModal === "newhire"}
         onClose={() => setOpenModal(null)}
       />
       <OpeningsEmployeesModal
-        isOpen={openModal === 'openings'}
+        isOpen={openModal === "openings"}
         onClose={() => setOpenModal(null)}
       />
       <AttritionRatioEmployeesModal
-        isOpen={openModal === 'attrition'}
+        isOpen={openModal === "attrition"}
         onClose={() => setOpenModal(null)}
       />
       <EmployeesSatisfactionModal
-        isOpen={openModal === 'satisfaction'}
+        isOpen={openModal === "satisfaction"}
         onClose={() => setOpenModal(null)}
       />
     </>

@@ -1,6 +1,5 @@
 "use client"
 
-import React from "react"
 import { usePathname } from "next/navigation"
 import { roleBasedNav } from "./RoleBasedLink"
 import { RootState } from "../Redux/Store"
@@ -8,6 +7,7 @@ import { useSelector } from "react-redux"
 import EmployeeSidebar from "./EmployeeSidebar"
 import TeamLeadSidebar from "./TeamLeadSidebar"
 import ManagerSidebar from "./ManagerSidebar"
+import HrSidebar from "./HrSidebar"
 import ReusableSidebar from "../reusableComponents/ReusableSidebar"
 
 export default function Sidebar() {
@@ -20,6 +20,10 @@ export default function Sidebar() {
 
   if (pathname?.startsWith("/manager") || role === "Manager") {
     return <ManagerSidebar />
+  }
+
+  if (pathname?.startsWith("/hr") || role === "Hr") {
+    return <HrSidebar />
   }
 
   if (pathname?.startsWith("/employee") || role === "Employee") {
@@ -40,7 +44,7 @@ export default function Sidebar() {
       items={navItems}
       toggleEventName="toggle-sidebar"
       closeEventName="close-sidebar"
-      desktopWidthClass="w-[210px] min-w-[210px]"
+      desktopWidthClass="w-[210px] min-w-[210px] max-w-[210px] shrink-0"
       drawerWidthClass="w-[240px]"
     />
   )

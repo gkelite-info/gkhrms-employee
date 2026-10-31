@@ -1,4 +1,3 @@
-import React from "react"
 import AttendanceLeaveCard from "./AttendanceLeaveCard"
 import PayroleDashboardCard from "./PayroleDashboardCard"
 

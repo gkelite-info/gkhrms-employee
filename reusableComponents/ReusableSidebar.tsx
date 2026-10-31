@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useEffect, useCallback } from "react"
+import { useState, useEffect, useCallback, type ComponentType } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
@@ -9,7 +9,7 @@ import { X } from "phosphor-react"
 export interface ReusableSidebarItem {
   label: string
   href: string
-  icon: React.ComponentType<{
+  icon: ComponentType<{
     size?: number
     weight?: "thin" | "light" | "regular" | "bold" | "fill" | "duotone"
     className?: string
@@ -37,7 +37,7 @@ export default function ReusableSidebar({
   items,
   toggleEventName,
   closeEventName,
-  desktopWidthClass = "w-[210px] min-w-[210px]",
+  desktopWidthClass = "w-[210px] min-w-[210px] max-w-[210px] shrink-0",
   drawerWidthClass = "w-[240px]",
   activeColorClass = "bg-[#5B50EC] text-white shadow-sm ring-1 ring-[#5B50EC]/30",
   inactiveColorClass = "text-[#4B5563] hover:text-[#5B50EC] hover:bg-[#F3F2FD]",
@@ -100,6 +100,7 @@ export default function ReusableSidebar({
       item.href === "/employee" ||
       item.href === "/teamlead" ||
       item.href === "/manager" ||
+      item.href === "/hr" ||
       item.href === "/admin"
     ) {
       return pathname === item.href
@@ -121,7 +122,7 @@ export default function ReusableSidebar({
               if (item.onClick) item.onClick()
               setDrawerOpen(false)
             }}
-            className={`flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-semibold transition-all duration-150 ${
+            className={`flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all duration-150 w-full min-w-0 ${
               isActive ? activeColorClass : inactiveColorClass
             }`}
           >
@@ -130,9 +131,11 @@ export default function ReusableSidebar({
               weight={isActive ? "fill" : "bold"}
               className="shrink-0"
             />
-            <span className="truncate">{item.label}</span>
+            <span className="flex-1 min-w-0 text-xs font-semibold leading-snug break-words whitespace-normal text-left">
+              {item.label}
+            </span>
             {item.badge !== undefined && (
-              <span className="ml-auto px-2 py-0.5 text-[10px] rounded-full bg-indigo-100 text-[#5B50EC] font-bold">
+              <span className="ml-auto px-2 py-0.5 text-[10px] rounded-full bg-indigo-100 text-[#5B50EC] font-bold shrink-0">
                 {item.badge}
               </span>
             )}
@@ -163,8 +166,8 @@ export default function ReusableSidebar({
               transition={{ type: "spring", damping: 25, stiffness: 250 }}
               className={`lg:hidden fixed top-0 left-0 bottom-0 z-50 ${drawerWidthClass} bg-white p-5 shadow-2xl flex flex-col justify-between`}
             >
-              <div className="flex flex-col gap-5">
-                <div className="flex items-center justify-between pb-3 border-b border-gray-100">
+              <div className="flex flex-col gap-5 flex-1 min-h-0">
+                <div className="flex items-center justify-between pb-3 border-b border-gray-100 shrink-0">
                   <span className="text-xs font-bold text-gray-400 uppercase tracking-wider">
                     {menuTitle}
                   </span>
@@ -177,10 +180,12 @@ export default function ReusableSidebar({
                     <X size={18} weight="bold" />
                   </button>
                 </div>
-                {renderNavList()}
+                <div className="flex-1 overflow-y-auto custom-scrollbar sidebar-scrollbar pr-1 min-h-0">
+                  {renderNavList()}
+                </div>
               </div>
 
-              <div className="pt-4 text-center">
+              <div className="pt-4 text-center shrink-0">
                 <span className="text-[10px] font-semibold text-[#8C8EA6] tracking-wide">
                   {footerText}
                 </span>
@@ -193,11 +198,11 @@ export default function ReusableSidebar({
       <aside
         className={`hidden lg:flex ${desktopWidthClass} bg-white h-full border-r border-gray-100 p-4 flex-col justify-between select-none ${className}`}
       >
-        <div className="flex flex-col pt-1">
+        <div className="flex-1 overflow-y-auto custom-scrollbar sidebar-scrollbar pr-1 flex flex-col pt-1 min-h-0">
           {renderNavList()}
         </div>
 
-        <div className="pt-4 pb-1 text-center">
+        <div className="pt-4 pb-1 text-center shrink-0">
           <span className="text-[10px] font-semibold text-[#8C8EA6] tracking-wide">
             {footerText}
           </span>

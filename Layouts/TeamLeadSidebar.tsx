@@ -1,6 +1,5 @@
 "use client"
 
-import React from "react"
 import { UsersThree, User, ChartLineUp } from "phosphor-react"
 import ReusableSidebar, {
   ReusableSidebarItem,
